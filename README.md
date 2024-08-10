@@ -1,47 +1,90 @@
-# Keep-It-Secret
-### Keep-It-Secret is a secure and user-friendly password manager application built with React and Firebase. It helps you store, manage, and retrieve your passwords safely.
+# TaskHub - Client
 
-To get started with Keep-It-Secret, follow these steps:
+## Overview
 
-Clone the repository:
+This repository contains the frontend code for the TaskHub, built with React.js. The frontend is responsible for providing a responsive and dynamic user interface that allows users to manage projects, tasks, notes, and roadmaps effectively.
 
-Install dependencies:
+## Features
 
-```
-npm install
-```
-Set up Firebase:
+- **Project Management**
+  - Create and manage projects.
+  - Organize tasks with parent and sub-task structures.
+  - Add comments on tasks for collaboration.
+  
+- **Notes**
+  - Write and manage project-specific notes.
+  - Manage general notes for ideas and business strategies.
 
-Create a Firebase project at Firebase Console.
-Add a web app to your Firebase project.
-Copy your Firebase config object.
-Create a .env file in the root of your project and add your Firebase config:
+- **Roadmap**
+  - Visual roadmap with calendar integration to track milestones.
+  - Schedule tasks and deadlines.
+  
+- **Notifications**
+  - Receive alerts for upcoming deadlines and task progress.
 
-```
-REACT_APP_FIREBASE_API_KEY=your_api_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
-REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-REACT_APP_FIREBASE_APP_ID=your_app_id
-```
-Start the development server:
+## Tech Stack
 
-```
-npm start
-```
-The app should now be running on http://localhost:3000.
+- **Framework**: React.js
+- **Language**: TypeScript
+- **State Management**: (Choose one, e.g., Redux, Context API, etc.)
+- **Styling**: (Choose one, e.g., CSS Modules, styled-components, etc.)
+- **HTTP Client**: (Choose one, e.g., Axios, Fetch API)
+- **Form Handling**: (Choose one, e.g., Formik, React Hook Form)
+- **Routing**: React Router
 
-Usage
-Sign Up / Login:
+## Getting Started
 
-Users can sign up or log in using their email and password.
-Add Password:
+### Prerequisites
 
-Once logged in, users can add a new password entry with details such as the site name, URL, username, and password.
-View Passwords:
+- Node.js
+- npm
 
-Users can view their saved passwords in a list format, categorized as needed.
-Generate Password:
+### Installation
 
-Users can generate strong, random passwords.
+1. **Clone the repository**:
+   ```
+   git clone https://github.com/gregorisbachtsevanos/keep-it-secret.git
+   ```
+
+2. **Create a .env file in the root of your project and add your Firebase config:**
+   ```
+   VITE_API_URL= 
+   VITE_API_URL= 
+   ```
+   
+3. **Install dependencies**:
+   ```bash
+   cd TaskHub
+   npm install 
+   ```
+   
+4. **Start the development server**:
+   ```
+   npm run dev:uat
+   ```
+   
+5. **Start the production server**:
+   ```
+   npm run dev:prod
+   ```
+
+6. **Building for Production**:
+   ```
+   npm run build:uat
+   npm run build:prod
+   ```
+   
+### Project Structure
+
+src/
+├── components/        # Reusable UI components
+├── pages/             # Page components
+├── assets/            # Static assets (images, icons, etc.)
+├── styles/            # Global styles and theme configurations
+├── utils/             # Utility functions
+├── hooks/             # Custom hooks
+├── context/           # Context API (if used)
+└── App.tsx            # Root component
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
