@@ -75,7 +75,7 @@ This repository contains the frontend code for the TaskHub, built with React.js.
    ```
    
 ### Project Structure
-
+```
 src/\
 ├── components/\
 ├── pages/\
@@ -85,6 +85,7 @@ src/\
 ├── hooks/\
 ├── context/\
 └── App.tsx
+```
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
