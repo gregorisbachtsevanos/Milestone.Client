@@ -76,15 +76,15 @@ This repository contains the frontend code for the TaskHub, built with React.js.
    
 ### Project Structure
 
-src/
-├── components/        # Reusable UI components
-├── pages/             # Page components
-├── assets/            # Static assets (images, icons, etc.)
-├── styles/            # Global styles and theme configurations
-├── utils/             # Utility functions
-├── hooks/             # Custom hooks
-├── context/           # Context API (if used)
-└── App.tsx            # Root component
+src/\
+├── components/\      # Reusable UI components
+├── pages/\           # Page components
+├── assets/\\         # Static assets (images, icons, etc.)
+├── styles/\          # Global styles and theme configurations
+├── utils/\           # Utility functions
+├── hooks/\           # Custom hooks
+├── context/\         # Context API (if used)
+└── App.tsx\          # Root component
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
