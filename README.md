@@ -26,10 +26,10 @@ This repository contains the frontend code for the TaskHub, built with React.js.
 
 - **Framework**: React.js
 - **Language**: TypeScript
-- **State Management**: (Choose one, e.g., Redux, Context API, etc.)
-- **Styling**: (Choose one, e.g., CSS Modules, styled-components, etc.)
-- **HTTP Client**: (Choose one, e.g., Axios, Fetch API)
-- **Form Handling**: (Choose one, e.g., Formik, React Hook Form)
+- **State Management**: RTK
+- **Styling**: styled-components
+- **HTTP Client**: RTK Query
+- **Form Handling**: React Hook Form
 - **Routing**: React Router
 
 ## Getting Started
@@ -38,6 +38,7 @@ This repository contains the frontend code for the TaskHub, built with React.js.
 
 - Node.js
 - npm
+- TypeScript
 
 ### Installation
 
