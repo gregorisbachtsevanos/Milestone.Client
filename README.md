@@ -1,4 +1,4 @@
-# Milestone - Client
+# Milestone
 
 ## Overview
 
