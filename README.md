@@ -1,8 +1,8 @@
-# TaskHub - Client
+# Milestone - Client
 
 ## Overview
 
-This repository contains the frontend code for the TaskHub, built with React.js. The frontend is responsible for providing a responsive and dynamic user interface that allows users to manage projects, tasks, notes, and roadmaps effectively.
+This repository contains the frontend code for the Milestone, built with React.js. The frontend is responsible for providing a responsive and dynamic user interface that allows users to manage projects, tasks, notes, and roadmaps effectively.
 
 ## Features
 
