@@ -2,7 +2,7 @@
 
 ## Overview
 
-his repository contains the frontend codebase for Milestone, a powerful project management tool. Developed with React.js and TypeScript, this frontend application delivers a highly responsive and intuitive user interface. It enables users to efficiently manage projects, tasks, notes, and roadmaps, providing real-time updates and seamless interaction. Milestone's frontend is designed to enhance productivity through a user-friendly experience, allowing teams to stay organized, track progress, and achieve their goals with ease.
+This repository contains the frontend codebase for Milestone, a powerful project management tool. Developed with React.js and TypeScript, this frontend application delivers a highly responsive and intuitive user interface. It enables users to efficiently manage projects, tasks, notes, and roadmaps, providing real-time updates and seamless interaction. Milestone's frontend is designed to enhance productivity through a user-friendly experience, allowing teams to stay organized, track progress, and achieve their goals with ease.
 
 ## Features
 
@@ -44,7 +44,7 @@ his repository contains the frontend codebase for Milestone, a powerful project 
 
 1. **Clone the repository**:
    ```
-   git clone https://github.com/gregorisbachtsevanos/keep-it-secret.git
+   git clone https://github.com/gregorisbachtsevanos/Milestone.Client.git
    ```
 
 2. **Create a .env file in the root of your project and add your Firebase config:**
