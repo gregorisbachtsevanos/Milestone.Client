@@ -1,0 +1,25 @@
+login
+register
+overview => main dashboard
+projects => all projects
+		{
+			create new project
+			projectId
+			{
+				tasks
+				{
+					create new task
+					taskId
+					{
+						create new subtask
+						subtaskId
+					}
+				}
+			}
+		}
+roadmap =>
+goals =>
+calendar =>
+settings =>
+profile =>
+chat =>	
