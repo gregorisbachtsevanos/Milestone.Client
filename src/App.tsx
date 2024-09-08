@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import AppLayout from "layouts/AppLayout";
+import DashboardLayout from "layouts/DashboardLayout";
+import LoginLayout from "layouts/LoginLayout";
+import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import ProtectedRoutes from "routes/ProtectedRoutes";
+import PublicRoutes from "routes/PublicRoutes";
+import Login from "./features/auth/pages/Login";
+import { routes } from "./routes";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<AppLayout />}>
+      <Route element={<ProtectedRoutes />}>
+        <Route element={<DashboardLayout />}>
+          <Route path={routes.HOME} element={<Navigate to={`${routes.HOME}`} replace />} />
+          <Route path={`${routes.PROJECT.Index}/*`} element={""} />
+          <Route path={`${routes.ROADMAP}/*`} element={""} />
+          <Route path={`${routes.GOALS}/*`} element={""} />
+          <Route path={`${routes.CALENDAR}/*`} element={""} />
+          <Route path={`${routes.SETTINGS}/*`} element={""} />
+          <Route path={`${routes.PROFILE}/*`} element={""} />
+          <Route path={`${routes.CHAT}/*`} element={""} />
+        </Route>
+      </Route>
+      <Route element={<PublicRoutes />}>
+        <Route element={<LoginLayout />}>
+          <Route path={routes.LOGIN} element={<Login />} />
+          <Route path={routes.REGISTER} element={""} />
+        </Route>
+      </Route>
+    </Route>
   )
-}
-
-export default App
+);

@@ -1,0 +1,54 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import {
+  useLoginMutation,
+  useLogoutMutation,
+  useRefreshMutation,
+} from "../../../app/services/identityAPI";
+// import { LoginProps, useAuthenticateMutation } from '../../../app/services/authApi';
+import { getLocalStorageItem } from "../../../utils/localStorage";
+import { selectIsUserLoggedIn } from "../authSlice";
+
+const useAuth = () => {
+  const refreshToken = getLocalStorageItem("refreshToken") ?? "";
+  const isUserLoggedIn = useSelector(selectIsUserLoggedIn);
+  const [initialLoading, setInitialLoading] = useState(true);
+
+  const [
+    login,
+    {
+      isLoading: isLoginLoading,
+      isSuccess: isLoginSuccessful,
+      isUninitialized: isLoginUninitialized,
+    },
+  ] = useLoginMutation();
+  const [logout, { isLoading: isLogoutLoading }] = useLogoutMutation();
+
+  const [refresh, { isLoading: isRefreshLoading, isUninitialized: isRefreshUninitialized }] =
+    useRefreshMutation({
+      fixedCacheKey: "refresh",
+    });
+
+  const shouldRefreshTokens = !isUserLoggedIn && Boolean(refreshToken) && isRefreshUninitialized;
+
+  useEffect(() => {
+    if (shouldRefreshTokens) refresh({ refreshToken });
+    else setInitialLoading(false);
+  }, [refresh, refreshToken, shouldRefreshTokens]);
+
+  return {
+    login: {
+      request: login,
+      isLoading: isLoginLoading,
+      isUninitialized: isLoginUninitialized,
+      isLoginSuccessful,
+    },
+    logout: {
+      request: () => logout({ refreshToken }),
+      isLoading: isLogoutLoading,
+    },
+    isLoading: isRefreshLoading || initialLoading,
+  };
+};
+
+export default useAuth;
