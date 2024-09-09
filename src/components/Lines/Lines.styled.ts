@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledLineContainer = styled.div`
-  opacity: 0.5;
+  opacity: 0.4;
   * {
     position: absolute;
     width: 53%;
@@ -55,5 +55,9 @@ export const StyledLineContainer = styled.div`
   .line-10 {
     top: 43%;
     left: 72.5%;
+  }
+  .line-11 {
+    top: 43%;
+    left: 78%;
   }
 `;

@@ -14,6 +14,7 @@ const Lines = () => {
       <div className="line-8"></div>
       <div className="line-9"></div>
       <div className="line-10"></div>
+      <div className="line-11"></div>
     </StyledLineContainer>
   );
 };
