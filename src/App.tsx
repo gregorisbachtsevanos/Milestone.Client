@@ -1,6 +1,6 @@
 import AppLayout from "layouts/AppLayout";
 import DashboardLayout from "layouts/DashboardLayout";
-import LoginLayout from "layouts/LoginLayout";
+import AuthLayout from "@/layouts/AuthLayout";
 import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import ProtectedRoutes from "routes/ProtectedRoutes";
 import PublicRoutes from "routes/PublicRoutes";
@@ -23,7 +23,7 @@ export const router = createBrowserRouter(
         </Route>
       </Route>
       <Route element={<PublicRoutes />}>
-        <Route element={<LoginLayout />}>
+        <Route element={<AuthLayout />}>
           <Route path={routes.LOGIN} element={<Login />} />
           <Route path={routes.REGISTER} element={""} />
         </Route>

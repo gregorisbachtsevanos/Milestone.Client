@@ -1,69 +1,34 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled, { DefaultTheme } from "styled-components";
 
 export const defaultTheme: DefaultTheme = {
   palette: {
-    white: '#ffffff',
-    navy: {
-      50: '#E8E9F0',
-      200: '#a0a3c3',
-      500: '#4c4b8a',
-      900: '#292152',
+    white: "#F8F8F8", // white
+    yellow: {
+      500: "#CDEF4F", // yellowGreen
     },
     black: {
-      50: '#F3F2F6',
-      100: '#EEEDF1',
-      200: '#E5E5EA',
-      300: '#B7B6BD',
-      400: '#9B9AA0',
-      500: '#6F737A',
-      600: '#585664',
-      700: '#464451',
-      800: '#282733',
-      900: '#050214',
-    },
-    violet: {
-      50: '#EBECFF',
-      100: '#CCCEFD',
-      400: '#6672FA',
-      700: '#3B41DD',
-    },
-    red: {
-      50: '#FFE9EC',
-      100: '#FFC8CD',
-      300: '#F16264',
-      500: '#FF0B18',
-      800: '#D2000B',
-    },
-    orange: {
-      50: '#fff2de',
-      100: '#FFE0B2',
-      300: '#FFB84D',
-      600: '#FF8E00',
-      800: '#F36C01',
-    },
-    yellow: {
-      50: '#FEFDE7',
-      100: '#fef9c4',
-      500: '#FCEB3C',
-      600: '#FAD935',
-      900: '#f7a924',
+      500: "#2D2D2D", // lightBlack
+      600: "#212121", // mediumBlack
+      700: "#232323", // darkBlack
+      800: "#1A1A1A", // darkerBlack
+      900: "#151515", // darkestBlack
     },
     green: {
-      200: '#90E098',
-      400: '#00ca48',
-      600: '#00B005',
-      700: '#009D00',
+      700: "#152024", // darkGreen
+    },
+    gray: {
+      500: "#D4D4D4", // gray
     },
   },
   sizes: {
-    smallMobile: 'max-width:420px',
-    mobile: 'min-width:421px',
-    tablet: 'min-width:501px',
-    laptop: 'min-width: 900px',
-    desktop: 'min-width:1300px',
+    smallMobile: "max-width:420px",
+    mobile: "min-width:421px",
+    tablet: "min-width:501px",
+    laptop: "min-width: 900px",
+    desktop: "min-width:1300px",
   },
-  maxWidth: '500px',
-  pagePadding: '16px',
+  maxWidth: "500px",
+  pagePadding: "6%",
 };
 
 export const Title2Xl = styled.h1`
