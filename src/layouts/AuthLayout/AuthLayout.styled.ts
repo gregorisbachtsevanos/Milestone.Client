@@ -19,33 +19,5 @@ export const StyledAuthLayout = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
-
-    .header {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      .section {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-
-        span {
-          color: ${({ theme }) => theme.palette.gray[500]};
-        }
-
-        img {
-          width: 150px;
-        }
-      }
-    }
-
-    .footer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      * {
-        color: ${({ theme }) => theme.palette.gray[500]};
-      }
-    }
   }
 `;
