@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { StyledLogoutButton } from "./LogoutButton.styled";
 
 interface LogoutButtonProps {
@@ -15,9 +15,8 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ icon }) => {
 
   return (
     <StyledLogoutButton
-      styleFor="mobile"
-      size="small"
-      styleType="secondary"
+      // size="small"
+      // styleType="secondary"
       disabled={logout.isLoading}
       onClick={handleLogout}
     >

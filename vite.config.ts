@@ -18,7 +18,7 @@ export default defineConfig({
   preview: {
     port: 3000,
   },
-  plugins: [react(), mkcert(), svgr(), tsconfigPaths()],
+  plugins: [react(), svgr(), mkcert(), tsconfigPaths()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

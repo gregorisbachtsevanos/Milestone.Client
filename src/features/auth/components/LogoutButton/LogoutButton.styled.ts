@@ -4,9 +4,9 @@ export const StyledLogoutButton = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
-  color: ${({ theme }) => theme.palette.violet[400][400]};
+  color: ${({ theme }) => theme.palette.yellow[500]};
 
   &:disabled {
-    color: ${({ theme }) => theme.palette.black[800]};
+    color: ${({ theme }) => theme.palette.black[500]};
   }
 `;

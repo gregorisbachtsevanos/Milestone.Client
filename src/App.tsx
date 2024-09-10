@@ -6,6 +6,7 @@ import ProtectedRoutes from "routes/ProtectedRoutes";
 import PublicRoutes from "routes/PublicRoutes";
 import Login from "./features/auth/pages/Login";
 import { routes } from "./routes";
+import Register from "./features/auth/pages/Register";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +26,7 @@ export const router = createBrowserRouter(
       <Route element={<PublicRoutes />}>
         <Route element={<AuthLayout />}>
           <Route path={routes.LOGIN} element={<Login />} />
-          <Route path={routes.REGISTER} element={""} />
+          <Route path={routes.REGISTER} element={<Register />} />
         </Route>
       </Route>
     </Route>

@@ -1,8 +1,11 @@
 import styled from "styled-components";
 interface LineContainerProps {
-  linesTop: number[];
-  linesLeft: number[];
+  top_lines?: number[];
+  left_lines?: number[];
 }
+
+const topLines = [-20, -7, 5, 17, 30];
+const restLines = [50.5, 56, 61.5, 67, 72.5, 78];
 
 export const StyledLineContainer = styled.div<LineContainerProps>`
   opacity: 0.4;
@@ -16,8 +19,8 @@ export const StyledLineContainer = styled.div<LineContainerProps>`
   }
 
   // Positions for the first 5 lines
-  ${({ linesTop }) =>
-    linesTop
+  ${() =>
+    topLines
       .slice(0, 5)
       .map(
         (top, i) => `
@@ -36,8 +39,8 @@ export const StyledLineContainer = styled.div<LineContainerProps>`
   }
 
   // Remaining lines (line 6 to 11)
-  ${({ linesLeft }) =>
-    linesLeft
+  ${() =>
+    restLines
       .slice(0, 6)
       .map(
         (left, i) => `

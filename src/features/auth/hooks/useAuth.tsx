@@ -4,6 +4,7 @@ import {
   useLoginMutation,
   useLogoutMutation,
   useRefreshMutation,
+  useRegisterMutation,
 } from "../../../app/services/identityAPI";
 // import { LoginProps, useAuthenticateMutation } from '../../../app/services/authApi';
 import { getLocalStorageItem } from "../../../utils/localStorage";
@@ -22,6 +23,14 @@ const useAuth = () => {
       isUninitialized: isLoginUninitialized,
     },
   ] = useLoginMutation();
+  const [
+    register,
+    {
+      isLoading: isRegisterLoading,
+      isSuccess: isRegisterSuccessful,
+      isUninitialized: isRegisterUninitialized,
+    },
+  ] = useRegisterMutation();
   const [logout, { isLoading: isLogoutLoading }] = useLogoutMutation();
 
   const [refresh, { isLoading: isRefreshLoading, isUninitialized: isRefreshUninitialized }] =
@@ -37,6 +46,12 @@ const useAuth = () => {
   }, [refresh, refreshToken, shouldRefreshTokens]);
 
   return {
+    register: {
+      request: register,
+      isLoading: isRegisterLoading,
+      isUninitialized: isRegisterUninitialized,
+      isRegisterSuccessful,
+    },
     login: {
       request: login,
       isLoading: isLoginLoading,
