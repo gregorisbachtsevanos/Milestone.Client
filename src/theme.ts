@@ -2,7 +2,7 @@ import styled, { DefaultTheme } from "styled-components";
 
 export const defaultTheme: DefaultTheme = {
   palette: {
-    white: "#F8F8F8", // white
+    white: { 50: "#FFFFFF0D", 900: "#F8F8F8" }, // white
     red: {
       500: "#8f2c2c", // darkRed
     },

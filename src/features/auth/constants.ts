@@ -6,18 +6,27 @@ type FormFieldTypes = {
   name: FormFieldNames;
   label: string;
   type: string;
+  icon: string;
   size?: string;
+  btn?: string;
 }[];
 
 export const formFieldsIsRow: FormFieldTypes = [
-  { name: "firstname", label: "First Name", type: "text", size: "small" },
-  { name: "lastname", label: "Last Name", type: "text", size: "small" },
+  { name: "firstname", label: "First Name", type: "text", size: "small", icon: "name" },
+  { name: "lastname", label: "Last Name", type: "text", size: "small", icon: "name" },
 ];
 
 export const formFieldsIsColumn: FormFieldTypes = [
-  { name: "username", label: "User Name", type: "text" },
-  { name: "email", label: "Email", type: "email" },
-  { name: "password", label: "Password", type: "password" },
+  { name: "username", label: "User Name", type: "text", icon: "username" },
+  { name: "email", label: "Email", type: "email", icon: "email" },
+  { name: "password", label: "Password", type: "password", icon: "password" },
+  {
+    name: "invitation",
+    label: "Invitation Code",
+    type: "text",
+    icon: "invitation",
+    btn: "Get Code",
+  },
 ];
 
 export const ONLY_LETTER_REGEXP = /^[A-Za-z]{3,}$/;

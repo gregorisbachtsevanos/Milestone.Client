@@ -5,12 +5,14 @@ export const StyledAuthLayout = styled.div`
   max-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   padding: ${({ theme }) => theme.pagePadding};
   gap: 3rem;
   background: linear-gradient(
-    0deg,
-    ${({ theme }) => theme.palette.black[800]} 0%,
-    ${({ theme }) => theme.palette.green[700]} 90%
+    30deg,
+    ${({ theme }) => theme.palette.black[800]} -50%,
+    ${({ theme }) => theme.palette.green[700]} 90%,
+    ${({ theme }) => theme.palette.yellow[500]} 220%
   );
 
   .auth-container {

@@ -1,11 +1,13 @@
+import { getRandomValues } from "@/utils/helper";
 import styled from "styled-components";
+
 interface LineContainerProps {
-  top_lines?: number[];
-  left_lines?: number[];
+  topLines?: number[];
+  leftLines?: number[];
 }
 
-const topLines = [-20, -7, 5, 17, 30];
-const restLines = [50.5, 56, 61.5, 67, 72.5, 78];
+const topLines = getRandomValues(5, -30, 40);
+const leftLines = getRandomValues(6, 50, 80);
 
 export const StyledLineContainer = styled.div<LineContainerProps>`
   opacity: 0.4;
@@ -18,10 +20,9 @@ export const StyledLineContainer = styled.div<LineContainerProps>`
     transform: rotate(-50deg);
   }
 
-  // Positions for the first 5 lines
-  ${() =>
+  // Positions for lines based on topLines
+  ${({}) =>
     topLines
-      .slice(0, 5)
       .map(
         (top, i) => `
     .line-${i + 1} {
@@ -38,10 +39,9 @@ export const StyledLineContainer = styled.div<LineContainerProps>`
     left: 45%;
   }
 
-  // Remaining lines (line 6 to 11)
-  ${() =>
-    restLines
-      .slice(0, 6)
+  // Positions for lines based on leftLines
+  ${({}) =>
+    leftLines
       .map(
         (left, i) => `
     .line-${i + 6} {

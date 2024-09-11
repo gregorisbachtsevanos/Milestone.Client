@@ -1,12 +1,15 @@
-import { LinkStyle, Text, TitleLg } from "@/theme";
-import { StyledHeaderContainer } from "./Header.styled";
 import Icons from "@/assets/icons";
+import { Text, Title2Xl, TitleLg } from "@/theme";
+import { StyledHeaderContainer } from "./Header.styled";
 
 const Header = () => {
   return (
     <StyledHeaderContainer>
       <div className="section">
-        <Icons name="milestone" size={"150px"} />
+        <div className="title">
+          <Icons name="milestone" size={"150px"} />
+          <Title2Xl>Milestone</Title2Xl>
+        </div>
         <Text>
           Welcome to Milestone, your ultimate productivity tool! Manage your projects, set clear
           goals, and track your progress — all in one place.

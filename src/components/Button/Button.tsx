@@ -1,4 +1,3 @@
-import React from "react";
 import { StyledButtonContainer } from "./Button.styled";
 
 const Button = () => {

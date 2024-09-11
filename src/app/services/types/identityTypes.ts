@@ -17,6 +17,7 @@ export interface RegisterProps {
   username: string;
   email: string;
   password: string;
+  invitation: string;
 }
 
 export interface LoginProps {

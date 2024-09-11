@@ -1,16 +1,19 @@
+import Button from "@/components/Button";
 import Input from "@/components/Input";
+import Modal from "@/components/Modal/Modal";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Controller, FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { formFieldsIsColumn, formFieldsIsRow } from "../../constants";
 import useAuth from "../../hooks/useAuth";
 import { StyledRegisterForm } from "./Register.styled";
-import { validationSchema } from "./validation";
-import Button from "@/components/Button";
+import { registerValidationSchema } from "./validation";
+import InvitationCode from "./Components/InvitationCode";
 // import { usersAPI } from "../../../../app/services/usersAPI";
 
 const Register = () => {
+  const [invitationModal, setInvitationModal] = useState(false);
   const {
     register,
     register: { isRegisterSuccessful },
@@ -29,10 +32,16 @@ const Register = () => {
       username: "",
       email: "",
       password: "",
+      invitation: "",
     },
     mode: "onBlur",
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(registerValidationSchema),
   });
+
+  const requestInvitationCode = useCallback(() => {
+    console.log(1);
+    setInvitationModal(false);
+  }, []);
 
   const submitRegisterForm = useCallback(
     (data: FieldValues) => {
@@ -52,12 +61,15 @@ const Register = () => {
   useEffect(() => {
     if (isRegisterSuccessful) navigate(from);
   }, [from, isRegisterSuccessful, navigate]);
-  console.log(errors);
+
+  const openInvitationModal = useCallback(() => {
+    setInvitationModal(true);
+  }, []);
 
   return (
     <StyledRegisterForm onSubmit={handleSubmit(submitRegisterForm)}>
       <div className="row">
-        {formFieldsIsRow.map(({ name, label, type }) => (
+        {formFieldsIsRow.map(({ name, label, type, icon }) => (
           <Controller
             key={name}
             control={control}
@@ -65,8 +77,9 @@ const Register = () => {
             render={({ field: { value, onChange } }) => (
               <Input
                 label={label}
-                error={"error"} // Error handling need validation schema here
+                error={errors[name]?.message}
                 type={type}
+                icon={icon}
                 value={value}
                 onChange={onChange}
               />
@@ -75,23 +88,37 @@ const Register = () => {
         ))}
       </div>
       <div className="column">
-        {formFieldsIsColumn.map(({ name, label, type }) => (
-          <Controller
-            key={name}
-            control={control}
-            name={name}
-            render={({ field: { value, onChange } }) => (
-              <Input
-                label={label}
-                error={"error"} // Error handling need validation schema here
-                type={type}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        ))}
+        {formFieldsIsColumn.map(({ name, label, type, icon, btn }) => {
+          console.log(errors[name]?.message);
+          return (
+            <Controller
+              key={name}
+              control={control}
+              name={name}
+              render={({ field: { value, onChange } }) => (
+                <Input
+                  label={label}
+                  error={errors[name]?.message}
+                  type={type}
+                  icon={icon}
+                  value={value}
+                  onChange={onChange}
+                  hasBtn={btn}
+                  openModal={openInvitationModal}
+                />
+              )}
+            />
+          );
+        })}
       </div>
+      <Modal
+        withButtons
+        isOpen={invitationModal}
+        onClose={() => setInvitationModal(false)}
+        buttonText="Send"
+      >
+        <InvitationCode handleInvitationSubmit={requestInvitationCode} />
+      </Modal>
       <Button />
     </StyledRegisterForm>
   );

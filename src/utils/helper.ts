@@ -1,11 +1,2 @@
-import { impactOnlyPublishers } from "@/features/create-edit-campaign/constants";
-
-export const generateSafeFileNameWithExtension = (originalFileNameWithExtension?: string) => {
-  if (!originalFileNameWithExtension) return "";
-  const fileNameSplittedOnDots = originalFileNameWithExtension.split(".");
-  const fileNameExtension = fileNameSplittedOnDots[fileNameSplittedOnDots.length - 1];
-  return `${Date.now()}.${fileNameExtension}`;
-};
-
-export const isImpactOnlyPublisher = (publisher: string) =>
-  Object.values(impactOnlyPublishers).includes(publisher);
+export const getRandomValues = (count: number, min: number, max: number) =>
+  Array.from({ length: count }, () => Math.random() * (max - min) + min);

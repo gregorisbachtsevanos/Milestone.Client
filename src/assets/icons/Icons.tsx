@@ -5,23 +5,37 @@ import { TbProgressCheck } from "react-icons/tb";
 import { useTheme } from "styled-components";
 // import { ReactComponent as Milestone } from "assets/svg/milestoneYellowLines.svg";
 import Milestone from "assets/svg/milestoneYellowLines.svg";
-import { MdOutlineEmail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import { FiUserPlus } from "react-icons/fi";
+import { ImQrcode } from "react-icons/im";
+import { MdClear, MdOutlineEmail } from "react-icons/md";
 
 interface IconProps {
   name: string;
-  color?: string;
+  color?: "yellow" | "white" | "black";
   size?: string | number;
 }
 
 const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
   const {
-    palette: { yellow },
+    palette: { yellow, white, black },
   } = useTheme();
 
+  const getColor = () => {
+    switch (color) {
+      case "yellow":
+        return yellow[500];
+      case "white":
+        return white[900];
+      case "black":
+        return black[800];
+      default:
+        return yellow[500];
+    }
+  };
+
   const props = {
-    color: color || yellow[500],
+    color: getColor(),
     size,
   };
 
@@ -47,9 +61,12 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       return <FaRegUserCircle {...props} />;
     case "name":
       return <FiUserPlus {...props} />;
+    case "invitation":
+      return <ImQrcode {...props} />;
+    case "clear":
+      return <MdClear {...props} />;
     default:
       return null;
   }
 };
-
 export default Icons;

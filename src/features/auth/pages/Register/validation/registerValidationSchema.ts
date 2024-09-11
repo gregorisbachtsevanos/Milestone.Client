@@ -6,7 +6,7 @@ import {
 } from "@/features/auth/constants";
 import * as yup from "yup";
 
-export const validationSchema = yup.object().shape({
+export const registerValidationSchema = yup.object().shape({
   firstname: yup
     .string()
     .matches(ONLY_LETTER_REGEXP, "Firstname can only contain letters")
@@ -31,4 +31,5 @@ export const validationSchema = yup.object().shape({
       "Password must be at least 8 characters long, contain one uppercase letter, one lowercase letter, one number, and one special character"
     )
     .required("Please define a password"),
+  invitation: yup.string().required("Please enter a valid invitation code"),
 });

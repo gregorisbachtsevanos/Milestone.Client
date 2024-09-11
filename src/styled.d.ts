@@ -4,7 +4,10 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     palette: {
-      white: string;
+      white: {
+        50: string;
+        900: string;
+      };
       red: {
         500: string;
       };

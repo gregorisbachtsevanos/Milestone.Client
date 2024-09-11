@@ -15,8 +15,8 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  color: ${({ theme }) => theme.palette.white};
-  scrollbar-color: transparent white;
+  color: ${({ theme }) => theme.palette.white[900]};
+  scrollbar-color: transparent ${({ theme }) => theme.palette.white[900]};
 }
 a {
   color: inherit;
@@ -50,14 +50,14 @@ button{
   }
 
   *::-webkit-scrollbar-track {
-      background: #ffffff;
+      background: ${({ theme }) => theme.palette.white[900]};
       border-radius: 5px;
   }
 
   *::-webkit-scrollbar-thumb {
       background-color:red;
       border-radius: 5px;
-      border: 0px none #ffffff;
+      border: 0px none ${({ theme }) => theme.palette.white[900]};
   }
 }
 
