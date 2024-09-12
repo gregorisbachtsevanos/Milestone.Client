@@ -39,7 +39,7 @@ const Modal: FC<ModalProps> = ({
 }) => {
   const handleConfirm = useCallback(() => {
     onConfirm && onConfirm();
-    // onClose && onClose();
+    onClose && onClose();
   }, []);
 
   return (
