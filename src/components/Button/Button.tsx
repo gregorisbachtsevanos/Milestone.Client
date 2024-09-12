@@ -32,8 +32,7 @@ type ButtonProps = ButtonAsButton | ButtonAsExternal | ButtonAsReactRouter;
 const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
   const allClassNames = `${props.styleType ? props.styleType : ""} ${
     props.className ? props.className : ""
-  } ${props.fullWidth ? "fullWidth" : ""} ${props.size ?? ""}
-  `;
+  } ${props.fullWidth ? "fullWidth" : ""} ${props.size ?? ""}`;
 
   const { styleType, as, size, isLoading, disabled, children, ...rest } = props;
 
@@ -62,7 +61,6 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
   }
 
   const { type = "button", ...buttonRest } = rest as ButtonHTMLAttributes<HTMLButtonElement>;
-
   return (
     <StyledButton
       className={allClassNames}
