@@ -1,15 +1,12 @@
-import Button from "@/components/Button";
 import Input from "@/components/Input";
-import Modal from "@/components/Modal/Modal";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Controller, FieldValues, useForm } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { formFieldsIsColumn, formFieldsIsRow } from "../../constants";
 import useAuth from "../../hooks/useAuth";
+import useInitRegisterForm from "../../hooks/useInitRegisterForm";
+import InvitationModal from "./Components/InvitationModal/InvitationModal";
 import { StyledRegisterForm } from "./Register.styled";
-import { registerValidationSchema } from "./validation";
-import InvitationCode from "./Components/InvitationCode";
 // import { usersAPI } from "../../../../app/services/usersAPI";
 
 const Register = () => {
@@ -18,30 +15,17 @@ const Register = () => {
     register,
     register: { isRegisterSuccessful },
   } = useAuth();
+
   const navigate = useNavigate();
   const from = useMemo(() => "/", []);
+
+  const { methods } = useInitRegisterForm();
 
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-      password: "",
-      invitation: "",
-    },
-    mode: "onBlur",
-    resolver: yupResolver(registerValidationSchema),
-  });
-
-  const requestInvitationCode = useCallback(() => {
-    console.log(1);
-    setInvitationModal(false);
-  }, []);
+  } = methods;
 
   const submitRegisterForm = useCallback(
     (data: FieldValues) => {
@@ -67,30 +51,29 @@ const Register = () => {
   }, []);
 
   return (
-    <StyledRegisterForm onSubmit={handleSubmit(submitRegisterForm)}>
-      <div className="row">
-        {formFieldsIsRow.map(({ name, label, type, icon }) => (
-          <Controller
-            key={name}
-            control={control}
-            name={name}
-            render={({ field: { value, onChange } }) => (
-              <Input
-                label={label}
-                error={errors[name]?.message}
-                type={type}
-                icon={icon}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        ))}
-      </div>
-      <div className="column">
-        {formFieldsIsColumn.map(({ name, label, type, icon, btn }) => {
-          console.log(errors[name]?.message);
-          return (
+    <>
+      <StyledRegisterForm onSubmit={handleSubmit(submitRegisterForm)}>
+        <div className="row">
+          {formFieldsIsRow.map(({ name, label, type, icon }) => (
+            <Controller
+              key={name}
+              control={control}
+              name={name}
+              render={({ field: { value, onChange } }) => (
+                <Input
+                  label={label}
+                  error={errors[name]?.message}
+                  type={type}
+                  icon={icon}
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          ))}
+        </div>
+        <div className="column">
+          {formFieldsIsColumn.map(({ name, label, type, icon, btn }) => (
             <Controller
               key={name}
               control={control}
@@ -108,19 +91,12 @@ const Register = () => {
                 />
               )}
             />
-          );
-        })}
-      </div>
-      <Modal
-        withButtons
-        isOpen={invitationModal}
-        onClose={() => setInvitationModal(false)}
-        buttonText="Send"
-      >
-        <InvitationCode handleInvitationSubmit={requestInvitationCode} />
-      </Modal>
-      <Button />
-    </StyledRegisterForm>
+          ))}
+        </div>
+        <button>submit</button>
+      </StyledRegisterForm>
+      <InvitationModal isOpen={invitationModal} onCLose={() => setInvitationModal(false)} />
+    </>
   );
 };
 
