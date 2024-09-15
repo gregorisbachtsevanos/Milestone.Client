@@ -1,38 +1,39 @@
+import Button from "@/components/Button";
+import Input from "@/components/Input";
 import { useCallback, useEffect } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useInitLoginForm from "./hooks/useInitLoginForm";
 import { StyledLoginForm } from "./Login.styled";
-// import { usersAPI } from "../../../../app/services/usersAPI";
+import ThirdPartyAuth from "../../components/ThirdPartyAuth";
 
 interface LoginFormData {
-  email: string;
+  username: string;
   password: string;
 }
 
 const Login = () => {
   const { login } = useAuth();
-  // const location = useLocation();
   const navigate = useNavigate();
-  // const state = location.state as { from: Location };
-  // const from = state ? state.from.pathname : "/";
   const from = "/";
 
-  const { handleSubmit, control } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-    mode: "onBlur",
-  });
+  const { methods } = useInitLoginForm();
+
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = methods;
 
   const submitLoginForm = useCallback(
     (data: FieldValues) => {
       const loginFormData = data as LoginFormData;
-      login.request({
-        email: loginFormData.email,
-        password: loginFormData.password,
-      });
+      console.log(loginFormData);
+      // login.request({
+      //   email: loginFormData.email,
+      //   password: loginFormData.password,
+      // });
     },
     [login]
   );
@@ -41,7 +42,46 @@ const Login = () => {
     if (login.isLoginSuccessful) navigate(from);
   }, [from, login.isLoginSuccessful, navigate]);
 
-  return <StyledLoginForm onSubmit={handleSubmit(submitLoginForm)}></StyledLoginForm>;
+  return (
+    <StyledLoginForm onSubmit={handleSubmit(submitLoginForm)}>
+      <ThirdPartyAuth />
+      <Controller
+        key="username"
+        control={control}
+        name="username"
+        render={({ field: { value, onChange } }) => (
+          <Input
+            label="username"
+            error={errors.username?.message}
+            type="text"
+            icon={"username"}
+            value={value}
+            onChange={onChange}
+          />
+        )}
+      />
+      <Controller
+        key="password"
+        control={control}
+        name="password"
+        render={({ field: { value, onChange } }) => (
+          <Input
+            label="password"
+            error={errors.password?.message}
+            type="password"
+            icon="password"
+            value={value}
+            onChange={onChange}
+          />
+        )}
+      />
+      <div className="button">
+        <Button type="submit" fullWidth styleType="primary">
+          Login
+        </Button>
+      </div>
+    </StyledLoginForm>
+  );
 };
 
 export default Login;

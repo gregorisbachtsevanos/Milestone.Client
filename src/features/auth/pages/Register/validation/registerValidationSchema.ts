@@ -17,7 +17,10 @@ export const registerValidationSchema = yup.object().shape({
     .required("Please enter your lastname"),
   username: yup
     .string()
-    .matches(USERNAME_REGEXP, "Username can only contain letters, numbers, and underscores")
+    .matches(
+      USERNAME_REGEXP,
+      "Username must be at least 4 characters long, contain only letters, numbers, and underscores"
+    )
     .required("Please define username"),
   email: yup
     .string()

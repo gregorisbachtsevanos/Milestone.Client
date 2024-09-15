@@ -1,12 +1,16 @@
+import { RegisterProps } from "@/app/services/types/identityTypes";
 import Input from "@/components/Input";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { formFieldsIsColumn, formFieldsIsRow } from "../../constants";
+import { formFieldsIsRow } from "../../constants";
 import useAuth from "../../hooks/useAuth";
-import useInitRegisterForm from "../../hooks/useInitRegisterForm";
 import InvitationModal from "./Components/InvitationModal/InvitationModal";
+import useInitRegisterForm from "./hooks/useInitRegisterForm";
 import { StyledRegisterForm } from "./Register.styled";
+import ColumnInputFields from "./Components/ColumnInputFields";
+import RowInputFields from "./Components/RowInputFields/RowInputFields";
+import Button from "@/components/Button";
 // import { usersAPI } from "../../../../app/services/usersAPI";
 
 const Register = () => {
@@ -29,15 +33,15 @@ const Register = () => {
 
   const submitRegisterForm = useCallback(
     (data: FieldValues) => {
-      console.log(data);
-      // const registerFormData = data as RegisterFormData;
-      // register.request({
-      //   firstname: registerFormData.firstname,
-      //   lastname: registerFormData.lastname,
-      //   username: registerFormData.username,
-      //   email: registerFormData.email,
-      //   password: registerFormData.password,
-      // });
+      const registerFormData = data as RegisterProps;
+      register.request({
+        firstname: registerFormData.firstname,
+        lastname: registerFormData.lastname,
+        username: registerFormData.username,
+        email: registerFormData.email,
+        password: registerFormData.password,
+        invitation: registerFormData.invitation,
+      });
     },
     [register]
   );
@@ -53,47 +57,9 @@ const Register = () => {
   return (
     <>
       <StyledRegisterForm onSubmit={handleSubmit(submitRegisterForm)}>
-        <div className="row">
-          {formFieldsIsRow.map(({ name, label, type, icon }) => (
-            <Controller
-              key={name}
-              control={control}
-              name={name}
-              render={({ field: { value, onChange } }) => (
-                <Input
-                  label={label}
-                  error={errors[name]?.message}
-                  type={type}
-                  icon={icon}
-                  value={value}
-                  onChange={onChange}
-                />
-              )}
-            />
-          ))}
-        </div>
-        <div className="column">
-          {formFieldsIsColumn.map(({ name, label, type, icon, btn }) => (
-            <Controller
-              key={name}
-              control={control}
-              name={name}
-              render={({ field: { value, onChange } }) => (
-                <Input
-                  label={label}
-                  error={errors[name]?.message}
-                  type={type}
-                  icon={icon}
-                  value={value}
-                  onChange={onChange}
-                  hasBtn={btn}
-                  openModal={openInvitationModal}
-                />
-              )}
-            />
-          ))}
-        </div>
-        <button>submit</button>
+        <RowInputFields control={control} errors={errors} openModal={openInvitationModal} />
+        <ColumnInputFields control={control} errors={errors} openModal={openInvitationModal} />
+        <Button type="submit">Register</Button>
       </StyledRegisterForm>
       <InvitationModal isOpen={invitationModal} onCLose={() => setInvitationModal(false)} />
     </>

@@ -60,7 +60,7 @@ const baseQueryWithInterceptor: BaseQueryFn<
           try {
             const refreshResult = await baseQuery(
               {
-                url: `${IDENTITY_API}/web/refresh`,
+                url: `${IDENTITY_API}/identity/refresh-token`,
                 method: "POST",
                 body: {
                   clientId,
@@ -84,7 +84,7 @@ const baseQueryWithInterceptor: BaseQueryFn<
             } else {
               api.dispatch(setAccessToken(null));
               api.dispatch(setRefreshToken(null));
-              removeLocalStorageItem("refreshToken");
+              // removeLocalStorageItem("refreshToken");
               result = await baseQuery(args, api, extraOptions);
             }
           } finally {
@@ -117,13 +117,7 @@ export const api = createApi({
    * Tag types must be defined in the original API definition
    * for any tags that would be provided by injected endpoints
    */
-  tagTypes: [
-    "PublicGoodCampaigns",
-    "Campaigns",
-    "Campaign",
-    "CampaignVideoStatus",
-    "PublicGoodCampaignVideoStatus",
-  ],
+  tagTypes: [],
   /**
    * This api has endpoints injected in adjacent files,
    * which is why no endpoints are shown below.

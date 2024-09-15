@@ -1,5 +1,11 @@
 import { FC } from "react";
-import { FaGithub, FaGoogle, FaProjectDiagram, FaRegUserCircle } from "react-icons/fa";
+import {
+  FaGithub,
+  FaGoogle,
+  FaLinkedinIn,
+  FaProjectDiagram,
+  FaRegUserCircle,
+} from "react-icons/fa";
 import { GoGoal } from "react-icons/go";
 import { TbProgressCheck } from "react-icons/tb";
 import { useTheme } from "styled-components";
@@ -53,6 +59,8 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       return <FaGoogle {...props} />;
     case "github":
       return <FaGithub {...props} />;
+    case "linkedin":
+      return <FaLinkedinIn {...props} />;
     case "email":
       return <MdOutlineEmail {...props} />;
     case "password":

@@ -30,7 +30,7 @@ export const formFieldsIsColumn: FormFieldTypes = [
 ];
 
 export const ONLY_LETTER_REGEXP = /^[A-Za-z]{3,}$/;
-export const USERNAME_REGEXP = /^[A-Za-z0-9_]{6,}$/; // letters, numbers, underscores at 6 char long
+export const USERNAME_REGEXP = /^[A-Za-z0-9_]{4,}$/; // letters, numbers, underscores at 6 char long
 
 export const EMAIL_REGEXP =
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;

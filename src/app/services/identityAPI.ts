@@ -25,20 +25,20 @@ export const identityAPI = api.injectEndpoints({
     fetchMachineToken: build.mutation<MachineTokenResponse, void>({
       async queryFn(_, _queryApi, _extraOptions, baseQuery) {
         const machineTokenResponse = await baseQuery({
-          url: `${IDENTITY_API}/machine/token`,
-          method: "POST",
-          body: {
-            grantType: "client_credentials",
-            clientId: machineId,
-            clientSecret: machineSecret,
-            scopes: config.scopes.machineToken,
-          },
+          url: `${IDENTITY_API}/identity/machine-token`,
+          method: "GET",
+          // body: {
+          //   grantType: "client_credentials",
+          //   clientId: machineId,
+          //   clientSecret: machineSecret,
+          //   scopes: config.scopes.machineToken,
+          // },
         });
-
+        console.log(machineTokenResponse);
         if (machineTokenResponse.error)
           return { error: machineTokenResponse.error as FetchBaseQueryError };
 
-        const machineToken = (machineTokenResponse.data as MachineTokenResponse).accessToken;
+        const machineToken = (machineTokenResponse.data as MachineTokenResponse).machineToken;
         _queryApi.dispatch(setMachineToken(machineToken));
         return { data: machineTokenResponse.data as MachineTokenResponse };
       },
@@ -56,16 +56,16 @@ export const identityAPI = api.injectEndpoints({
           await _queryApi.dispatch(identityAPI.endpoints.fetchMachineToken.initiate());
           machineToken = (_queryApi.getState() as RootState).auth.machineToken;
         }
+        console.log(machineToken);
         const registerResponse = await baseQuery({
-          url: `${IDENTITY_API}/web/adops/login`,
+          url: `${IDENTITY_API}/identity/register`,
           headers: { Authorization: `Bearer ${machineToken}` },
           method: "POST",
           body: {
             grantType: "password",
             clientId,
             clientSecret,
-            firstname,
-            lastname,
+            name: firstname + lastname,
             username,
             email,
             password,
@@ -78,10 +78,9 @@ export const identityAPI = api.injectEndpoints({
           console.log(errorMessage);
           return { error: registerResponse.error as FetchBaseQueryError };
         }
-
         const accessToken = (registerResponse.data as AuthResponse).accessToken;
-        const refreshToken = (registerResponse.data as AuthResponse).refreshToken;
         _queryApi.dispatch(setAccessToken(accessToken));
+        const refreshToken = (registerResponse.data as AuthResponse).refreshToken;
         _queryApi.dispatch(setRefreshToken(refreshToken));
         setLocalStorageItem("refreshToken", refreshToken);
         return { data: registerResponse.data as AuthResponse };
@@ -125,8 +124,16 @@ export const identityAPI = api.injectEndpoints({
     }),
     refresh: build.mutation<AuthResponse, RefreshProps>({
       async queryFn({ refreshToken: prevRefreshToken }, _queryApi, _extraOptions, baseQuery) {
+        let machineToken = (_queryApi.getState() as RootState).auth.accessToken;
+        console.log(machineToken);
+        if (!machineToken) {
+          await _queryApi.dispatch(identityAPI.endpoints.fetchMachineToken.initiate());
+          machineToken = (_queryApi.getState() as RootState).auth.machineToken;
+        }
+
         const refreshTokenResponse = await baseQuery({
-          url: `${IDENTITY_API}/web/refresh`,
+          url: `${IDENTITY_API}/identity/refresh-token`,
+          headers: { Authorization: `Bearer ${prevRefreshToken}` },
           method: "POST",
           body: {
             clientId,
@@ -135,7 +142,7 @@ export const identityAPI = api.injectEndpoints({
             scopes: config.scopes.refreshToken,
           },
         });
-
+        console.log(prevRefreshToken);
         if (refreshTokenResponse.error) {
           _queryApi.dispatch(setAccessToken(null));
           _queryApi.dispatch(setRefreshToken(null));
@@ -152,6 +159,26 @@ export const identityAPI = api.injectEndpoints({
       },
     }),
     logout: build.mutation<void, LogoutProps>({
+      async queryFn({ refreshToken }, _queryApi, _extraOptions, baseQuery) {
+        const logoutResponse = await baseQuery({
+          url: `${IDENTITY_API}/web/logout`,
+          method: "POST",
+          body: {
+            clientId,
+            clientSecret,
+            refreshToken,
+          },
+        });
+
+        if (logoutResponse.error) return { error: logoutResponse.error as FetchBaseQueryError };
+        _queryApi.dispatch(setAccessToken(null));
+        _queryApi.dispatch(setRefreshToken(null));
+        _queryApi.dispatch(api.util.resetApiState());
+        removeLocalStorageItem("refreshToken");
+        return { data: logoutResponse.data as void };
+      },
+    }),
+    invitationCode: build.mutation<void, LogoutProps>({
       async queryFn({ refreshToken }, _queryApi, _extraOptions, baseQuery) {
         const logoutResponse = await baseQuery({
           url: `${IDENTITY_API}/web/logout`,

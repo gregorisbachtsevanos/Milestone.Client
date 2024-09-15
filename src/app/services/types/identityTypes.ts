@@ -1,5 +1,5 @@
 export interface MachineTokenResponse {
-  accessToken: string;
+  machineToken: string;
   expiresIn: number;
   tokenType: string;
 }
