@@ -13,7 +13,8 @@ export const router = createBrowserRouter(
     <Route element={<AppLayout />}>
       <Route element={<ProtectedRoutes />}>
         <Route element={<DashboardLayout />}>
-          <Route path={routes.HOME} element={<Navigate to={`${routes.HOME}`} replace />} />
+          <Route path={routes.HOME} element={<Navigate to={`${routes.DASHBOARD}`} replace />} />
+          <Route path={`${routes.DASHBOARD}/*`} element={<>hi</>} />
           <Route path={`${routes.PROJECT.Index}/*`} element={""} />
           <Route path={`${routes.ROADMAP}/*`} element={""} />
           <Route path={`${routes.GOALS}/*`} element={""} />

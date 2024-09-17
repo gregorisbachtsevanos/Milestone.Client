@@ -6,6 +6,7 @@ export const routes = Object.freeze({
   LOGIN: "/login",
   REGISTER: "/register",
   HOME: "/",
+  DASHBOARD: "dashboard",
   PROJECT: {
     Index: PROJECTS,
     Create: "new",

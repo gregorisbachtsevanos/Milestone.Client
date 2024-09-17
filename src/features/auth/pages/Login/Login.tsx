@@ -30,10 +30,10 @@ const Login = () => {
     (data: FieldValues) => {
       const loginFormData = data as LoginFormData;
       console.log(loginFormData);
-      // login.request({
-      //   email: loginFormData.email,
-      //   password: loginFormData.password,
-      // });
+      login.request({
+        username: loginFormData.username,
+        password: loginFormData.password,
+      });
     },
     [login]
   );

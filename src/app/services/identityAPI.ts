@@ -87,7 +87,7 @@ export const identityAPI = api.injectEndpoints({
       },
     }),
     login: build.mutation<AuthResponse, LoginProps>({
-      async queryFn({ email, password }, _queryApi, _extraOptions, baseQuery) {
+      async queryFn({ username, password }, _queryApi, _extraOptions, baseQuery) {
         let machineToken = (_queryApi.getState() as RootState).auth.machineToken;
 
         if (!machineToken) {
@@ -95,14 +95,14 @@ export const identityAPI = api.injectEndpoints({
           machineToken = (_queryApi.getState() as RootState).auth.machineToken;
         }
         const loginResponse = await baseQuery({
-          url: `${IDENTITY_API}/web/adops/login`,
+          url: `${IDENTITY_API}/identity/login`,
           headers: { Authorization: `Bearer ${machineToken}` },
           method: "POST",
           body: {
             grantType: "password",
             clientId,
             clientSecret,
-            username: email,
+            username,
             password,
             scopes: config.scopes.accessToken,
           },

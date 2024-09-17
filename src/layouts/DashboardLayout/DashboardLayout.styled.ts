@@ -4,6 +4,7 @@ export const StyledMainLayout = styled.main`
   width: 100vw;
   min-height: 100vh;
   display: flex;
+  background-color: ${({ theme }) => theme.palette.black[900]};
 
   .sidemenu-content {
     padding: 28px 0;

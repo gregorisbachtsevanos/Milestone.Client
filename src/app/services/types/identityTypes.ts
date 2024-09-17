@@ -21,7 +21,7 @@ export interface RegisterProps {
 }
 
 export interface LoginProps {
-  email?: string;
+  username?: string;
   password?: string;
 }
 
