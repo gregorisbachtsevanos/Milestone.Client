@@ -11,19 +11,19 @@ import Register from "./features/auth/pages/Register";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<AppLayout />}>
-      <Route element={<ProtectedRoutes />}>
-        <Route element={<DashboardLayout />}>
-          <Route path={routes.HOME} element={<Navigate to={`${routes.DASHBOARD}`} replace />} />
-          <Route path={`${routes.DASHBOARD}/*`} element={<>hi</>} />
-          <Route path={`${routes.PROJECT.Index}/*`} element={""} />
-          <Route path={`${routes.ROADMAP}/*`} element={""} />
-          <Route path={`${routes.GOALS}/*`} element={""} />
-          <Route path={`${routes.CALENDAR}/*`} element={""} />
-          <Route path={`${routes.SETTINGS}/*`} element={""} />
-          <Route path={`${routes.PROFILE}/*`} element={""} />
-          <Route path={`${routes.CHAT}/*`} element={""} />
-        </Route>
+      {/* <Route element={<ProtectedRoutes />}> */}
+      <Route element={<DashboardLayout />}>
+        <Route path={routes.HOME} element={<Navigate to={`${routes.DASHBOARD}`} replace />} />
+        <Route path={`${routes.DASHBOARD}/*`} element={<>hi</>} />
+        <Route path={`${routes.PROJECT.Index}/*`} element={""} />
+        <Route path={`${routes.ROADMAP}/*`} element={""} />
+        <Route path={`${routes.GOALS}/*`} element={""} />
+        <Route path={`${routes.CALENDAR}/*`} element={""} />
+        <Route path={`${routes.SETTINGS}/*`} element={""} />
+        <Route path={`${routes.PROFILE}/*`} element={""} />
+        <Route path={`${routes.CHAT}/*`} element={""} />
       </Route>
+      {/* </Route> */}
       <Route element={<PublicRoutes />}>
         <Route element={<AuthLayout />}>
           <Route path={routes.LOGIN} element={<Login />} />

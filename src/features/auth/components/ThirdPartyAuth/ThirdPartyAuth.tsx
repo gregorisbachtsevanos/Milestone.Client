@@ -1,25 +1,24 @@
-import Icons from "@/assets/icons/Icons";
 import Button from "@/components/Button";
 import { StyledThirdPartyAuthContainer } from "./ThirdPartyAuth.styled";
 import { Badge } from "@/theme";
+import Icons from "@/components/Icon/Icons";
 
 const ThirdPartyAuth = () => {
-  const props = { color: "black", size: "15px" };
+  const authProviders = [
+    { name: "google", label: "Google" },
+    { name: "linkedin", label: "Linkedin" },
+    { name: "github", label: "Github" },
+  ];
+
   return (
     <StyledThirdPartyAuthContainer>
       <div className="buttons">
-        <Button styleType="ghost" disabled>
-          <Icons name="google" {...props} />
-          Google
-        </Button>
-        <Button styleType="ghost" disabled>
-          <Icons name="linkedin" {...props} />
-          Linkedin
-        </Button>
-        <Button styleType="ghost" disabled>
-          <Icons name="github" {...props} />
-          Github
-        </Button>
+        {authProviders.map(({ name, label }) => (
+          <Button key={name} styleType="ghost" disabled>
+            <Icons name={name} color="black" size="15px" />
+            {label}
+          </Button>
+        ))}
       </div>
       <div className="option">
         <div className="line"></div>

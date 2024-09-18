@@ -1,7 +1,7 @@
 import { FC, useCallback } from "react";
 import ReactModal, { Props } from "react-modal";
 import { OverlayStyle, StyledModal } from "./Modal.styled";
-import Icons from "@/assets/icons";
+import Icons from "../Icon/Icons";
 
 interface ModalExtraProps {
   onConfirm?: () => void;
