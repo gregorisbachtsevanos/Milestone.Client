@@ -6,12 +6,12 @@ export const StyledBottomContainer = styled.ul`
   display: flex;
   align-items: center;
   position: fixed;
-  top: 88vh;
+  top: 90vh;
   left: 50%;
   transform: translateX(-50%);
   gap: 5px;
   background-color: ${({ theme }) => theme.palette.black[800]};
-  padding: 15px;
+  padding: 8px;
   border-radius: 50px;
 `;
 
@@ -23,6 +23,7 @@ export const StyledListItem = styled.li<{ isActive: boolean }>`
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 
   ${({ isActive, theme }) =>
     isActive &&
@@ -34,5 +35,4 @@ export const StyledListItem = styled.li<{ isActive: boolean }>`
 
 export const StyledTitle = styled(Title)`
   padding: 5px 10px;
-  transition: color 1s ease-in-out; /* Add color transition if you want */
 `;

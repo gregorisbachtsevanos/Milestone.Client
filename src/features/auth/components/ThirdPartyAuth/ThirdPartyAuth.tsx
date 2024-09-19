@@ -14,7 +14,7 @@ const ThirdPartyAuth = () => {
     <StyledThirdPartyAuthContainer>
       <div className="buttons">
         {authProviders.map(({ name, label }) => (
-          <Button key={name} styleType="ghost" disabled>
+          <Button key={name} variant="ghost" disabled>
             <Icons name={name} color="black" size="15px" />
             {label}
           </Button>

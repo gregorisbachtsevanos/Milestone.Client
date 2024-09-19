@@ -1,16 +1,18 @@
 import Icons from "@/components/Icon/Icons";
 import { useState } from "react";
 import { StyledBottomContainer, StyledListItem, StyledTitle } from "./BottomBar.styled";
+import { routes } from "@/routes";
+import { Link } from "react-router-dom";
 
 const BottomBar = () => {
   const [activeTab, setActiveTab] = useState("home");
 
   const navItems = [
-    { name: "home", label: "Dashboard" },
-    { name: "projects", label: "Projects" },
-    { name: "goals", label: "Goals" },
-    { name: "calendar", label: "Calendar" },
-    { name: "chat", label: "Chat" },
+    { name: "home", label: "Dashboard", route: routes.HOME },
+    { name: "projects", label: "Projects", route: routes.PROJECT.Index },
+    { name: "goals", label: "Goals", route: routes.GOALS },
+    { name: "calendar", label: "Calendar", route: routes.CALENDAR },
+    { name: "chat", label: "Chat", route: routes.CHAT },
   ];
 
   const handleTabClick = (name: string) => {
@@ -19,15 +21,13 @@ const BottomBar = () => {
 
   return (
     <StyledBottomContainer>
-      {navItems.map(({ label, name }) => (
-        <StyledListItem
-          key={name}
-          isActive={activeTab === name}
-          onClick={() => handleTabClick(name)}
-        >
-          <Icons name={name} color="darkGrey" />
-          {activeTab === name && <StyledTitle>{label}</StyledTitle>}
-        </StyledListItem>
+      {navItems.map(({ label, name, route }) => (
+        <Link to={route} key={name} onClick={() => handleTabClick(name)}>
+          <StyledListItem isActive={activeTab === name}>
+            <Icons name={name} color="darkGrey" size={25} />
+            {activeTab === name && <StyledTitle>{label}</StyledTitle>}
+          </StyledListItem>
+        </Link>
       ))}
     </StyledBottomContainer>
   );

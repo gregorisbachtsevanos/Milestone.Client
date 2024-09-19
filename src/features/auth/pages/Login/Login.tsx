@@ -76,7 +76,7 @@ const Login = () => {
         )}
       />
       <div className="button">
-        <Button type="submit" fullWidth styleType="primary">
+        <Button type="submit" fullWidth variant="primary">
           Login
         </Button>
       </div>

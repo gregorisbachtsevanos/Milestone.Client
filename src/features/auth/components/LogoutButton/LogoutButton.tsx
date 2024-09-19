@@ -16,7 +16,7 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ icon }) => {
   return (
     <StyledLogoutButton
       // size="small"
-      // styleType="secondary"
+      // variant="secondary"
       disabled={logout.isLoading}
       onClick={handleLogout}
     >
