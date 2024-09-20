@@ -16,7 +16,7 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   color: ${({ theme }) => theme.palette.white[900]};
-  scrollbar-color: transparent ${({ theme }) => theme.palette.white[900]};
+  scrollbar-color: transparent ${({ theme }) => theme.palette.black[900]};
 }
 a {
   color: inherit;

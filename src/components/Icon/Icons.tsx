@@ -13,22 +13,22 @@ import { TbProgressCheck } from "react-icons/tb";
 import { useTheme } from "styled-components";
 // import { ReactComponent as Milestone } from "assets/svg/milestoneYellowLines.svg";
 import Milestone from "assets/svg/milestoneYellowLines.svg";
+import { BsChatFill } from "react-icons/bs";
 import { CiLock } from "react-icons/ci";
 import { FiUserPlus } from "react-icons/fi";
 import { ImQrcode } from "react-icons/im";
+import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { MdClear, MdOutlineEmail } from "react-icons/md";
-import { IoSettingsOutline } from "react-icons/io5";
-import { BsChatFill } from "react-icons/bs";
 
-interface IconProps {
+export interface IconProps {
   name: string;
-  color?: "yellow" | "white" | "black" | "darkGrey";
+  color?: "yellow" | "white" | "black" | "darkGray" | "gray";
   size?: string | number;
 }
 
 const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
   const {
-    palette: { yellow, white, black },
+    palette: { yellow, white, black, gray },
   } = useTheme();
 
   const getColor = () => {
@@ -39,8 +39,10 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
         return white[900];
       case "black":
         return black[800];
-      case "darkGrey":
+      case "darkGray":
         return black[500];
+      case "gray":
+        return gray[500];
       default:
         return yellow[500];
     }
@@ -54,7 +56,7 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
   switch (name) {
     case "milestone":
       // return <Milestone {...props} />;
-      return <img src={Milestone} alt="Milestone Icon" />;
+      return <img src={Milestone} alt="Milestone Icon" width={size} />;
     case "home":
       return <GoHomeFill {...props} />;
     case "projects":
@@ -89,6 +91,8 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       return <ImQrcode {...props} />;
     case "clear":
       return <MdClear {...props} />;
+    case "notifications":
+      return <IoNotificationsOutline {...props} />;
     default:
       return null;
   }

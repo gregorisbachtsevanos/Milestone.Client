@@ -16,7 +16,7 @@ const BottomBar = () => {
       {navItems.map(({ label, name, route }) => (
         <Link to={route} key={name} onClick={() => handleTabClick(name)}>
           <StyledListItem isActive={activeTab === name}>
-            <Icons name={name} color="darkGrey" size={25} />
+            <Icons name={name} color="darkGray" size={25} />
             {activeTab === name && <StyledTitle>{label}</StyledTitle>}
           </StyledListItem>
         </Link>

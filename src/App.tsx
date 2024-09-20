@@ -7,6 +7,7 @@ import PublicRoutes from "routes/PublicRoutes";
 import Login from "./features/auth/pages/Login";
 import { routes } from "./routes";
 import Register from "./features/auth/pages/Register";
+import Dashboard from "./features/dashboard";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,7 +15,7 @@ export const router = createBrowserRouter(
       {/* <Route element={<ProtectedRoutes />}> */}
       <Route element={<DashboardLayout />}>
         <Route path={routes.HOME} element={<Navigate to={`${routes.DASHBOARD}`} replace />} />
-        <Route path={`${routes.DASHBOARD}/*`} element={<>hi</>} />
+        <Route path={`${routes.DASHBOARD}/*`} element={<Dashboard />} />
         <Route path={`${routes.PROJECT.Index}/*`} element={""} />
         <Route path={`${routes.ROADMAP}/*`} element={""} />
         <Route path={`${routes.GOALS}/*`} element={""} />
