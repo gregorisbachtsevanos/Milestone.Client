@@ -29,75 +29,90 @@ export type Link = {
   to: string;
 };
 
-export type AdOpsUserProfile = {
-  id: string;
-  username: string;
+export enum Status {
+  Backlog = "backlog",
+  InProgress = "in progress",
+  OnHold = "on hold",
+  Completed = "completed",
+}
+
+export enum Priority {
+  Low = "low",
+  Medium = "medium",
+  High = "high",
+}
+
+export type User = {
+  name: String;
+  email: String;
 };
 
-export type Brand = {
+type PriorityType = Priority;
+
+type StatusType = Status;
+
+export type ProjectType = {
   id: string;
+  project_id: string;
   name: string;
-  logoUri: string;
-  country: {
-    code: string;
-    currency: {
-      code: string;
-      symbol: string;
-    };
-  };
+  description?: string;
+  tasks: number;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  deadline: string;
+  // roadmaps: RoadmapType[];
+  tags?: string[];
 };
 
-export type PublisherType = {
+export type RoadmapType = {
   id: string;
-  name: string;
+  project: ProjectType;
+  title: string;
+  description?: string;
+  start_date: Date;
+  end_date: Date;
+  created_at: Date;
+  updated_at: Date;
 };
 
-export type Charity = {
+export type TaskType = {
   id: string;
-  name: string;
-  url: string;
+  task_id: string;
+  project_id: string;
+  title: string;
+  description: string;
+  status: StatusType;
+  priority: PriorityType;
+  created_at: string;
+  updated_at: string;
+  subtasks: number;
+  comments: number;
+  tags?: string[];
 };
 
-export type CharityCategory = {
+export type SubtaskType = {
   id: string;
-  name: string;
+  subtask_id: string;
+  task_id: string;
+  project_id: string;
+  title: string;
+  description?: string;
+  status: StatusType;
+  priority: PriorityType;
+  created_at: string;
+  updated_at: string;
+  comments: number;
+  tags?: string[];
 };
 
-export type CountryInfo = {
-  code: string;
-  currency: {
-    code: string;
-    symbol: string;
-  };
-};
-
-export enum CampaignStatus {
-  Draft = "Draft",
-  Active = "Active",
-  Inactive = "Inactive",
-}
-
-export enum ProcessingStatus {
-  Ingest = "Ingest",
-  Complete = "Complete",
-  Error = "Error",
-}
-
-export type VideoProcessingStatus = {
-  status: ProcessingStatus;
-};
-
-export enum Publisher {
-  PublicGood = "public-good",
-  NewsCorp = "news-corp",
-}
-
-export enum AdFormatType {
-  Rewarded = "rewarded",
-  ImpactOnly = "impactOnly",
-}
-
-export enum AdFormatPathName {
-  Reward = "reward",
-  Impact_Only = "impact-only",
-}
+export type VariantType =
+  | "success"
+  | "warning"
+  | "danger"
+  | "default"
+  | "primary"
+  | "secondary"
+  | "info"
+  | "light"
+  | "dark";

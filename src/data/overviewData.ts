@@ -1,4 +1,4 @@
-export const data = [
+export const overview = [
   {
     title: "Task",
     value: "18/20",

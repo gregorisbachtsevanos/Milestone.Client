@@ -1,0 +1,40 @@
+import { ProjectType } from "@/types";
+
+export const projectData: ProjectType[] = [
+  {
+    id: "d5b5c8f4-38d5-4e76-945b-978a6e0544a2",
+    project_id: "8c070a8d-6a05-411d-82d0-4c0426ffdcc0",
+    name: "Project Alpha",
+    description: "This is the first project.",
+    created_at: "2023-08-01 00:00:00",
+    updated_at: "2023-08-01 00:00:00",
+    deadline: "2025-08-02 00:00:00",
+    tasks: 2,
+    comments: 11,
+    tags: ["first", "project"],
+  },
+  {
+    id: "8b1d2e5c-d4d1-49b6-9d4b-2b4d5c6f68e9",
+    project_id: "11d46e85-61eb-4efc-b486-f502806a72da",
+    name: "Project Beta",
+    description: "This project focuses on beta testing.",
+    created_at: "2023-08-05 00:00:00",
+    updated_at: "2023-08-05 00:00:00",
+    deadline: "2025-08-01 00:00:00",
+    tasks: 0,
+    comments: 1,
+    tags: ["beta", "test"],
+  },
+  {
+    id: "a3d1b6c2-8a4e-438e-b5cb-c3e2a6d9f8c3",
+    project_id: "15c15dba-aa9f-4df8-9770-d8dd33cbf5ff",
+    name: "Project Gamma",
+    description: "A gamma phase development project.",
+    created_at: "2023-08-10 00:00:00",
+    updated_at: "2023-08-10 00:00:00",
+    deadline: "2024-11-08 00:00:00",
+    tasks: 2,
+    comments: 3,
+    tags: ["gamma", "dev"],
+  },
+];

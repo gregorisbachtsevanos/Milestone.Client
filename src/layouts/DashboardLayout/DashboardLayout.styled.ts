@@ -5,6 +5,7 @@ export const StyledMainLayout = styled.main`
   min-height: 100vh;
   padding: 0 10px;
   display: flex;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.palette.black[900]};
   padding-top: 10px;
   .sidemenu-content {
