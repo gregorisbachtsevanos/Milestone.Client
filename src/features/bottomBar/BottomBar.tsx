@@ -1,23 +1,15 @@
 import Icons from "@/components/Icon/Icons";
-import { useState } from "react";
-import { StyledBottomContainer, StyledListItem, StyledTitle } from "./BottomBar.styled";
-import { routes } from "@/routes";
+import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import { StyledBottomContainer, StyledListItem, StyledTitle } from "./BottomBar.styled";
+import { navItems } from "./constants";
 
 const BottomBar = () => {
   const [activeTab, setActiveTab] = useState("home");
 
-  const navItems = [
-    { name: "home", label: "Dashboard", route: routes.HOME },
-    { name: "projects", label: "Projects", route: routes.PROJECT.Index },
-    { name: "goals", label: "Goals", route: routes.GOALS },
-    { name: "calendar", label: "Calendar", route: routes.CALENDAR },
-    { name: "chat", label: "Chat", route: routes.CHAT },
-  ];
-
-  const handleTabClick = (name: string) => {
+  const handleTabClick = useCallback((name: string) => {
     setActiveTab(name);
-  };
+  }, []);
 
   return (
     <StyledBottomContainer>
