@@ -8,7 +8,7 @@ export const StyledOverviewContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   border-radius: 15px;
-  border: 1px solid ${({ theme }) => theme.palette.gray[500]};
+  border: 1px solid ${({ theme }) => theme.palette.black[500]};
 
   .card {
     display: flex;
@@ -17,6 +17,10 @@ export const StyledOverviewContainer = styled.div`
     gap: 15px;
 
     span {
+      color: ${({ theme }) => theme.palette.black[500]};
+    }
+
+    h2 {
       color: ${({ theme }) => theme.palette.gray[500]};
     }
   }
@@ -24,7 +28,7 @@ export const StyledOverviewContainer = styled.div`
   .divisive {
     width: 1px;
     height: 70px;
-    background-color: ${({ theme }) => theme.palette.gray[500]};
+    background-color: ${({ theme }) => theme.palette.black[500]};
     margin: 0 10px;
 
     &:last-child {
