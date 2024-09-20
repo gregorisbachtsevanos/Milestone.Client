@@ -8,6 +8,7 @@ import Login from "./features/auth/pages/Login";
 import { routes } from "./routes";
 import Register from "./features/auth/pages/Register";
 import Dashboard from "./features/dashboard";
+import ComingSoon from "./components/ComingSoon";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,7 +19,7 @@ export const router = createBrowserRouter(
         <Route path={`${routes.DASHBOARD}/*`} element={<Dashboard />} />
         <Route path={`${routes.PROJECT.Index}/*`} element={""} />
         <Route path={`${routes.ROADMAP}/*`} element={""} />
-        <Route path={`${routes.GOALS}/*`} element={""} />
+        <Route path={`${routes.GOALS}/*`} element={<ComingSoon />} />
         <Route path={`${routes.CALENDAR}/*`} element={""} />
         <Route path={`${routes.SETTINGS}/*`} element={""} />
         <Route path={`${routes.PROFILE}/*`} element={""} />
