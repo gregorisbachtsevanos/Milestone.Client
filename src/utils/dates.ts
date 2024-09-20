@@ -16,6 +16,16 @@ export const remainingDays = (deadline: string): string => {
   } else if (daysDiff > 0) {
     return `${daysDiff} days left`;
   } else {
-    return "Deadline has passed";
+    return "expired";
   }
+};
+
+export const formatDate = (datetime: string): string => {
+  const date = new Date(datetime);
+
+  const day = date.getDate();
+  const month = date.toLocaleString("default", { month: "short" }); // Get short month name (e.g., "Jan")
+  const year = date.getFullYear();
+
+  return `${day} ${month} ${year}`;
 };

@@ -12,7 +12,9 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  overflow-y: auto;
+  top: 0;
+  left: 0;
+  overflow-y: hidden;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   color: ${({ theme }) => theme.palette.white[900]};

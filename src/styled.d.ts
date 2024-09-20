@@ -9,9 +9,11 @@ declare module "styled-components" {
         900: string;
       };
       red: {
+        50: string;
         500: string;
       };
       yellow: {
+        50: string;
         500: string;
       };
       black: {
@@ -22,6 +24,7 @@ declare module "styled-components" {
         900: string;
       };
       green: {
+        50: string;
         700: string;
       };
       gray: {

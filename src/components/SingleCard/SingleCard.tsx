@@ -29,11 +29,21 @@ const getPriorityVariant = (priority: Priority): VariantType => {
 const SingleCard: FC<SingleCardProps> = ({ title, description, deadline, priority, tags }) => {
   return (
     <StyledSingleCardContainer>
-      <Tags>{remainingDays(deadline)}</Tags>
-      <Title>{title}</Title>
-      <Text> {description}</Text>
-      <Tags variant={getPriorityVariant(priority)}>{priority}</Tags>
-      <Tags variant="dark">{tags}</Tags>
+      <div className="header">
+        <Tags>{remainingDays(deadline)}</Tags>
+        <Tags variant={getPriorityVariant(priority)}>{priority}</Tags>
+      </div>
+      <div className="content">
+        <Title>{title}</Title>
+        <Text> {description}</Text>
+      </div>
+      <div className="footer">
+        {tags?.map((tag) => (
+          <Tags variant="dark" size="small" key={tag}>
+            {tag}
+          </Tags>
+        ))}
+      </div>
     </StyledSingleCardContainer>
   );
 };

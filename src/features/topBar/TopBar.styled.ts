@@ -4,6 +4,8 @@ export const StyledTopBarContainer = styled.nav`
   height: 10%;
   width: 100%;
   top: 0;
+  left: 0;
+
   position: fixed;
   display: flex;
   align-items: center;

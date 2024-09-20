@@ -2,36 +2,45 @@ import styled from "styled-components";
 
 export const StyledOverviewContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   height: 100px;
-  margin: 0 auto;
   justify-content: space-evenly;
   align-items: center;
   border-radius: 15px;
   border: 1px solid ${({ theme }) => theme.palette.black[500]};
 
-  .card {
+  .card-container {
     display: flex;
-    flex-direction: column;
+    height: 100px;
+    justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    margin: 0 auto;
+    width: 100%;
 
-    span {
-      color: ${({ theme }) => theme.palette.black[500]};
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      flex: 1;
+
+      span {
+        color: ${({ theme }) => theme.palette.black[500]};
+      }
+
+      h2 {
+        color: ${({ theme }) => theme.palette.gray[500]};
+      }
     }
 
-    h2 {
-      color: ${({ theme }) => theme.palette.gray[500]};
+    .divisive {
+      width: 1px;
+      height: 70px;
+      background-color: ${({ theme }) => theme.palette.black[500]};
+      margin: 0 10px;
     }
-  }
 
-  .divisive {
-    width: 1px;
-    height: 70px;
-    background-color: ${({ theme }) => theme.palette.black[500]};
-    margin: 0 10px;
-
-    &:last-child {
+    &:last-child .divisive {
       display: none;
     }
   }

@@ -15,32 +15,50 @@ import { VariantType } from "@/types";
 interface TagsProps {
   children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
-  color?: string;
+  color?: "white" | "yellow" | "black" | "green";
   size?: "small" | "medium" | "large";
   icon?: React.ReactNode;
   variant?: VariantType;
+  pointer?: boolean;
 }
 
 const Tags: FC<TagsProps> = (props) => {
-  const { variant, children } = props;
+  const { color, size, variant, pointer, icon, children } = props;
 
-  if (variant === "danger") return <StyledDangerTag>{children}</StyledDangerTag>;
+  const allClassNames = [size, color, pointer && "pointer", icon && "with-icon"]
+    .filter(Boolean)
+    .join(" ");
 
-  if (variant === "warning") return <StyledWarningTag>{children}</StyledWarningTag>;
+  if (variant === "danger")
+    return <StyledDangerTag className={allClassNames}>{children}</StyledDangerTag>;
 
-  if (variant === "success") return <StyledSuccessTag>{children}</StyledSuccessTag>;
+  if (variant === "warning")
+    return <StyledWarningTag className={allClassNames}>{children}</StyledWarningTag>;
 
-  if (variant === "dark") return <StyledDarkTag>{children}</StyledDarkTag>;
+  if (variant === "success")
+    return <StyledSuccessTag className={allClassNames}>{children}</StyledSuccessTag>;
 
-  if (variant === "primary") return <StyledPrimaryTag>{children}</StyledPrimaryTag>;
+  if (variant === "dark")
+    return <StyledDarkTag className={allClassNames}>{children}</StyledDarkTag>;
 
-  if (variant === "secondary") return <StyledSecondaryTag>{children}</StyledSecondaryTag>;
+  if (variant === "primary")
+    return (
+      <StyledPrimaryTag className={allClassNames}>
+        {icon && icon}
+        {children}
+      </StyledPrimaryTag>
+    );
 
-  if (variant === "info") return <StyledInfoTag>{children}</StyledInfoTag>;
+  if (variant === "secondary")
+    return <StyledSecondaryTag className={allClassNames}>{children}</StyledSecondaryTag>;
 
-  if (variant === "light") return <StyledLightTag>{children}</StyledLightTag>;
+  if (variant === "info")
+    return <StyledInfoTag className={allClassNames}>{children}</StyledInfoTag>;
 
-  return <StyledDefaultTag>{children}</StyledDefaultTag>;
+  if (variant === "light")
+    return <StyledLightTag className={allClassNames}>{children}</StyledLightTag>;
+
+  return <StyledDefaultTag className={allClassNames}>{children}</StyledDefaultTag>;
 };
 
 export default Tags;

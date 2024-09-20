@@ -116,3 +116,11 @@ export type VariantType =
   | "info"
   | "light"
   | "dark";
+
+export type NotesType = {
+  title: string;
+  content: string;
+  created_at?: string;
+  datetime?: string;
+  tags?: string[];
+};

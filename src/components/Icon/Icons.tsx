@@ -17,7 +17,7 @@ import { BsChatFill } from "react-icons/bs";
 import { CiLock } from "react-icons/ci";
 import { FiUserPlus } from "react-icons/fi";
 import { ImQrcode } from "react-icons/im";
-import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
+import { IoAddCircle, IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { MdClear, MdOutlineEmail } from "react-icons/md";
 
 export interface IconProps {
@@ -93,6 +93,8 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       return <MdClear {...props} />;
     case "notifications":
       return <IoNotificationsOutline {...props} />;
+    case "add":
+      return <IoAddCircle {...props} />;
     default:
       return null;
   }

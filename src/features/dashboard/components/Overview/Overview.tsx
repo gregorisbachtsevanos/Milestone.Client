@@ -6,7 +6,7 @@ const Overview = () => {
   return (
     <StyledOverviewContainer>
       {overview.map(({ title, value }, index) => (
-        <div key={index}>
+        <div className="card-container" key={index}>
           <div className="card">
             <Text>{title}</Text>
             <TitleXl>{value}</TitleXl>

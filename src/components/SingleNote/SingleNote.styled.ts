@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const StyledSingleCardContainer = styled.div`
+export const StyledSingleNoteContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.black[900]};
   border-radius: 8px;
   padding: 20px;
-  width: 400px;
+  width: auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -13,6 +13,10 @@ export const StyledSingleCardContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    :first-child {
+      flex: 1;
+    }
   }
 
   .footer {
