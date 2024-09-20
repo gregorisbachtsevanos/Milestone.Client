@@ -9,6 +9,7 @@ export const StyledCardsContainer = styled.div`
   border-radius: 15px;
   max-height: 700px;
   overflow-y: scroll;
+  z-index: 5;
 
   /* Scrollbar styles */
   &::-webkit-scrollbar {

@@ -7,7 +7,9 @@ export const StyledOverviewContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   border-radius: 15px;
+  background-color: ${({ theme }) => theme.palette.black[900]};
   border: 1px solid ${({ theme }) => theme.palette.black[500]};
+  z-index: 5;
 
   .card-container {
     display: flex;
@@ -16,6 +18,7 @@ export const StyledOverviewContainer = styled.div`
     align-items: center;
     margin: 0 auto;
     width: 100%;
+    z-index: 5;
 
     .card {
       display: flex;

@@ -13,6 +13,7 @@ export const StyledBottomContainer = styled.ul`
   background-color: ${({ theme }) => theme.palette.black[800]};
   padding: 8px;
   border-radius: 50px;
+  z-index: 15;
 `;
 
 // Styling for individual list items (tabs)

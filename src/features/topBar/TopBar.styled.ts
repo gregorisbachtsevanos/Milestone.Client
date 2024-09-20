@@ -11,7 +11,7 @@ export const StyledTopBarContainer = styled.nav`
   align-items: center;
   justify-content: space-between;
   z-index: 999;
-  background-color: ${({ theme }) => theme.palette.black[900]};
+  /* background-color: ${({ theme }) => theme.palette.black[900]}; */
   padding: 50px;
 
   .buttons {

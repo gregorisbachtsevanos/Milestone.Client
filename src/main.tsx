@@ -11,7 +11,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyles />
-
       <RouterProvider router={router} />
     </ThemeProvider>
   </Provider>

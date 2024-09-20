@@ -11,6 +11,7 @@ export const StyledNotesContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 25%;
+  z-index: 5;
 
   &.small {
     width: 20%;
