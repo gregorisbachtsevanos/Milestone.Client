@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-const normalizePathname = (path: string) => path.replace(/^\//, "");
+import { normalizePathname } from "@/utils/helpers";
 
 const useActiveTab = () => {
   const { pathname } = useLocation();
