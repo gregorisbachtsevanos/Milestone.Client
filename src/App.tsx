@@ -15,8 +15,8 @@ export const router = createBrowserRouter(
     <Route element={<AppLayout />}>
       {/* <Route element={<ProtectedRoutes />}> */}
       <Route element={<DashboardLayout />}>
-        <Route path={routes.HOME} element={<Navigate to={`${routes.DASHBOARD}`} replace />} />
-        <Route path={`${routes.DASHBOARD}/*`} element={<Dashboard />} />
+        <Route path={routes.HOME} element={<Navigate to={`${routes.OVERVIEW}`} replace />} />
+        <Route path={`${routes.OVERVIEW}/*`} element={<Dashboard />} />
         <Route path={`${routes.PROJECT.Index}/*`} element={""} />
         <Route path={`${routes.ROADMAP}/*`} element={""} />
         <Route path={`${routes.GOALS}/*`} element={<ComingSoon size="70px" />} />
