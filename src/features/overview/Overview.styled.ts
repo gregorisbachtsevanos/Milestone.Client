@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledDashboardContainer = styled.div`
+export const StyledOverviewContainer = styled.div`
   width: 95%;
   display: flex;
   justify-content: center;

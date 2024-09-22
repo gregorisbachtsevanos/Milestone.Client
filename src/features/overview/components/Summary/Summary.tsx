@@ -1,10 +1,10 @@
 import { Text, TitleXl } from "@/theme";
-import { StyledOverviewContainer } from "./Overview.styled";
+import { StyledSummaryContainer } from "./Summary.styled";
 import { overview } from "@/data/overviewData";
 
-const Overview = () => {
+const Summary = () => {
   return (
-    <StyledOverviewContainer>
+    <StyledSummaryContainer>
       {overview.map(({ title, value }, index) => (
         <div className="card-container" key={index}>
           <div className="card">
@@ -14,8 +14,8 @@ const Overview = () => {
           <span className="divisive"></span>
         </div>
       ))}
-    </StyledOverviewContainer>
+    </StyledSummaryContainer>
   );
 };
 
-export default Overview;
+export default Summary;

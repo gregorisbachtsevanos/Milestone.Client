@@ -1,18 +1,18 @@
 import { tasksData } from "@/data/tasksData";
 import { StyledMainLayout } from "@/layouts/DashboardLayout/DashboardLayout.styled";
 import Cards from "./components/Cards";
-import Overview from "./components/Overview";
-import { StyledDashboardContainer } from "./Dashboard.styled";
+import Summary from "./components/Summary";
+import { StyledOverviewContainer } from "./Overview.styled";
 import { notesData } from "@/data/notesData";
 import Notes from "./components/Notes";
 import { calendarData } from "@/data/calenderData";
 import Chat from "./components/Chat";
 
-const Dashboard = () => {
+const Overview = () => {
   return (
     <StyledMainLayout>
-      <StyledDashboardContainer>
-        <Overview />
+      <StyledOverviewContainer>
+        <Summary />
         <div className="sections">
           <Cards tasks={tasksData} />
           <Notes notes={notesData} title="Goals" />
@@ -21,9 +21,9 @@ const Dashboard = () => {
             <Chat />
           </div>
         </div>
-      </StyledDashboardContainer>
+      </StyledOverviewContainer>
     </StyledMainLayout>
   );
 };
 
-export default Dashboard;
+export default Overview;

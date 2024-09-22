@@ -1,14 +1,13 @@
+import AuthLayout from "@/layouts/AuthLayout";
 import AppLayout from "layouts/AppLayout";
 import DashboardLayout from "layouts/DashboardLayout";
-import AuthLayout from "@/layouts/AuthLayout";
 import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
-import ProtectedRoutes from "routes/ProtectedRoutes";
 import PublicRoutes from "routes/PublicRoutes";
-import Login from "./features/auth/pages/Login";
-import { routes } from "./routes";
-import Register from "./features/auth/pages/Register";
-import Dashboard from "./features/dashboard";
 import ComingSoon from "./components/ComingSoon";
+import Login from "./features/auth/pages/Login";
+import Register from "./features/auth/pages/Register";
+import Overview from "./features/overview";
+import { routes } from "./routes";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,7 +15,7 @@ export const router = createBrowserRouter(
       {/* <Route element={<ProtectedRoutes />}> */}
       <Route element={<DashboardLayout />}>
         <Route path={routes.HOME} element={<Navigate to={`${routes.OVERVIEW}`} replace />} />
-        <Route path={`${routes.OVERVIEW}/*`} element={<Dashboard />} />
+        <Route path={`${routes.OVERVIEW}/*`} element={<Overview />} />
         <Route path={`${routes.PROJECT.Index}/*`} element={""} />
         <Route path={`${routes.ROADMAP}/*`} element={""} />
         <Route path={`${routes.GOALS}/*`} element={<ComingSoon size="70px" />} />
