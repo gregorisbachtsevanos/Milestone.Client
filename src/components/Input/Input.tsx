@@ -4,22 +4,23 @@ import { StyledInputContainer } from "./Input.styled";
 import Icons from "../Icon/Icons";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  icon: string;
+  label?: string;
+  icon?: string;
   error?: string;
   hasBtn?: string;
+  variant?: "dark";
   openModal?: () => void;
 }
 
 const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { label, icon, error, hasBtn, openModal, ...rest },
+  { label, icon, error, hasBtn, openModal, className, ...rest },
   ref
 ) => {
   return (
     <StyledInputContainer>
-      <Text>{label}</Text>
-      <div className="input">
-        <Icons name={icon} size="20px" color={"white"} />
+      {label && <Text>{label}</Text>}
+      <div className={`input ${className}`} {...rest}>
+        {icon && <Icons name={icon} size="20px" color="white" />}
         <input {...rest} ref={ref} />
         {hasBtn && (
           <Caption className="button" onClick={openModal}>

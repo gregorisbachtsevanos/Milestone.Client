@@ -4,24 +4,28 @@ import { DefaultTheme } from "styled-components/dist/types";
 
 const black700 = ({ theme }: { theme: DefaultTheme }) => theme.palette.black[700];
 
-export const StyledCardsContainer = styled.div`
+export const StyledChatContainer = styled.div`
   background-color: ${black700};
   border: 2px solid ${black700};
-  padding: 0 20px;
+  padding: 20px 20px;
   gap: 20px;
-  width: auto;
   border-radius: 15px;
   max-height: 700px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   z-index: 5;
-
+  width: 100%;
+  height: 35vh;
   ${Scrollbar}
 
-  .cards-container {
-    padding-top: 5rem;
-    padding-bottom: 20px;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 400px 400px;
+  .form {
+    display: flex;
+    align-items: center;
+
+    svg {
+      cursor: pointer;
+    }
   }
 `;

@@ -1,11 +1,12 @@
+import { TitleXl } from "@/theme";
+import Icons from "../Icon/Icons";
 import { StyledComingSoonContainer } from "./ComingSoon.styled";
-import ComingSoonImage from "assets/images/coming-soon2.webp";
 
-const ComingSoon = () => {
+const ComingSoon = ({ size }: { size?: string }) => {
   return (
     <StyledComingSoonContainer>
-      <div id="shadow">coming soon</div>
-      {/* <img src={ComingSoonImage} alt="Coming Soon" />; */}
+      <TitleXl>coming soon</TitleXl>
+      <Icons name="locked" size={size} />
     </StyledComingSoonContainer>
   );
 };

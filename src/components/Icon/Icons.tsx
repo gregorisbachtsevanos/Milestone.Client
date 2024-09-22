@@ -17,8 +17,10 @@ import { BsChatFill } from "react-icons/bs";
 import { CiLock } from "react-icons/ci";
 import { FiUserPlus } from "react-icons/fi";
 import { ImQrcode } from "react-icons/im";
-import { IoAddCircle, IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
+import { IoAddCircle, IoNotificationsOutline, IoSend, IoSettingsOutline } from "react-icons/io5";
 import { MdClear, MdOutlineEmail } from "react-icons/md";
+import { LuSend } from "react-icons/lu";
+import { IoMdLock } from "react-icons/io";
 
 export interface IconProps {
   name: string;
@@ -95,6 +97,10 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       return <IoNotificationsOutline {...props} />;
     case "add":
       return <IoAddCircle {...props} />;
+    case "send":
+      return <LuSend {...props} />;
+    case "locked":
+      return <IoMdLock {...props} />;
     default:
       return null;
   }

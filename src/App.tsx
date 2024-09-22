@@ -19,11 +19,11 @@ export const router = createBrowserRouter(
         <Route path={`${routes.DASHBOARD}/*`} element={<Dashboard />} />
         <Route path={`${routes.PROJECT.Index}/*`} element={""} />
         <Route path={`${routes.ROADMAP}/*`} element={""} />
-        <Route path={`${routes.GOALS}/*`} element={<ComingSoon />} />
-        <Route path={`${routes.CALENDAR}/*`} element={""} />
+        <Route path={`${routes.GOALS}/*`} element={<ComingSoon size="70px" />} />
+        <Route path={`${routes.CALENDAR}/*`} element={<ComingSoon size="70px" />} />
         <Route path={`${routes.SETTINGS}/*`} element={""} />
         <Route path={`${routes.PROFILE}/*`} element={""} />
-        <Route path={`${routes.CHAT}/*`} element={""} />
+        <Route path={`${routes.CHAT}/*`} element={<ComingSoon size="70px" />} />
       </Route>
       {/* </Route> */}
       <Route element={<PublicRoutes />}>

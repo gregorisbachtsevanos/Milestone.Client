@@ -1,8 +1,12 @@
+import { Scrollbar } from "@/assets/styles/mixins.styled";
 import styled from "styled-components";
+import { DefaultTheme } from "styled-components/dist/types";
+
+const black700 = ({ theme }: { theme: DefaultTheme }) => theme.palette.black[700];
 
 export const StyledNotesContainer = styled.div`
-  background-color: ${({ theme }) => theme.palette.black[700]};
-  border: 2px solid ${({ theme }) => theme.palette.black[700]};
+  background-color: ${black700};
+  border: 2px solid ${black700};
   padding: 20px 20px;
   gap: 20px;
   border-radius: 15px;
@@ -14,24 +18,9 @@ export const StyledNotesContainer = styled.div`
   z-index: 5;
 
   &.small {
-    width: 20%;
+    width: 100%;
+    height: 35vh;
   }
 
-  /* Scrollbar styles */
-  &::-webkit-scrollbar {
-    width: 8px; /* Adjust width of the scrollbar */
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent; /* Transparent track */
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.palette.black[500]}; /* Semi-transparent scrollbar thumb */
-    border-radius: 10px;
-  }
-
-  /* Firefox */
-  scrollbar-width: thin; /* Makes scrollbar thinner */
-  scrollbar-color: ${({ theme }) => theme.palette.black[500]} transparent; /* Thumb color and track color */
+  ${Scrollbar}
 `;

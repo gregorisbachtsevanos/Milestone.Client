@@ -13,5 +13,13 @@ export const StyledDashboardContainer = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+    }
   }
 `;

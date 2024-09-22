@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { DefaultTheme } from "styled-components/dist/types";
+
+const green700 = ({ theme }: { theme: DefaultTheme }) => theme.palette.green[700];
+const black900 = ({ theme }: { theme: DefaultTheme }) => theme.palette.black[900];
 
 export const StyledInputContainer = styled.div`
   display: flex;
@@ -11,24 +15,41 @@ export const StyledInputContainer = styled.div`
     display: flex;
     align-items: center;
     padding-left: 5px;
-    background-color: ${({ theme }) => theme.palette.green[700]};
+    background-color: ${green700};
     border-radius: 5px;
+
+    &.dark {
+      background-color: ${black900};
+
+      input {
+        background-color: ${black900};
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:active {
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: ${({ theme }) => theme.palette.white[900]};
+          box-shadow: inset 0 0 20px 20px ${black900};
+        }
+      }
+    }
 
     input {
       width: 100%;
       padding: 10px;
-      background-color: ${({ theme }) => theme.palette.green[700]};
+      background-color: ${green700};
       border: none;
       border-radius: 5px;
       color: ${({ theme }) => theme.palette.white[900]};
       outline: none;
+
       &:-webkit-autofill,
       &:-webkit-autofill:focus,
       &:-webkit-autofill:hover,
       &:-webkit-autofill:active {
         -webkit-background-clip: text;
         -webkit-text-fill-color: ${({ theme }) => theme.palette.white[900]};
-        box-shadow: inset 0 0 20px 20px ${({ theme }) => theme.palette.green[700]};
+        box-shadow: inset 0 0 20px 20px ${green700};
       }
     }
 

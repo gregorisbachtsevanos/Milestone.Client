@@ -6,6 +6,7 @@ import { StyledDashboardContainer } from "./Dashboard.styled";
 import { notesData } from "@/data/notesData";
 import Notes from "./components/Notes";
 import { calendarData } from "@/data/calenderData";
+import Chat from "./components/Chat";
 
 const Dashboard = () => {
   return (
@@ -15,7 +16,10 @@ const Dashboard = () => {
         <div className="sections">
           <Cards tasks={tasksData} />
           <Notes notes={notesData} title="Goals" />
-          <Notes notes={calendarData} title="Calendar" size={"small"} /> {/* Calendar */}
+          <div className="row">
+            <Notes notes={calendarData} title="Calendar" size={"small"} />
+            <Chat />
+          </div>
         </div>
       </StyledDashboardContainer>
     </StyledMainLayout>
