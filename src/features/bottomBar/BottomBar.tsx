@@ -1,11 +1,12 @@
 import Icons from "@/components/Icon/Icons";
+import useActiveTab from "@/hooks/useActiveTab";
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { StyledBottomContainer, StyledListItem, StyledTitle } from "./BottomBar.styled";
 import { navItems } from "./constants";
 
 const BottomBar = () => {
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState(useActiveTab());
 
   const handleTabClick = useCallback((name: string) => {
     setActiveTab(name);

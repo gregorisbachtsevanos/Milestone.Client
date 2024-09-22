@@ -59,7 +59,7 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
     case "milestone":
       // return <Milestone {...props} />;
       return <img src={Milestone} alt="Milestone Icon" width={size} />;
-    case "home":
+    case "overview":
       return <GoHomeFill {...props} />;
     case "projects":
       return <FaProjectDiagram {...props} />;

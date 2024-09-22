@@ -1,7 +1,7 @@
 import { routes } from "@/routes";
 
 export const navItems = [
-  { name: "home", label: "Dashboard", route: routes.HOME },
+  { name: "overview", label: "Overview", route: routes.OVERVIEW },
   { name: "projects", label: "Projects", route: routes.PROJECT.Index },
   { name: "goals", label: "Goals", route: routes.GOALS },
   { name: "calendar", label: "Calendar", route: routes.CALENDAR },
