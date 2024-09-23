@@ -124,3 +124,9 @@ export type NotesType = {
   datetime?: string;
   tags?: string[];
 };
+
+export type NotificationType = {
+  content: string;
+  created_at?: string;
+  read?: boolean;
+};

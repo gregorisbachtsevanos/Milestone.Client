@@ -6,7 +6,7 @@ type BaseProps = {
   children: React.ReactNode | React.ReactNode[];
   className?: string;
   fullWidth?: boolean;
-  variant?: "primary" | "secondary" | "dark" | "ghost";
+  variant?: "primary" | "secondary" | "dark" | "ghost" | "link";
   size?: "small" | "medium" | "large";
   disabled?: boolean;
   isLoading?: boolean;

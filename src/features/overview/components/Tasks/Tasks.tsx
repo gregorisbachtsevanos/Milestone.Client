@@ -25,7 +25,7 @@ const Tasks = () => {
 
   return (
     <StyledTasksContainer>
-      <Cards tasks={tasksToRender} />
+      <Cards data={tasksToRender} />
     </StyledTasksContainer>
   );
 };

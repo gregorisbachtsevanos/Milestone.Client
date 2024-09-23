@@ -5,16 +5,16 @@ import { StyledNotesContainer } from "./Notes.styled";
 import { FC } from "react";
 
 interface NotesProps {
-  notes: NotesType[];
+  data: NotesType[];
   title: string;
   size?: "small";
 }
 
-const Notes: FC<NotesProps> = ({ notes, title, size }) => {
+const Notes: FC<NotesProps> = ({ data, title, size }) => {
   return (
     <StyledNotesContainer className={size}>
       <Title>{title}</Title>
-      {notes.map(({ title, content, created_at, datetime, tags }) => (
+      {data.map(({ title, content, created_at, datetime, tags }) => (
         <SingleNote
           key={title}
           title={title}

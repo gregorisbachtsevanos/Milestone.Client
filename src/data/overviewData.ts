@@ -1,4 +1,4 @@
-import { timeSinceLastLogin } from "@/utils/dates";
+import { timePassSince } from "@/utils/dates";
 import { backlogTasks, completedTasks, inProgressTasks, onHoldTasks } from "./tasksData";
 import { projectData } from "./projectData";
 import { notesData } from "./notesData";
@@ -24,6 +24,6 @@ export const overview = [
   },
   {
     title: "Last login",
-    value: timeSinceLastLogin(new Date("2024-09-22T12:00:00")),
+    value: timePassSince(new Date("2024-09-22T12:00:00")),
   },
 ];

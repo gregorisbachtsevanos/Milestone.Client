@@ -24,6 +24,13 @@ export const StyledButton = styled.button<ButtonHTMLAttributes<HTMLButtonElement
     color: ${({ theme }) => theme.palette.white[900]};
   }
 
+  &.link {
+    background-color: transparent;
+    color: ${({ theme }) => theme.palette.yellow[500]};
+    padding: 0;
+    border: none;
+  }
+
   &.fullWidth {
     width: 100%;
   }

@@ -14,9 +14,9 @@ const Overview = () => {
         <Summary />
         <div className="sections">
           <Tasks />
-          <Notes notes={notesData} title="Goals" />
+          <Notes data={notesData} title="Goals" />
           <div className="row">
-            <Notes notes={calendarData} title="Calendar" size={"small"} />
+            <Notes data={calendarData} title="Calendar" size={"small"} />
             <Chat />
           </div>
         </div>

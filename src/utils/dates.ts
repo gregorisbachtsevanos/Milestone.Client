@@ -31,8 +31,8 @@ export const formatDate = (datetime: string): string => {
 };
 
 // Example usage:
-// const lastLoginTime = new Date("2024-09-22T12:00:00"); timeSinceLastLogin(lastLoginTime);
-export const timeSinceLastLogin = (lastLogin: Date): string => {
+// const lastLoginTime = new Date("2024-09-22T12:00:00"); timePassSince(lastLoginTime);
+export const timePassSince = (lastLogin: Date): string => {
   const currentTime = new Date();
   const timeDiff = currentTime.getTime() - lastLogin.getTime();
 

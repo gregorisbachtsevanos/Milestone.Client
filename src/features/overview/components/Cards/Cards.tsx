@@ -3,12 +3,12 @@ import { TaskType } from "@/types";
 import { StyledCardsContainer } from "./Cards.styled";
 import Navbar from "../Navbar";
 
-const Cards = ({ tasks }: { tasks: TaskType[] }) => {
+const Cards = ({ data }: { data: TaskType[] }) => {
   return (
     <StyledCardsContainer>
       <Navbar />
       <div className="cards-container">
-        {tasks.map(({ title, description, priority, tags }, index) => (
+        {data.map(({ title, description, priority, tags }, index) => (
           <SingleCard
             key={index}
             title={title}
