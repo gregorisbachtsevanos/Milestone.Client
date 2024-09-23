@@ -8,6 +8,7 @@ export const StyledOverviewContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   margin: 0 auto;
+  z-index: 5;
 
   .sections {
     width: 100%;

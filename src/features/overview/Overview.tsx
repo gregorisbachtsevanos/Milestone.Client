@@ -1,12 +1,11 @@
-import { tasksData } from "@/data/tasksData";
-import { StyledMainLayout } from "@/layouts/DashboardLayout/DashboardLayout.styled";
-import Cards from "./components/Cards";
-import Summary from "./components/Summary";
-import { StyledOverviewContainer } from "./Overview.styled";
-import { notesData } from "@/data/notesData";
-import Notes from "./components/Notes";
 import { calendarData } from "@/data/calenderData";
+import { notesData } from "@/data/notesData";
+import { StyledMainLayout } from "@/layouts/DashboardLayout/DashboardLayout.styled";
 import Chat from "./components/Chat";
+import Notes from "./components/Notes";
+import Summary from "./components/Summary";
+import Tasks from "./components/Tasks";
+import { StyledOverviewContainer } from "./Overview.styled";
 
 const Overview = () => {
   return (
@@ -14,7 +13,7 @@ const Overview = () => {
       <StyledOverviewContainer>
         <Summary />
         <div className="sections">
-          <Cards tasks={tasksData} />
+          <Tasks />
           <Notes notes={notesData} title="Goals" />
           <div className="row">
             <Notes notes={calendarData} title="Calendar" size={"small"} />

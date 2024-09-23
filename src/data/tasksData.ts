@@ -1,6 +1,6 @@
 import { Priority, Status, TaskType } from "@/types";
 
-export const tasksData: TaskType[] = [
+const tasksData: TaskType[] = [
   {
     id: "2a5b8c9d-3e4f-4b6e-8d7c-9a0e1b2c3d4f",
     task_id: "4b04cbf1-b1ba-4c14-b569-af5d4cb47b21",
@@ -21,7 +21,7 @@ export const tasksData: TaskType[] = [
     project_id: "d5b5c8f4-38d5-4e76-945b-978a6e0544a2",
     title: "TASK: Conduct Beta Testing",
     description: "Test the application with beta users",
-    status: Status.Backlog,
+    status: Status.OnHold,
     priority: Priority.Medium,
     created_at: "2023-08-05 00:00:00",
     updated_at: "2023-08-05 00:00:00",
@@ -35,7 +35,7 @@ export const tasksData: TaskType[] = [
     project_id: "a3d1b6c2-8a4e-438e-b5cb-c3e2a6d9f8c3",
     title: "TASK: Finalize Documentation",
     description: "Complete the user and technical documentation",
-    status: Status.InProgress,
+    status: Status.Completed,
     priority: Priority.Low,
     created_at: "2023-08-10 00:00:00",
     updated_at: "2023-08-10 00:00:00",
@@ -49,7 +49,7 @@ export const tasksData: TaskType[] = [
     project_id: "d5b5c8f4-38d5-4e76-945b-978a6e0544a2",
     title: "TASK: Setup Project Repository",
     description: "Initialize the Git repository",
-    status: Status.InProgress,
+    status: Status.Completed,
     priority: Priority.High,
     created_at: "2023-08-01 00:00:00",
     updated_at: "2023-08-01 00:00:00",
@@ -128,3 +128,14 @@ export const tasksData: TaskType[] = [
     tags: ["document", "tech"],
   },
 ];
+
+export const backlogTasks: TaskType[] = tasksData.filter((task) => task.status === Status.Backlog);
+
+export const inProgressTasks: TaskType[] = tasksData.filter(
+  (task) => task.status === Status.InProgress
+);
+export const onHoldTasks: TaskType[] = tasksData.filter((task) => task.status === Status.OnHold);
+
+export const completedTasks: TaskType[] = tasksData.filter(
+  (task) => task.status === Status.Completed
+);
