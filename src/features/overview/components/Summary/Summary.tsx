@@ -1,11 +1,11 @@
 import { Text, TitleXl } from "@/theme";
 import { StyledSummaryContainer } from "./Summary.styled";
-import { overview } from "@/data/overviewData";
+import { overviewData } from "@/data/overviewData";
 
 const Summary = () => {
   return (
     <StyledSummaryContainer>
-      {overview.map(({ title, value }, index) => (
+      {overviewData.map(({ title, value }, index) => (
         <div className="card-container" key={index}>
           <div className="card">
             <Text>{title}</Text>

@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { normalizePathname } from "@/utils/helpers";
+import { routes } from "@/routes";
 
 const useActiveTab = () => {
   const { pathname } = useLocation();
@@ -10,7 +11,7 @@ const useActiveTab = () => {
     setActiveTab(normalizePathname(pathname));
   }, [pathname]);
 
-  return activeTab;
+  return activeTab || routes.OVERVIEW;
 };
 
 export default useActiveTab;

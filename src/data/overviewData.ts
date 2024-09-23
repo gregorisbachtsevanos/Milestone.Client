@@ -4,7 +4,7 @@ import { projectData } from "./projectData";
 import { notesData } from "./notesData";
 import { calendarData } from "./calenderData";
 
-export const overview = [
+export const overviewData = [
   {
     title: "Tasks",
     value:
