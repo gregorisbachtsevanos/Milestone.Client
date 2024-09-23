@@ -1,4 +1,5 @@
 import { backlogTasks, completedTasks, inProgressTasks, onHoldTasks } from "@/data/tasksData";
+import { Status } from "@/types";
 import { useMemo } from "react";
 
 const useTaskCounts = () => {
@@ -11,14 +12,12 @@ const useTaskCounts = () => {
     };
   }, []);
 
-  const navbarData = [
-    { label: "backlog", count: counts.backlog },
-    { label: "on hold", count: counts.onHold },
-    { label: "in progress", count: counts.inProgress },
-    { label: "completed", count: counts.completed },
+  return [
+    { label: Status.Backlog, count: counts.backlog },
+    { label: Status.OnHold, count: counts.onHold },
+    { label: Status.InProgress, count: counts.inProgress },
+    { label: Status.Completed, count: counts.completed },
   ];
-
-  return navbarData;
 };
 
 export default useTaskCounts;

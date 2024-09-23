@@ -1,22 +1,29 @@
+import { timeSinceLastLogin } from "@/utils/dates";
+import { backlogTasks, completedTasks, inProgressTasks, onHoldTasks } from "./tasksData";
+import { projectData } from "./projectData";
+import { notesData } from "./notesData";
+import { calendarData } from "./calenderData";
+
 export const overview = [
   {
-    title: "Task",
-    value: "18/20",
+    title: "Tasks",
+    value:
+      backlogTasks.length + onHoldTasks.length + inProgressTasks.length + completedTasks.length,
   },
   {
     title: "Projects",
-    value: "08",
+    value: projectData.length,
   },
   {
-    title: "Meetings",
-    value: "02",
+    title: "Goals",
+    value: notesData.length,
   },
   {
-    title: "Emails",
-    value: "28",
+    title: "Events",
+    value: calendarData.length,
   },
   {
-    title: "Messages",
-    value: "12",
+    title: "Last login",
+    value: timeSinceLastLogin(new Date("2024-09-22T12:00:00")),
   },
 ];

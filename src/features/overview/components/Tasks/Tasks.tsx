@@ -23,10 +23,6 @@ const Tasks = () => {
     }
   }, [status]);
 
-  console.log(backlogTasks);
-  console.log(onHoldTasks);
-  console.log(inProgressTasks);
-  console.log(completedTasks);
   return (
     <StyledTasksContainer>
       <Cards tasks={tasksToRender} />

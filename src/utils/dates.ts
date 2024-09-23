@@ -24,8 +24,24 @@ export const formatDate = (datetime: string): string => {
   const date = new Date(datetime);
 
   const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "short" }); // Get short month name (e.g., "Jan")
+  const month = date.toLocaleString("default", { month: "short" });
   const year = date.getFullYear();
 
   return `${day} ${month} ${year}`;
+};
+
+// Example usage:
+// const lastLoginTime = new Date("2024-09-22T12:00:00"); timeSinceLastLogin(lastLoginTime);
+export const timeSinceLastLogin = (lastLogin: Date): string => {
+  const currentTime = new Date();
+  const timeDiff = currentTime.getTime() - lastLogin.getTime();
+
+  const minutes = Math.floor((timeDiff / 1000 / 60) % 60);
+  const hours = Math.floor((timeDiff / 1000 / 60 / 60) % 24);
+  const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+  if (days > 0) return `${days} d ago`;
+  if (hours > 0) return `${hours} h ago`;
+
+  return `${minutes} mim ago`;
 };
