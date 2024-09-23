@@ -5,12 +5,14 @@ import { StyledMainLayout } from "./DashboardLayout.styled";
 import Notification from "@/features/notification";
 import { isNotificationOpen } from "@/features/notification/notificationSlice";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 
 const DashboardLayout = () => {
+  const notificationPopupRef = useRef<HTMLDivElement>(null);
   return (
     <StyledMainLayout>
-      <TopBar />
-      {useSelector(isNotificationOpen) && <Notification />}
+      <TopBar notificationPopupRef={notificationPopupRef} />
+      {useSelector(isNotificationOpen) && <Notification ref={notificationPopupRef} />}
       <section>{<Outlet />}</section>
       <BottomBar />
     </StyledMainLayout>
