@@ -19,4 +19,4 @@ export const { setIsOpen } = notificationSlice.actions;
 
 export default notificationSlice.reducer;
 
-export const selectIsNotificationOpen = (state: RootState) => state.notification.isOpen;
+export const isNotificationOpen = (state: RootState) => state.notification.isOpen;
