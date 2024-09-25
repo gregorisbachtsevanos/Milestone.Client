@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import { api } from "./services/api";
 import authReducer from "features/auth/authSlice";
 import notificationReducer from "@/features/notification/notificationSlice";
+import profileReducer from "@/features/profile/profileSlice";
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     auth: authReducer,
     notification: notificationReducer,
+    profile: profileReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
