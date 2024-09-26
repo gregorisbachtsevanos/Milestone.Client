@@ -7,14 +7,17 @@ import { isNotificationOpen } from "@/features/notification/notificationSlice";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import { isProfileModalOpen } from "@/features/profile/profileSlice";
+import Profile from "@/features/profile";
 
 const DashboardLayout = () => {
   const notificationPopupRef = useRef<HTMLDivElement>(null);
+  const profilePopupRef = useRef<HTMLDivElement>(null);
+
   return (
     <StyledMainLayout>
-      <TopBar notificationPopupRef={notificationPopupRef} />
+      <TopBar notificationPopupRef={notificationPopupRef} profilePopupRef={profilePopupRef} />
       {useSelector(isNotificationOpen) && <Notification ref={notificationPopupRef} />}
-      {useSelector(isProfileModalOpen) && <>s</>}
+      {useSelector(isProfileModalOpen) && <Profile ref={profilePopupRef} />}
       <section>{<Outlet />}</section>
       <BottomBar />
     </StyledMainLayout>

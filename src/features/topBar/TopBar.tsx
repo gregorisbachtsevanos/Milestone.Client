@@ -12,9 +12,10 @@ import { isProfileModalOpen, setIsOpen as setProfileOpen } from "../profile/prof
 
 interface TopBarProps {
   notificationPopupRef: React.RefObject<HTMLDivElement>;
+  profilePopupRef: React.RefObject<HTMLDivElement>;
 }
 
-const TopBar: React.FC<TopBarProps> = ({ notificationPopupRef }) => {
+const TopBar: React.FC<TopBarProps> = ({ notificationPopupRef, profilePopupRef }) => {
   const [activeButton, setActiveButton] = useState<string | null>(null);
   const dispatch = useDispatch();
 
@@ -35,11 +36,16 @@ const TopBar: React.FC<TopBarProps> = ({ notificationPopupRef }) => {
     setActiveButton((prevActive) => (prevActive === "user" ? null : "user"));
     dispatch(setNotificationOpen(false));
     dispatch(setProfileOpen(!isUserModalOpen));
-  }, [isUserModalOpen, dispatch]);
+  }, [dispatch, isUserModalOpen]);
 
-  useClickOutside([buttonsRef, notificationPopupRef], () => {
+  useClickOutside([buttonsRef, notificationPopupRef, profilePopupRef], () => {
     setActiveButton(null);
-    isNotificationModalOpen && dispatch(setNotificationOpen(!isNotificationModalOpen));
+    if (isNotificationModalOpen) {
+      dispatch(setNotificationOpen(false));
+    }
+    if (isUserModalOpen) {
+      dispatch(setProfileOpen(false));
+    }
   });
 
   return (
