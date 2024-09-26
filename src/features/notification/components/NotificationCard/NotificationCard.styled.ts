@@ -14,4 +14,9 @@ export const StyledNotificationCardContainer = styled.div`
   span:first-child {
     width: 80%;
   }
+  &:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 `;

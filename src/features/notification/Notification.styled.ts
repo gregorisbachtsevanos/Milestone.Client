@@ -9,7 +9,7 @@ export const StyledNotificationContainer = styled.div`
   top: 10%;
   left: 78%;
   width: 400px;
-  height: 600px;
+  height: auto;
   background-color: ${black800};
   border-radius: 8px;
   box-shadow: 0 5px 20px ${({ theme }) => theme.palette.black[900]};

@@ -6,6 +6,6 @@ export const StyledHeaderContainer = styled.div`
   height: 50px;
   align-items: baseline;
   justify-content: space-between;
-  padding: 30px 35px;
+  padding: 15px 35px;
   border-bottom: 1px solid ${({ theme }) => theme.palette.black[500]};
 `;

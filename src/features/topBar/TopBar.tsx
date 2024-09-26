@@ -3,33 +3,43 @@ import Button from "@/components/Button";
 import Icons, { IconProps } from "@/components/Icon/Icons";
 import { StyledTopBarContainer } from "./TopBar.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { isNotificationOpen, setIsOpen } from "../notification/notificationSlice";
+import {
+  isNotificationOpen,
+  setIsOpen as setNotificationOpen,
+} from "../notification/notificationSlice";
 import useClickOutside from "@/hooks/useClickOutside";
+import { isProfileModalOpen, setIsOpen as setProfileOpen } from "../profile/profileSlice";
 
 interface TopBarProps {
   notificationPopupRef: React.RefObject<HTMLDivElement>;
 }
 
 const TopBar: React.FC<TopBarProps> = ({ notificationPopupRef }) => {
-  const dispatch = useDispatch();
-  const isNotificationModalOpen = useSelector(isNotificationOpen);
   const [activeButton, setActiveButton] = useState<string | null>(null);
+  const dispatch = useDispatch();
+
+  const isNotificationModalOpen = useSelector(isNotificationOpen);
+  const isUserModalOpen = useSelector(isProfileModalOpen);
+
   const buttonsRef = useRef<HTMLDivElement>(null);
+
   const props: Omit<IconProps, "name"> = { color: "gray", size: "20px" };
 
   const handleNotificationButtonClick = useCallback(() => {
     setActiveButton((prevActive) => (prevActive === "notifications" ? null : "notifications"));
-    dispatch(setIsOpen(!isNotificationModalOpen));
+    dispatch(setProfileOpen(false));
+    dispatch(setNotificationOpen(!isNotificationModalOpen));
   }, [isNotificationModalOpen, dispatch]);
 
   const handleUserButtonClick = useCallback(() => {
     setActiveButton((prevActive) => (prevActive === "user" ? null : "user"));
-    isNotificationModalOpen && dispatch(setIsOpen(false));
-  }, [isNotificationModalOpen]);
+    dispatch(setNotificationOpen(false));
+    dispatch(setProfileOpen(!isUserModalOpen));
+  }, [isUserModalOpen, dispatch]);
 
   useClickOutside([buttonsRef, notificationPopupRef], () => {
     setActiveButton(null);
-    isNotificationModalOpen && dispatch(setIsOpen(!isNotificationModalOpen));
+    isNotificationModalOpen && dispatch(setNotificationOpen(!isNotificationModalOpen));
   });
 
   return (
