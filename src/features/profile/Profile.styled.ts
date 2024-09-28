@@ -4,7 +4,7 @@ const black800 = ({ theme }: { theme: DefaultTheme }) => theme.palette.black[800
 
 export const StyledProfileController = styled.div`
   z-index: 999;
-  padding: 25px 0px;
+  padding: 25px 20px;
   position: absolute;
   top: 10%;
   left: 78%;
@@ -13,10 +13,6 @@ export const StyledProfileController = styled.div`
   background-color: ${black800};
   border-radius: 15px;
   box-shadow: 0 5px 20px ${({ theme }) => theme.palette.black[900]};
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
 
   &::before {
     content: "";

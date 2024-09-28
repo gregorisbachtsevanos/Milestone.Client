@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledCardContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.black[900]};
-  width: 90%;
+  width: 100%;
   margin: auto;
   border-radius: 8px;
   height: 70px;

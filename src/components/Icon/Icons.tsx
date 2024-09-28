@@ -3,6 +3,7 @@ import {
   FaCalendar,
   FaGithub,
   FaGoogle,
+  FaInfo,
   FaLinkedinIn,
   FaProjectDiagram,
   FaRegUser,
@@ -20,7 +21,7 @@ import { ImQrcode } from "react-icons/im";
 import { IoIosLogOut, IoMdLock } from "react-icons/io";
 import { IoAddCircle, IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { LuSend } from "react-icons/lu";
-import { MdClear, MdOutlineEmail } from "react-icons/md";
+import { MdArrowDropDown, MdClear, MdOutlineArrowDropUp, MdOutlineEmail } from "react-icons/md";
 
 export interface IconProps {
   name: string;
@@ -103,6 +104,12 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       return <IoMdLock {...props} />;
     case "logout":
       return <IoIosLogOut {...props} />;
+    case "info ":
+      return <FaInfo {...props} />;
+    case "arrow_up":
+      return <MdOutlineArrowDropUp {...props} />;
+    case "arrow_down":
+      return <MdArrowDropDown {...props} />;
     default:
       return null;
   }
