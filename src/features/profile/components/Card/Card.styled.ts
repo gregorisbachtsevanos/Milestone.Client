@@ -9,4 +9,8 @@ export const StyledCardContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  &.no-margin {
+    margin: unset;
+  }
 `;

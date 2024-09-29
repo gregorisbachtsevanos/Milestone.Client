@@ -13,7 +13,7 @@ const Profile = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <StyledProfileController ref={ref}>
       <UserInfo />
-      <Select options={options} defaultValue={options[0]} />
+      <Select label="Theme:" options={options} defaultValue={options[0]} />
     </StyledProfileController>
   );
 });

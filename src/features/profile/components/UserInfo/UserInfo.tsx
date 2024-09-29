@@ -5,7 +5,7 @@ import { Caption, Text } from "@/theme";
 
 const UserInfo = () => {
   return (
-    <Card>
+    <Card withoutMargin>
       <StyledUserInfoContainer>
         <div className="user">
           <div className="image">

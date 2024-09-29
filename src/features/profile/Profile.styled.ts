@@ -13,6 +13,9 @@ export const StyledProfileController = styled.div`
   background-color: ${black800};
   border-radius: 15px;
   box-shadow: 0 5px 20px ${({ theme }) => theme.palette.black[900]};
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
   &::before {
     content: "";
