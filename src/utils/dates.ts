@@ -40,8 +40,8 @@ export const timePassSince = (lastLogin: Date): string => {
   const hours = Math.floor((timeDiff / 1000 / 60 / 60) % 24);
   const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-  if (days > 0) return `${days} d ago`;
-  if (hours > 0) return `${hours} h ago`;
+  if (days > 0) return `${days}d ago`;
+  if (hours > 0) return `${hours}h ago`;
 
-  return `${minutes} mim ago`;
+  return `${minutes}min ago`;
 };
