@@ -11,7 +11,6 @@ const Chat = ({}) => {
       message: "",
     },
     mode: "onBlur",
-    // resolver: yupResolver(loginValidationSchema),
   });
 
   return (

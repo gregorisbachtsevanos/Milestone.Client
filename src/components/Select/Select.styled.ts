@@ -13,7 +13,8 @@ export const StyledSelectContainer = styled.div`
     width: 150px;
   }
 
-  .column {
+  &.column {
     flex-direction: column;
+    align-items: flex-start;
   }
 `;

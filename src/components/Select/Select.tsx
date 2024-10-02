@@ -3,10 +3,8 @@ import ReactSelect, {
   ActionMeta,
   DropdownIndicatorProps,
   GroupBase,
-  MultiValue,
   Props,
   SelectInstance,
-  SingleValue,
   components,
 } from "react-select";
 import { useTheme } from "styled-components";
@@ -51,10 +49,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
     const theme = useTheme();
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 
-    const handleChange = (
-      selected: MultiValue<Option> | SingleValue<Option>,
-      actionMeta: ActionMeta<Option>
-    ) => {
+    const handleChange = (selected: Option, actionMeta: ActionMeta<Option>) => {
       if (selectOnChange) {
         selectOnChange(selected, actionMeta);
       }
@@ -82,7 +77,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
     };
 
     return (
-      <StyledSelectContainer>
+      <StyledSelectContainer className="column">
         <Label>{label}</Label>
         <ReactSelect className="react-select" {...finalProps} />
       </StyledSelectContainer>
