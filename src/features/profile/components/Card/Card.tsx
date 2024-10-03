@@ -5,7 +5,7 @@ const Card = ({
   withoutMargin,
 }: {
   children: React.ReactNode;
-  withoutMargin: boolean;
+  withoutMargin?: boolean;
 }) => {
   return (
     <StyledCardContainer className={withoutMargin ? "no-margin" : ""}>

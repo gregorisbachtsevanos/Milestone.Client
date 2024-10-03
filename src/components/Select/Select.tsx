@@ -77,7 +77,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
     };
 
     return (
-      <StyledSelectContainer className="column">
+      <StyledSelectContainer>
         <Label>{label}</Label>
         <ReactSelect className="react-select" {...finalProps} />
       </StyledSelectContainer>
