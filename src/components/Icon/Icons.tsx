@@ -1,41 +1,57 @@
 import { FC } from "react";
-import {
-  FaCalendar,
-  FaGithub,
-  FaGoogle,
-  FaInfo,
-  FaLinkedinIn,
-  FaProjectDiagram,
-  FaRegUser,
-  FaRegUserCircle,
-} from "react-icons/fa";
-import { GoGoal, GoHomeFill } from "react-icons/go";
-import { TbProgressCheck } from "react-icons/tb";
 import { useTheme } from "styled-components";
-// import { ReactComponent as Milestone } from "assets/svg/milestoneYellowLines.svg";
+import * as FaIcons from "react-icons/fa";
+import * as GoIcons from "react-icons/go";
+import * as TbIcons from "react-icons/tb";
+import * as BsIcons from "react-icons/bs";
+import * as CgIcons from "react-icons/cg";
+import * as CiIcons from "react-icons/ci";
+import * as FiIcons from "react-icons/fi";
+import * as ImIcons from "react-icons/im";
+import * as IoIcons from "react-icons/io";
+import * as Io5Icons from "react-icons/io5";
+import * as LuIcons from "react-icons/lu";
+import * as MdIcons from "react-icons/md";
 import Milestone from "assets/svg/milestoneYellowLines.svg";
-import { BsChatFill } from "react-icons/bs";
-import { CgDanger } from "react-icons/cg";
-import { CiLock } from "react-icons/ci";
-import { FiUserPlus } from "react-icons/fi";
-import { ImQrcode } from "react-icons/im";
-import { IoIosLogOut, IoMdLock } from "react-icons/io";
-import { IoAddCircle, IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
-import { LuSend } from "react-icons/lu";
-import {
-  MdClear,
-  MdKeyboardArrowRight,
-  MdKeyboardArrowUp,
-  MdOutlineEmail,
-  MdOutlineKeyboardArrowDown,
-  MdVerified,
-} from "react-icons/md";
 
+type IconName = keyof typeof IconsMap;
 export interface IconProps {
-  name: string;
+  name: IconName;
   color?: "yellow" | "white" | "black" | "darkGray" | "gray" | "red";
   size?: string | number;
 }
+
+const IconsMap = {
+  milestone: Milestone,
+  overview: GoIcons.GoHomeFill,
+  projects: FaIcons.FaProjectDiagram,
+  goals: GoIcons.GoGoal,
+  calendar: FaIcons.FaCalendar,
+  user: FaIcons.FaRegUser,
+  settings: Io5Icons.IoSettingsOutline,
+  chat: BsIcons.BsChatFill,
+  progress: TbIcons.TbProgressCheck,
+  google: FaIcons.FaGoogle,
+  github: FaIcons.FaGithub,
+  linkedin: FaIcons.FaLinkedinIn,
+  email: MdIcons.MdOutlineEmail,
+  password: CiIcons.CiLock,
+  username: FaIcons.FaRegUserCircle,
+  name: FiIcons.FiUserPlus,
+  invitation: ImIcons.ImQrcode,
+  clear: MdIcons.MdClear,
+  notifications: Io5Icons.IoNotificationsOutline,
+  add: Io5Icons.IoAddCircle,
+  send: LuIcons.LuSend,
+  locked: IoIcons.IoMdLock,
+  logout: IoIcons.IoIosLogOut,
+  info: FaIcons.FaInfo,
+  danger: CgIcons.CgDanger,
+  arrow_up: MdIcons.MdKeyboardArrowUp,
+  arrow_down: MdIcons.MdOutlineKeyboardArrowDown,
+  arrow_right: MdIcons.MdKeyboardArrowRight,
+  verified: MdIcons.MdVerified,
+} as const;
 
 const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
   const {
@@ -61,73 +77,13 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
     }
   };
 
-  const props = {
-    color: getColor(),
-    size,
-  };
+  const IconComponent = IconsMap[name];
 
-  switch (name) {
-    case "milestone":
-      // return <Milestone {...props} />;
-      return <img src={Milestone} alt="Milestone Icon" width={size} />;
-    case "overview":
-      return <GoHomeFill {...props} />;
-    case "projects":
-      return <FaProjectDiagram {...props} />;
-    case "goals":
-      return <GoGoal {...props} />;
-    case "calendar":
-      return <FaCalendar {...props} />;
-    case "user":
-      return <FaRegUser {...props} />;
-    case "settings":
-      return <IoSettingsOutline {...props} />;
-    case "chat":
-      return <BsChatFill {...props} />;
-    case "progress":
-      return <TbProgressCheck {...props} />;
-    case "google":
-      return <FaGoogle {...props} />;
-    case "github":
-      return <FaGithub {...props} />;
-    case "linkedin":
-      return <FaLinkedinIn {...props} />;
-    case "email":
-      return <MdOutlineEmail {...props} />;
-    case "password":
-      return <CiLock {...props} />;
-    case "username":
-      return <FaRegUserCircle {...props} />;
-    case "name":
-      return <FiUserPlus {...props} />;
-    case "invitation":
-      return <ImQrcode {...props} />;
-    case "clear":
-      return <MdClear {...props} />;
-    case "notifications":
-      return <IoNotificationsOutline {...props} />;
-    case "add":
-      return <IoAddCircle {...props} />;
-    case "send":
-      return <LuSend {...props} />;
-    case "locked":
-      return <IoMdLock {...props} />;
-    case "logout":
-      return <IoIosLogOut {...props} />;
-    case "info":
-      return <FaInfo {...props} />;
-    case "danger":
-      return <CgDanger {...props} />;
-    case "arrow_up":
-      return <MdKeyboardArrowUp {...props} />;
-    case "arrow_down":
-      return <MdOutlineKeyboardArrowDown {...props} />;
-    case "arrow_right":
-      return <MdKeyboardArrowRight {...props} />;
-    case "verified":
-      return <MdVerified {...props} />;
-    default:
-      return null;
-  }
+  return name === "milestone" ? (
+    <img src={Milestone} alt="Milestone Icon" width={size} />
+  ) : (
+    IconComponent && <IconComponent color={getColor()} size={size} />
+  );
 };
+
 export default Icons;
