@@ -2,6 +2,19 @@ import styled from "styled-components";
 
 export const StyledLanguageContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  align-items: center;
+
+  .title {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background-color: ${({ theme }) => theme.palette.black[900]};
+    width: 100%;
+    height: 40px;
+    color: ${({ theme }) => theme.palette.gray[500]};
+
+    h5 {
+      padding: 0 10px;
+    }
+  }
 `;

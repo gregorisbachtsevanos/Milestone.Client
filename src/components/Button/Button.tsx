@@ -6,7 +6,7 @@ type BaseProps = {
   children: React.ReactNode | React.ReactNode[];
   className?: string;
   fullWidth?: boolean;
-  variant?: "primary" | "secondary" | "dark" | "ghost" | "link";
+  variant?: "primary" | "secondary" | "dark" | "ghost" | "link" | "danger" | "danger-outline";
   size?: "small" | "medium" | "large";
   disabled?: boolean;
   isLoading?: boolean;
@@ -30,11 +30,11 @@ type ButtonAsReactRouter = BaseProps &
 type ButtonProps = ButtonAsButton | ButtonAsExternal | ButtonAsReactRouter;
 
 const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
-  const allClassNames = `${props.variant ? props.variant : ""} ${
-    props.className ? props.className : ""
-  } ${props.fullWidth ? "fullWidth" : ""} ${props.size ?? ""} ${props.disabled ? "disabled" : ""}`;
+  const { variant, as, size, isLoading, disabled, children, className, fullWidth, ...rest } = props;
 
-  const { variant, as, size, isLoading, disabled, children, ...rest } = props;
+  const allClassNames = `${variant ? variant : ""} ${className ? className : ""} ${
+    fullWidth ? "fullWidth" : ""
+  } ${size ?? ""} ${disabled ? "disabled" : ""}`;
 
   if (as === "link") {
     const { to, ...linkRest } = rest as LinkProps;

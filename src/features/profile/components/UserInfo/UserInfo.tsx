@@ -4,6 +4,8 @@ import { StyledUserInfoContainer } from "./UserInfo.styled";
 import { Caption, Text } from "@/theme";
 
 const UserInfo = () => {
+  const isEmailVerified = true;
+
   return (
     <Card withoutMargin>
       <StyledUserInfoContainer>
@@ -16,9 +18,7 @@ const UserInfo = () => {
             <Caption className="username">gregorisbachtsevanos@gmail.com</Caption>
           </div>
         </div>
-        <div className="logout">
-          <Icon name="logout" />
-        </div>
+        {isEmailVerified ? <Icon name="verified" /> : <Icon name="danger" color="red" />}
       </StyledUserInfoContainer>
     </Card>
   );

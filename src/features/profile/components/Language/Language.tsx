@@ -4,6 +4,7 @@ import { useCallback } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { langOptions } from "../../constant";
 import { StyledLanguageContainer } from "./Language.styled";
+import { TitleSecondary } from "@/theme";
 
 const Language = () => {
   const { control } = useForm({
@@ -22,12 +23,14 @@ const Language = () => {
 
   return (
     <StyledLanguageContainer>
+      <div className="title">
+        <TitleSecondary>Language:</TitleSecondary>
+      </div>
       <Controller
         name="language"
         control={control}
         render={({ field: { onChange, value, ref } }) => (
           <Select
-            label="Language:"
             options={langOptions}
             value={value}
             onChange={(selectedValue) => {

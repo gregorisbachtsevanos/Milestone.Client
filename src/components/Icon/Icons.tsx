@@ -15,23 +15,31 @@ import { useTheme } from "styled-components";
 // import { ReactComponent as Milestone } from "assets/svg/milestoneYellowLines.svg";
 import Milestone from "assets/svg/milestoneYellowLines.svg";
 import { BsChatFill } from "react-icons/bs";
+import { CgDanger } from "react-icons/cg";
 import { CiLock } from "react-icons/ci";
 import { FiUserPlus } from "react-icons/fi";
 import { ImQrcode } from "react-icons/im";
 import { IoIosLogOut, IoMdLock } from "react-icons/io";
 import { IoAddCircle, IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
 import { LuSend } from "react-icons/lu";
-import { MdArrowDropDown, MdClear, MdOutlineArrowDropUp, MdOutlineEmail } from "react-icons/md";
+import {
+  MdClear,
+  MdKeyboardArrowRight,
+  MdKeyboardArrowUp,
+  MdOutlineEmail,
+  MdOutlineKeyboardArrowDown,
+  MdVerified,
+} from "react-icons/md";
 
 export interface IconProps {
   name: string;
-  color?: "yellow" | "white" | "black" | "darkGray" | "gray";
+  color?: "yellow" | "white" | "black" | "darkGray" | "gray" | "red";
   size?: string | number;
 }
 
 const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
   const {
-    palette: { yellow, white, black, gray },
+    palette: { yellow, white, black, gray, red },
   } = useTheme();
 
   const getColor = () => {
@@ -46,6 +54,8 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
         return black[500];
       case "gray":
         return gray[500];
+      case "red":
+        return red[500];
       default:
         return yellow[500];
     }
@@ -104,12 +114,18 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       return <IoMdLock {...props} />;
     case "logout":
       return <IoIosLogOut {...props} />;
-    case "info ":
+    case "info":
       return <FaInfo {...props} />;
+    case "danger":
+      return <CgDanger {...props} />;
     case "arrow_up":
-      return <MdOutlineArrowDropUp {...props} />;
+      return <MdKeyboardArrowUp {...props} />;
     case "arrow_down":
-      return <MdArrowDropDown {...props} />;
+      return <MdOutlineKeyboardArrowDown {...props} />;
+    case "arrow_right":
+      return <MdKeyboardArrowRight {...props} />;
+    case "verified":
+      return <MdVerified {...props} />;
     default:
       return null;
   }

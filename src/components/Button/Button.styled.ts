@@ -6,8 +6,10 @@ export const StyledButton = styled.button<ButtonHTMLAttributes<HTMLButtonElement
   padding: 10px 45px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   border-radius: 5px;
+  text-align: center;
 
   &.fullWidth {
     width: 100%;
@@ -17,6 +19,16 @@ export const StyledButton = styled.button<ButtonHTMLAttributes<HTMLButtonElement
   }
 
   &.medium {
+  }
+
+  &.danger-outline {
+    border: 1px solid ${({ theme }) => theme.palette.red[500]};
+    color: ${({ theme }) => theme.palette.red[500]};
+  }
+
+  &.danger {
+    background-color: ${({ theme }) => theme.palette.red[500]};
+    color: ${({ theme }) => theme.palette.white[900]};
   }
 
   &.ghost {
