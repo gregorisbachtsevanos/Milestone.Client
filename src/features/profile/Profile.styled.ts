@@ -15,6 +15,7 @@ export const StyledProfileController = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  overflow: hidden;
 
   &::before {
     content: "";
