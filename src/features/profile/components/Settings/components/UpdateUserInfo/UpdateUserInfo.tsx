@@ -1,17 +1,17 @@
 import { FC, useCallback } from "react";
 import Panel from "../Panel";
 import useInitEditProfileForm from "../../hooks/useInitEditProfileForm";
-import { StyledChangeUserInfoContainer } from "./ChangeUserInfo.styled";
+import { StyledUpdateUserInfoContainer } from "./UpdateUserInfo.styled";
 import { Controller, FieldValues } from "react-hook-form";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
-interface ChangeUserInfoProps {
+interface UpdateUserInfoProps {
   isOpen: boolean;
   handleModal: () => void;
 }
 
-const ChangeUserInfo: FC<ChangeUserInfoProps> = ({ isOpen, handleModal }) => {
+const UpdateUserInfo: FC<UpdateUserInfoProps> = ({ isOpen, handleModal }) => {
   const { methods } = useInitEditProfileForm();
 
   const {
@@ -32,8 +32,8 @@ const ChangeUserInfo: FC<ChangeUserInfoProps> = ({ isOpen, handleModal }) => {
   }, []);
 
   return (
-    <Panel title="Edit Profile" isOpen={isOpen} onClose={handleModal}>
-      <StyledChangeUserInfoContainer onSubmit={handleSubmit(submitLoginForm)}>
+    <Panel title="Update Profile" isOpen={isOpen} onClose={handleModal}>
+      <StyledUpdateUserInfoContainer onSubmit={handleSubmit(submitLoginForm)}>
         <label>
           Profile Image
           <input type="file" />
@@ -94,12 +94,14 @@ const ChangeUserInfo: FC<ChangeUserInfoProps> = ({ isOpen, handleModal }) => {
             />
           )}
         />
-        <Button type="submit" variant="primary">
-          Save
-        </Button>
-      </StyledChangeUserInfoContainer>
+        <div className="btn-container">
+          <Button type="submit" variant="primary">
+            Update Info
+          </Button>
+        </div>
+      </StyledUpdateUserInfoContainer>
     </Panel>
   );
 };
 
-export default ChangeUserInfo;
+export default UpdateUserInfo;

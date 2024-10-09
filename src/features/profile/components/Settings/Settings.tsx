@@ -1,6 +1,6 @@
 import { FC } from "react";
-import ChangePassword from "./components/ChangePassword";
-import ChangeUserInfo from "./components/ChangeUserInfo";
+import ChangePassword from "./components/UpdatePassword";
+import ChangeUserInfo from "./components/UpdateUserInfo";
 import Edit from "./components/Edit";
 import Subscription from "./components/Subscription/Subscription";
 import { ModalType } from "../../types";
