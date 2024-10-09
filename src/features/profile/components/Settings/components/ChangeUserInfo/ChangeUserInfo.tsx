@@ -34,7 +34,10 @@ const ChangeUserInfo: FC<ChangeUserInfoProps> = ({ isOpen, handleModal }) => {
   return (
     <Panel title="Edit Profile" isOpen={isOpen} onClose={handleModal}>
       <StyledChangeUserInfoContainer onSubmit={handleSubmit(submitLoginForm)}>
-        <input type="file" />
+        <label>
+          Profile Image
+          <input type="file" />
+        </label>
         <Controller
           key="firstname"
           control={control}
