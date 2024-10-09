@@ -8,8 +8,7 @@ export const StyledPanelContainer = styled.div`
   top: 0;
   padding: 15px;
   transition: left 0.8s ease;
-  background-color: darkcyan;
-  /* background-color: ${({ theme }) => theme.palette.black[800]}; */
+  background-color: ${({ theme }) => theme.palette.black[800]};
   border-radius: 15px;
 
   &.open {

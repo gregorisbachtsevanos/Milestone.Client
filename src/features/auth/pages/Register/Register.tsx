@@ -1,17 +1,15 @@
 import { RegisterProps } from "@/app/services/types/identityTypes";
-import Input from "@/components/Input";
+import Button from "@/components/Button";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Controller, FieldValues } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { formFieldsIsRow } from "../../constants";
+import ThirdPartyAuth from "../../components/ThirdPartyAuth";
 import useAuth from "../../hooks/useAuth";
+import ColumnInputFields from "./Components/ColumnInputFields";
 import InvitationModal from "./Components/InvitationModal/InvitationModal";
+import RowInputFields from "./Components/RowInputFields/RowInputFields";
 import useInitRegisterForm from "./hooks/useInitRegisterForm";
 import { StyledRegisterForm } from "./Register.styled";
-import ColumnInputFields from "./Components/ColumnInputFields";
-import RowInputFields from "./Components/RowInputFields/RowInputFields";
-import Button from "@/components/Button";
-import ThirdPartyAuth from "../../components/ThirdPartyAuth";
 // import { usersAPI } from "../../../../app/services/usersAPI";
 
 const Register = () => {
@@ -59,7 +57,6 @@ const Register = () => {
     <>
       <StyledRegisterForm onSubmit={handleSubmit(submitRegisterForm)}>
         <ThirdPartyAuth />
-
         <RowInputFields control={control} errors={errors} openModal={openInvitationModal} />
         <ColumnInputFields control={control} errors={errors} openModal={openInvitationModal} />
         <Button type="submit">Register</Button>

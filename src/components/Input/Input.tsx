@@ -13,13 +13,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { label, icon, error, hasBtn, openModal, className, ...rest },
+  { label, icon, error, hasBtn, openModal, variant, ...rest },
   ref
 ) => {
   return (
     <StyledInputContainer>
       {label && <Text>{label}</Text>}
-      <div className={`input ${className}`} {...rest}>
+      <div className={`input ${variant}`} {...rest}>
         {icon && <Icons name={icon} size="20px" color="white" />}
         <input {...rest} ref={ref} />
         {hasBtn && (
