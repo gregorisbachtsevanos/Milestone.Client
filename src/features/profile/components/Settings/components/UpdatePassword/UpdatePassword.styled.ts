@@ -1,3 +1,4 @@
+import { Caption } from "@/theme";
 import styled from "styled-components";
 
 export const StyledUpdatePasswordContainer = styled.form`
@@ -11,4 +12,8 @@ export const StyledUpdatePasswordContainer = styled.form`
     margin-top: 5px;
     margin-left: 7px;
   }
+`;
+
+export const StyledCaptionContainer = styled(Caption)`
+  font-size: 11px;
 `;

@@ -5,6 +5,7 @@ import { StyledUpdateUserInfoContainer } from "./UpdateUserInfo.styled";
 import { Controller, FieldValues } from "react-hook-form";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import UploadZone from "@/components/UploadZone";
 
 interface UpdateUserInfoProps {
   isOpen: boolean;
@@ -34,6 +35,7 @@ const UpdateUserInfo: FC<UpdateUserInfoProps> = ({ isOpen, handleModal }) => {
   return (
     <Panel title="Update Profile" isOpen={isOpen} onClose={handleModal}>
       <StyledUpdateUserInfoContainer onSubmit={handleSubmit(submitLoginForm)}>
+        <UploadZone />
         <label>
           Profile Image
           <input type="file" />

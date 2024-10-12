@@ -1,11 +1,10 @@
-import { FC, useCallback } from "react";
-import Panel from "../Panel";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { FC, useCallback } from "react";
 import { Controller, FieldValues } from "react-hook-form";
-import { StyledUpdatePasswordContainer } from "./UpdatePassword.styled";
 import useInitUpdatePasswordForm from "../../hooks/useInitUpdatePasswordForm";
-import { Caption } from "@/theme";
+import Panel from "../Panel";
+import { StyledCaptionContainer, StyledUpdatePasswordContainer } from "./UpdatePassword.styled";
 
 interface UpdatePasswordProps {
   isOpen: boolean;
@@ -82,10 +81,10 @@ const UpdatePassword: FC<UpdatePasswordProps> = ({ isOpen, handleModal }) => {
           </Button>
         </div>
       </StyledUpdatePasswordContainer>
-      <Caption>
-        *To keep your account secure, we recommend you follow these best practices:
+      <StyledCaptionContainer>
+        * To keep your account secure, we recommend you follow these best practices:
         <ul>
-          <li>Use a password manager to generate a password of at least 15 characters. </li>
+          <li>Use a password manager to generate a password of at least 15 characters.</li>
           <li>
             Generate a unique password for Milestone. If you use your Milestone password elsewhere
             and that service is compromised, then attackers or other malicious actors could use that
@@ -96,7 +95,7 @@ const UpdatePassword: FC<UpdatePasswordProps> = ({ isOpen, handleModal }) => {
             their own personal account on Milestone.
           </li>
         </ul>
-      </Caption>
+      </StyledCaptionContainer>
     </Panel>
   );
 };
