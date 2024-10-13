@@ -5,6 +5,7 @@ import { editProfileValidationSchema } from "../validations/editProfileValidatio
 const useInitEditProfileForm = () => {
   const methods = useForm({
     defaultValues: {
+      image: "",
       firstname: "",
       lastname: "",
       username: "",

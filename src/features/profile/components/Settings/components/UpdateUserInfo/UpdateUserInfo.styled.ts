@@ -7,6 +7,11 @@ export const StyledUpdateUserInfoContainer = styled.form`
   padding: 30px 0;
   gap: 5px;
 
+  .img-container {
+    display: flex;
+    justify-content: center;
+  }
+
   .btn-container {
     margin-top: 5px;
     margin-left: 7px;

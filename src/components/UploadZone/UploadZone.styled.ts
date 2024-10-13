@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledUploadZoneContainer = styled.div`
-  border: 1px dashed ${({ theme }) => theme.palette.gray[500]};
+  /* border: 2px dashed ${({ theme }) => theme.palette.gray[500]}; */
   border-radius: 100px;
   width: 110px;
   height: 110px;
