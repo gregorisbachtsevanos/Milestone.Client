@@ -9,3 +9,9 @@ export const langOptions = [
   { value: "english", label: "English" },
   { value: "greek", label: "Greek" },
 ];
+
+export const MAX_FILE_SIZE: number = 102400;
+
+export const validFileExtensions: { [key: string]: string[] } = {
+  image: ["jpg", "gif", "png", "jpeg", "svg", "webp"],
+};

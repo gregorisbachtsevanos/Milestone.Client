@@ -36,12 +36,7 @@ const UpdateUserInfo: FC<UpdateUserInfoProps> = ({ isOpen, handleModal }) => {
     <Panel title="Update Profile" isOpen={isOpen} onClose={handleModal}>
       <StyledUpdateUserInfoContainer onSubmit={handleSubmit(submitLoginForm)}>
         <div className="img-container">
-          <Controller
-            key="image"
-            control={control}
-            name="image"
-            render={({ field: { value, onChange } }) => <UploadZone />}
-          />
+          <Controller key="image" control={control} name="image" render={() => <UploadZone />} />
         </div>
         <Controller
           key="firstname"
