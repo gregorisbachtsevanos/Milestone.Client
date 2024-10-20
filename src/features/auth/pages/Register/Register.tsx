@@ -1,5 +1,5 @@
 import { RegisterProps } from "@/app/services/types/identityTypes";
-import Button from "@/components/Button";
+import Button from "@/common/components/Button";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";

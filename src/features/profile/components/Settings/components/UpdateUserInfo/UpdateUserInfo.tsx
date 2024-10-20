@@ -3,9 +3,9 @@ import Panel from "../Panel";
 import useInitEditProfileForm from "../../hooks/useInitEditProfileForm";
 import { StyledUpdateUserInfoContainer } from "./UpdateUserInfo.styled";
 import { Controller, FieldValues } from "react-hook-form";
-import Input from "@/components/Input";
-import Button from "@/components/Button";
-import UploadZone from "@/components/UploadZone";
+import Input from "@/common/components/Input";
+import Button from "@/common/components/Button";
+import UploadZone from "@/common/components/UploadZone";
 
 interface UpdateUserInfoProps {
   isOpen: boolean;

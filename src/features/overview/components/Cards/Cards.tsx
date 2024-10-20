@@ -1,4 +1,4 @@
-import SingleCard from "@/components/SingleCard";
+import SingleCard from "@/common/components/SingleCard";
 import { TaskType } from "@/types";
 import { StyledCardsContainer } from "./Cards.styled";
 import Navbar from "../Navbar";

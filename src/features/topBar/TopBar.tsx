@@ -1,13 +1,13 @@
 import { useState, useCallback, useRef } from "react";
-import Button from "@/components/Button";
-import Icons, { IconProps } from "@/components/Icon/Icons";
+import Button from "@/common/components/Button";
+import Icons, { IconProps } from "@/common/components/Icon/Icons";
 import { StyledTopBarContainer } from "./TopBar.styled";
 import { useDispatch, useSelector } from "react-redux";
 import {
   isNotificationOpen,
   setIsOpen as setNotificationOpen,
 } from "../notification/notificationSlice";
-import useClickOutside from "@/hooks/useClickOutside";
+import useClickOutside from "@/common/hooks/useClickOutside";
 import { isProfileModalOpen, setIsOpen as setProfileOpen } from "../profile/profileSlice";
 
 interface TopBarProps {

@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/common/components/Button";
 import { forwardRef, useCallback, useState } from "react";
 import { StyledProfileController } from "./Profile.styled";
 import Language from "./components/Language";

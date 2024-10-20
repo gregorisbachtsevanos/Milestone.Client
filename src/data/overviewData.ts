@@ -1,4 +1,4 @@
-import { timePassSince } from "@/utils/dates";
+import { timePassSince } from "@/common/utils/dates";
 import { backlogTasks, completedTasks, inProgressTasks, onHoldTasks } from "./tasksData";
 import { projectData } from "./projectData";
 import { notesData } from "./notesData";

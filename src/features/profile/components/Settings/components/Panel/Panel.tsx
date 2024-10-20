@@ -1,4 +1,4 @@
-import Icons from "@/components/Icon";
+import Icons from "@/common/components/Icon";
 import { Title } from "@/theme";
 import { StyledPanelContainer } from "./Panel.styled";
 import { FC, ReactNode } from "react";

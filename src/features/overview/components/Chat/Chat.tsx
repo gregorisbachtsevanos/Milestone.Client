@@ -1,9 +1,9 @@
-import Input from "@/components/Input";
+import Input from "@/common/components/Input";
 import { Title } from "@/theme";
 import { Controller, useForm } from "react-hook-form";
 import { StyledChatContainer } from "./Chat.styled";
-import Icons from "@/components/Icon/Icons";
-import ComingSoon from "@/components/ComingSoon";
+import Icons from "@/common/components/Icon/Icons";
+import ComingSoon from "@/common/components/ComingSoon";
 
 const Chat = ({}) => {
   const { control } = useForm({

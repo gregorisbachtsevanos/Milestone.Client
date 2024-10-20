@@ -6,9 +6,9 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
-import { isExpired } from "utils/token";
+import { isExpired } from "@/common/utils/token";
 import { setAccessToken, setRefreshToken } from "features/auth/authSlice";
-import { removeLocalStorageItem, setLocalStorageItem } from "utils/localStorage";
+import { removeLocalStorageItem, setLocalStorageItem } from "@/common/utils/localStorage";
 import { Mutex } from "async-mutex";
 import config from "@/config";
 

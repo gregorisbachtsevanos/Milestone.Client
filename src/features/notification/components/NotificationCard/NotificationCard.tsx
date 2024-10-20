@@ -1,6 +1,6 @@
 import { Caption, Text } from "@/theme";
 import { StyledNotificationCardContainer } from "./NotificationCard.styled";
-import { timePassSince } from "@/utils/dates";
+import { timePassSince } from "@/common/utils/dates";
 import { FC } from "react";
 
 interface NotificationCardProps {

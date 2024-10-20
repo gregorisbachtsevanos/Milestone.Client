@@ -1,5 +1,5 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
+import Button from "@/common/components/Button";
+import Input from "@/common/components/Input";
 import { FC, useCallback } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import useInitUpdatePasswordForm from "../../hooks/useInitUpdatePasswordForm";

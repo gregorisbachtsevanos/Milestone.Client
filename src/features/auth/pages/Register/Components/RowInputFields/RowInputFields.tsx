@@ -1,4 +1,4 @@
-import Input from "@/components/Input";
+import Input from "@/common/components/Input";
 import { formFieldsIsRow } from "@/features/auth/constants";
 import { FC } from "react";
 import { Control, Controller, FieldErrors } from "react-hook-form";

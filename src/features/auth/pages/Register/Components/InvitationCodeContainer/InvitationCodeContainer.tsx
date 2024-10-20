@@ -1,4 +1,4 @@
-import Input from "@/components/Input";
+import Input from "@/common/components/Input";
 import { Control, Controller } from "react-hook-form";
 import { StyledInvitationCode } from "./InvitationCodeContainer.styled";
 import { FC } from "react";

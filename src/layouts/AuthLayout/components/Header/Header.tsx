@@ -1,6 +1,6 @@
 import { Text, Title2Xl, TitleLg } from "@/theme";
 import { StyledHeaderContainer } from "./Header.styled";
-import Icons from "@/components/Icon/Icons";
+import Icons from "@/common/components/Icon/Icons";
 
 const Header = () => {
   return (

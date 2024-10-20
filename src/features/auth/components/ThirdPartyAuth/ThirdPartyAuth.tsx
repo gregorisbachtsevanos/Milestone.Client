@@ -1,7 +1,7 @@
-import Button from "@/components/Button";
+import Button from "@/common/components/Button";
 import { StyledThirdPartyAuthContainer } from "./ThirdPartyAuth.styled";
 import { Badge } from "@/theme";
-import Icons from "@/components/Icon/Icons";
+import Icons from "@/common/components/Icon/Icons";
 
 const ThirdPartyAuth = () => {
   const authProviders = [

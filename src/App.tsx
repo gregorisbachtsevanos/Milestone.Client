@@ -3,7 +3,7 @@ import AppLayout from "layouts/AppLayout";
 import DashboardLayout from "layouts/DashboardLayout";
 import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import PublicRoutes from "routes/PublicRoutes";
-import ComingSoon from "./components/ComingSoon";
+import ComingSoon from "@/common/components/ComingSoon";
 import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
 import Overview from "./features/overview";

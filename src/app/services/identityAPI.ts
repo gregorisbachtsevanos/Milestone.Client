@@ -1,8 +1,8 @@
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import config from "config";
 import { setAccessToken, setRefreshToken, setMachineToken } from "features/auth/authSlice";
-import { getFetchQueryErrorMessage } from "utils/errors";
-import { removeLocalStorageItem, setLocalStorageItem } from "utils/localStorage";
+import { getFetchQueryErrorMessage } from "@/common/utils/errors";
+import { removeLocalStorageItem, setLocalStorageItem } from "@/common/utils/localStorage";
 import { RootState } from "../store";
 import { api } from "./api";
 import {

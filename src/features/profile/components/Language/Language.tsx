@@ -1,5 +1,5 @@
-import Select from "@/components/Select";
-import { Option } from "@/components/Select/Select";
+import Select from "@/common/components/Select";
+import { Option } from "@/common/components/Select/Select";
 import { useCallback } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { langOptions } from "../../constant";

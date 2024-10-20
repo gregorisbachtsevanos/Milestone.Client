@@ -1,11 +1,11 @@
-import Input from "@/components/Input";
-import Modal from "@/components/Modal/Modal";
+import Input from "@/common/components/Input";
+import Modal from "@/common/components/Modal/Modal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FC, useCallback } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { invitationValidationSchema } from "../../validation";
 import { StyledInvitationModalForm } from "./InvitationModal.styled";
-import Button from "@/components/Button";
+import Button from "@/common/components/Button";
 
 interface InvitationModalProps {
   isOpen: boolean;

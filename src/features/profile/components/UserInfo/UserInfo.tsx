@@ -1,4 +1,4 @@
-import Icon from "@/components/Icon";
+import Icon from "@/common/components/Icon";
 import Card from "../Card";
 import { StyledUserInfoContainer } from "./UserInfo.styled";
 import { Caption, Text } from "@/theme";

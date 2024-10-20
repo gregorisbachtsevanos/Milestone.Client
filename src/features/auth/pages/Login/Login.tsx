@@ -1,5 +1,5 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
+import Button from "@/common/components/Button";
+import Input from "@/common/components/Input";
 import { useCallback, useEffect } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";

@@ -1,6 +1,6 @@
-import Icon from "@/components/Icon";
-import Tags from "@/components/Tags";
-import useTaskCounts from "@/hooks/useTaskCounts";
+import Icon from "@/common/components/Icon";
+import Tags from "@/common/components/Tags";
+import useTaskCounts from "@/common/hooks/useTaskCounts";
 import { Status } from "@/types";
 import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";

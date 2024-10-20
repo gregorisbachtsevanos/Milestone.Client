@@ -7,7 +7,7 @@ import {
   useRegisterMutation,
 } from "../../../app/services/identityAPI";
 // import { LoginProps, useAuthenticateMutation } from '../../../app/services/authApi';
-import { getLocalStorageItem } from "../../../utils/localStorage";
+import { getLocalStorageItem } from "../../../common/utils/localStorage";
 import { selectIsUserLoggedIn } from "../authSlice";
 
 const useAuth = () => {

@@ -1,5 +1,5 @@
-import Icons from "@/components/Icon/Icons";
-import useActiveTab from "@/hooks/useActiveTab";
+import Icons from "@/common/components/Icon/Icons";
+import useActiveTab from "@/common/hooks/useActiveTab";
 import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { StyledBottomContainer, StyledListItem, StyledTitle } from "./BottomBar.styled";

@@ -1,4 +1,4 @@
-import SingleNote from "@/components/SingleNote";
+import SingleNote from "@/common/components/SingleNote";
 import { Title } from "@/theme";
 import { NotesType } from "@/types";
 import { StyledNotesContainer } from "./Notes.styled";

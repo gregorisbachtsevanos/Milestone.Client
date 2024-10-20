@@ -1,4 +1,4 @@
-import { getRandomValues } from "@/utils/helpers";
+import { getRandomValues } from "@/common/utils/helpers";
 import styled from "styled-components";
 
 interface LineContainerProps {

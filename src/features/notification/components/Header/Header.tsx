@@ -1,7 +1,6 @@
-import React from "react";
+import Button from "@/common/components/Button";
+import { TitleLg } from "@/theme";
 import { StyledHeaderContainer } from "./Header.styled";
-import { TitleLg, TitleXl } from "@/theme";
-import Button from "@/components/Button";
 
 const Header = () => {
   return (
