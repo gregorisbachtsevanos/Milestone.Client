@@ -1,4 +1,4 @@
-import { Text, Title } from "@/theme";
+import { Text, Title } from "@/.config/theme";
 import { Priority, VariantType } from "@/types";
 import { remainingDays } from "@/common/utils/dates";
 import { FC } from "react";

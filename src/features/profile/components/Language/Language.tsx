@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { langOptions } from "../../constant";
 import { StyledLanguageContainer } from "./Language.styled";
-import { TitleSecondary } from "@/theme";
+import { TitleSecondary } from "@/.config/theme";
 
 const Language = () => {
   const { control } = useForm({

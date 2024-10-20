@@ -1,11 +1,11 @@
 import Input from "@/common/components/Input";
-import { Title } from "@/theme";
+import { Title } from "@/.config/theme";
 import { Controller, useForm } from "react-hook-form";
 import { StyledChatContainer } from "./Chat.styled";
 import Icons from "@/common/components/Icon/Icons";
 import ComingSoon from "@/common/components/ComingSoon";
 
-const Chat = ({}) => {
+const Chat = () => {
   const { control } = useForm({
     defaultValues: {
       message: "",

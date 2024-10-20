@@ -1,5 +1,4 @@
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import config from "config";
 import { setAccessToken, setRefreshToken, setMachineToken } from "features/auth/authSlice";
 import { getFetchQueryErrorMessage } from "@/common/utils/errors";
 import { removeLocalStorageItem, setLocalStorageItem } from "@/common/utils/localStorage";
@@ -13,12 +12,13 @@ import {
   RefreshProps,
   RegisterProps,
 } from "./types/identityTypes";
+import config from "@/.config/config";
 
 const IDENTITY_API = config.identityAPI;
 const clientId = config.auth.clientId;
 const clientSecret = config.auth.clientSecret;
-const machineId = config.auth.machineId;
-const machineSecret = config.auth.machineSecret;
+// const machineId = config.auth.machineId;
+// const machineSecret = config.auth.machineSecret;
 
 export const identityAPI = api.injectEndpoints({
   endpoints: (build) => ({

@@ -24,6 +24,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "src/.config/declarations.d.ts",
+    "src/.config/styled.d.ts",
+    "src/.config/config.ts",
+    "src/.config/theme.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

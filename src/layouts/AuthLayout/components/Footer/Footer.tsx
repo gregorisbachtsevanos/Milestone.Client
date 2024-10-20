@@ -1,4 +1,4 @@
-import { LinkStyle } from "@/theme";
+import { LinkStyle } from "@/.config/theme";
 import { StyledFooterContainer } from "./Footer.styled";
 
 const Footer = () => {

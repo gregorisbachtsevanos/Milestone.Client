@@ -1,4 +1,4 @@
-import { Badge } from "@/theme";
+import { Badge } from "@/.config/theme";
 import styled from "styled-components";
 
 const StyledTagContainer = styled(Badge)`

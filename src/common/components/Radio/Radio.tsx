@@ -1,4 +1,4 @@
-import { Text } from "@/theme";
+import { Text } from "@/.config/theme";
 import React, { InputHTMLAttributes, ReactNode, useId } from "react";
 import { StyledRadioContainer } from "./Radio.styled";
 

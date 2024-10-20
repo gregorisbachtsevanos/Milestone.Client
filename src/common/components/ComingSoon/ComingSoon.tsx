@@ -1,4 +1,4 @@
-import { TitleXl } from "@/theme";
+import { TitleXl } from "@/.config/theme";
 import Icons from "../Icon/Icons";
 import { StyledComingSoonContainer } from "./ComingSoon.styled";
 

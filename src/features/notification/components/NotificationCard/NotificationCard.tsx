@@ -1,4 +1,4 @@
-import { Caption, Text } from "@/theme";
+import { Caption, Text } from "@/.config/theme";
 import { StyledNotificationCardContainer } from "./NotificationCard.styled";
 import { timePassSince } from "@/common/utils/dates";
 import { FC } from "react";

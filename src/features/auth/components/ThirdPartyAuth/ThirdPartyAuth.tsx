@@ -1,6 +1,6 @@
 import Button from "@/common/components/Button";
 import { StyledThirdPartyAuthContainer } from "./ThirdPartyAuth.styled";
-import { Badge } from "@/theme";
+import { Badge } from "@/.config/theme";
 import Icons from "@/common/components/Icon/Icons";
 
 const ThirdPartyAuth = () => {

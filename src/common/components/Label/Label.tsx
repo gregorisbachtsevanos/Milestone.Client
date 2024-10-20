@@ -1,4 +1,4 @@
-import { TitleSecondary } from "@/theme";
+import { TitleSecondary } from "@/.config/theme";
 import { forwardRef, ForwardRefRenderFunction, LabelHTMLAttributes, ReactNode } from "react";
 import Info from "../Info";
 import { StyledLabelContainer } from "./Label.styled";

@@ -1,6 +1,6 @@
 import Select from "@/common/components/Select";
 import { Option } from "@/common/components/Select/Select";
-import { TitleSecondary } from "@/theme";
+import { TitleSecondary } from "@/.config/theme";
 import { useCallback } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { themeOptions } from "../../constant";

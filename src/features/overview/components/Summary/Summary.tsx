@@ -1,4 +1,4 @@
-import { Text, TitleXl } from "@/theme";
+import { Text, TitleXl } from "@/.config/theme";
 import { StyledSummaryContainer } from "./Summary.styled";
 import { overviewData } from "@/data/overviewData";
 

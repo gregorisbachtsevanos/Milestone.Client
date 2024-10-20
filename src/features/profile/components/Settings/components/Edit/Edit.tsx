@@ -1,7 +1,7 @@
 import Icons from "@/common/components/Icon";
 import Card from "../../../Card";
 import { StyledEditContainer } from "./Edit.styled";
-import { Text } from "@/theme";
+import { Text } from "@/.config/theme";
 import { FC } from "react";
 
 interface EditInfoModal {

@@ -1,4 +1,4 @@
-import { Title } from "@/theme";
+import { Title } from "@/.config/theme";
 import styled from "styled-components";
 
 // Container for the bottom navigation bar

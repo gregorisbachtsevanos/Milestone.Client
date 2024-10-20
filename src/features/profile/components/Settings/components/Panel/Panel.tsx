@@ -1,5 +1,5 @@
 import Icons from "@/common/components/Icon";
-import { Title } from "@/theme";
+import { Title } from "@/.config/theme";
 import { StyledPanelContainer } from "./Panel.styled";
 import { FC, ReactNode } from "react";
 

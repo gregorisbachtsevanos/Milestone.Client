@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { StyledUploadZoneContainer } from "./UploadZone.styled";
-import { Caption } from "@/theme";
+import { Caption } from "@/.config/theme";
 import profile from "@/assets/images/default-profile.webp";
 
 const UploadZone = () => {

@@ -1,4 +1,4 @@
-import { Caption, Text, Title } from "@/theme";
+import { Caption, Text, Title } from "@/.config/theme";
 import { formatDate } from "@/common/utils/dates";
 import { FC } from "react";
 import Tags from "../Tags";

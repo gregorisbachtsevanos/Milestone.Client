@@ -1,4 +1,4 @@
-import { Caption, Text } from "@/theme";
+import { Caption, Text } from "@/.config/theme";
 import { forwardRef, ForwardRefRenderFunction, InputHTMLAttributes } from "react";
 import { StyledInputContainer } from "./Input.styled";
 import Icons from "../Icon/Icons";

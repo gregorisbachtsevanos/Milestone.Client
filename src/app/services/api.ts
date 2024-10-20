@@ -1,4 +1,5 @@
-import { RootState } from "../store";
+import { setLocalStorageItem } from "@/common/utils/localStorage";
+import { isExpired } from "@/common/utils/token";
 import {
   BaseQueryFn,
   createApi,
@@ -6,11 +7,10 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query/react";
-import { isExpired } from "@/common/utils/token";
-import { setAccessToken, setRefreshToken } from "features/auth/authSlice";
-import { removeLocalStorageItem, setLocalStorageItem } from "@/common/utils/localStorage";
 import { Mutex } from "async-mutex";
-import config from "@/config";
+import { setAccessToken, setRefreshToken } from "features/auth/authSlice";
+import { RootState } from "../store";
+import config from "@/.config/config";
 
 type FetchArgsWithoutAuth = { withoutAuth: boolean } & FetchArgs;
 

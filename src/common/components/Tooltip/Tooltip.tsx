@@ -1,5 +1,5 @@
 import React, { ReactNode, useRef } from "react";
-import { Text } from "@/theme";
+import { Text } from "@/.config/theme";
 import { StyledTooltip } from "./Tooltip.styled";
 
 export interface TooltipProps {

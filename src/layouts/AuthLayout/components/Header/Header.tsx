@@ -1,4 +1,4 @@
-import { Text, Title2Xl, TitleLg } from "@/theme";
+import { Text, Title2Xl, TitleLg } from "@/.config/theme";
 import { StyledHeaderContainer } from "./Header.styled";
 import Icons from "@/common/components/Icon/Icons";
 

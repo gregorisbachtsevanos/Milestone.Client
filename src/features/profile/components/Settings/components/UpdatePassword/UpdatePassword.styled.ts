@@ -1,4 +1,4 @@
-import { Caption } from "@/theme";
+import { Caption } from "@/.config/theme";
 import styled from "styled-components";
 
 export const StyledUpdatePasswordContainer = styled.form`

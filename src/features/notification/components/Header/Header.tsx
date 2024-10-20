@@ -1,5 +1,5 @@
 import Button from "@/common/components/Button";
-import { TitleLg } from "@/theme";
+import { TitleLg } from "@/.config/theme";
 import { StyledHeaderContainer } from "./Header.styled";
 
 const Header = () => {
