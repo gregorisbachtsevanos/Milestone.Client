@@ -61,7 +61,7 @@ const Register = () => {
         <ColumnInputFields control={control} errors={errors} openModal={openInvitationModal} />
         <Button type="submit">Register</Button>
       </StyledRegisterForm>
-      <InvitationModal isOpen={invitationModal} onCLose={() => setInvitationModal(false)} />
+      <InvitationModal isOpen={invitationModal} onClose={() => setInvitationModal(false)} />
     </>
   );
 };

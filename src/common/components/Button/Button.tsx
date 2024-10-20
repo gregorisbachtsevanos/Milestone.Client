@@ -5,7 +5,7 @@ import { LinkProps } from "react-router-dom";
 type BaseProps = {
   children: React.ReactNode | React.ReactNode[];
   className?: string;
-  fullWidth?: boolean;
+  rounded?: boolean;
   variant?: "primary" | "secondary" | "dark" | "ghost" | "link" | "danger" | "danger-outline";
   size?: "small" | "medium" | "large";
   disabled?: boolean;
@@ -30,10 +30,10 @@ type ButtonAsReactRouter = BaseProps &
 type ButtonProps = ButtonAsButton | ButtonAsExternal | ButtonAsReactRouter;
 
 const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
-  const { variant, as, size, isLoading, disabled, children, className, fullWidth, ...rest } = props;
+  const { variant, as, size, isLoading, disabled, children, className, rounded, ...rest } = props;
 
   const allClassNames = `${variant ? variant : ""} ${className ? className : ""} ${
-    fullWidth ? "fullWidth" : ""
+    rounded ? "rounded" : ""
   } ${size ?? ""} ${disabled ? "disabled" : ""}`;
 
   if (as === "link") {

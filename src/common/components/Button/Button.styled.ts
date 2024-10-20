@@ -11,14 +11,21 @@ export const StyledButton = styled.button<ButtonHTMLAttributes<HTMLButtonElement
   border-radius: 5px;
   text-align: center;
 
-  &.fullWidth {
+  &.big {
     width: 100%;
   }
 
-  &.small {
+  &.medium {
+    width: 50%;
   }
 
-  &.medium {
+  &.small {
+    padding: 5px;
+    height: 35px;
+  }
+
+  &.rounded {
+    border-radius: 50px;
   }
 
   &.danger-outline {
@@ -41,10 +48,6 @@ export const StyledButton = styled.button<ButtonHTMLAttributes<HTMLButtonElement
     color: ${({ theme }) => theme.palette.yellow[500]};
     padding: 0;
     border: none;
-  }
-
-  &.fullWidth {
-    width: 100%;
   }
 
   &.primary {

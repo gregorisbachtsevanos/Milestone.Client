@@ -9,10 +9,10 @@ import Button from "@/common/components/Button";
 
 interface InvitationModalProps {
   isOpen: boolean;
-  onCLose: () => void;
+  onClose: () => void;
 }
 
-const InvitationModal: FC<InvitationModalProps> = ({ isOpen, onCLose }) => {
+const InvitationModal: FC<InvitationModalProps> = ({ isOpen, onClose }) => {
   const requestInvitationCode = useCallback(({ email }: { email: string }) => {
     console.log(email);
   }, []);
@@ -30,7 +30,7 @@ const InvitationModal: FC<InvitationModalProps> = ({ isOpen, onCLose }) => {
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={onCLose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <StyledInvitationModalForm onSubmit={handleSubmit(requestInvitationCode)}>
         <Controller
           key="email"
