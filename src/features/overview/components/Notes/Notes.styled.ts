@@ -22,5 +22,11 @@ export const StyledNotesContainer = styled.div`
     height: 35vh;
   }
 
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   ${Scrollbar}
 `;
