@@ -1,7 +1,7 @@
 import SingleCard from "@/common/components/SingleCard";
 import { TaskType } from "@/types";
 import { StyledCardsContainer } from "./Cards.styled";
-import Navbar from "../Navbar";
+import Navbar from "../Tasks/components/Navbar";
 
 const Cards = ({ data }: { data: TaskType[] }) => {
   return (
