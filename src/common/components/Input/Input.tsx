@@ -8,7 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
   error?: string;
   hasBtn?: string;
-  variant?: "dark";
+  variant?: "dark" | "gray";
   openModal?: () => void;
 }
 

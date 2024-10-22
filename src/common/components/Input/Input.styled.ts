@@ -34,6 +34,22 @@ export const StyledInputContainer = styled.div`
       }
     }
 
+    &.gray {
+      background-color: ${({ theme }) => theme.palette.black[800]};
+
+      input {
+        background-color: ${({ theme }) => theme.palette.black[800]};
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:active {
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: ${({ theme }) => theme.palette.white[900]};
+          box-shadow: inset 0 0 20px 20px ${({ theme }) => theme.palette.black[800]};
+        }
+      }
+    }
+
     input {
       width: 100%;
       padding: 10px;
