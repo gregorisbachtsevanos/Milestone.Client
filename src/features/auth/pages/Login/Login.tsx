@@ -76,7 +76,7 @@ const Login = () => {
         )}
       />
       <div className="button">
-        <Button type="submit" fullWidth variant="primary">
+        <Button type="submit" variant="primary">
           Login
         </Button>
       </div>
