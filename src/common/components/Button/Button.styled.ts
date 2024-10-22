@@ -20,7 +20,7 @@ export const StyledButton = styled.button<ButtonHTMLAttributes<HTMLButtonElement
   }
 
   &.small {
-    padding: 5px;
+    padding: 0;
     height: 35px;
   }
 
