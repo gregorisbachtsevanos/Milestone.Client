@@ -33,8 +33,8 @@ export type SelectProps<
 > = Props<Option, IsMulti, Group> & CustomSelectProps;
 
 const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, SelectProps<Option>>(
-  (props, ref) => {
-    const {
+  (
+    {
       label,
       options,
       value,
@@ -45,7 +45,9 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
       width,
       isMulti,
       ...rest
-    } = props;
+    },
+    ref
+  ) => {
     const theme = useTheme();
     const [menuIsOpen, setMenuIsOpen] = useState(false);
 

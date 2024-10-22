@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, useMemo } from "react";
 import { StyledButton, StyledAnchor, StyledLink } from "./Button.styled";
 import { LinkProps } from "react-router-dom";
 
@@ -29,18 +29,30 @@ type ButtonAsReactRouter = BaseProps &
 
 type ButtonProps = ButtonAsButton | ButtonAsExternal | ButtonAsReactRouter;
 
-const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
-  const { variant, as, size, isLoading, disabled, children, className, rounded, ...rest } = props;
+const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (
+  { variant, as, size, isLoading, disabled, children, className = "", rounded, ...rest },
+  ref
+) => {
+  const allClassNames = [
+    variant,
+    className,
+    rounded && "rounded",
+    size,
+    (disabled || isLoading) && "disabled",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  const allClassNames = `${variant ? variant : ""} ${className ? className : ""} ${
-    rounded ? "rounded" : ""
-  } ${size ?? ""} ${disabled ? "disabled" : ""}`;
+  const content = useMemo(
+    () => (isLoading ? <div className="loader">loader</div> : children),
+    [children, isLoading]
+  );
 
   if (as === "link") {
     const { to, ...linkRest } = rest as LinkProps;
     return (
       <StyledLink className={allClassNames} to={to} {...linkRest}>
-        {children}
+        {content}
       </StyledLink>
     );
   }
@@ -55,7 +67,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
         rel="noopener noreferrer"
         {...anchorRest}
       >
-        {children}
+        {content}
       </StyledAnchor>
     );
   }
@@ -69,7 +81,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
       ref={ref as React.MutableRefObject<HTMLButtonElement>}
       {...buttonRest}
     >
-      {isLoading ? <div className="loader">loader</div> : children}
+      {content}
     </StyledButton>
   );
 };
