@@ -8,6 +8,17 @@ export const StyledNewTaskModalContainer = styled.form`
   justify-content: flex-start;
   text-align: left;
 
+  .selection {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    span {
+      margin-top: 20px;
+      color: ${({ theme }) => theme.palette.red[500]};
+    }
+  }
+
   .submit-btn {
     width: 100%;
     padding: 5px;

@@ -56,7 +56,7 @@ export const StyledInputContainer = styled.div`
       background-color: ${green700};
       border: none;
       border-radius: 5px;
-      color: ${({ theme }) => theme.palette.white[900]};
+      color: ${({ theme }) => theme.palette.gray[500]};
       outline: none;
 
       &:-webkit-autofill,

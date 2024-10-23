@@ -20,6 +20,8 @@ export interface Option {
 
 interface CustomSelectProps extends Props<Option, true> {
   label?: string;
+  styleType?: "column";
+  variant?: "dark" | "gray";
   options: Option[];
   error?: string;
   isDisabled?: boolean;
@@ -36,6 +38,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
   (
     {
       label,
+      styleType,
       options,
       value,
       onChange: selectOnChange,
@@ -43,6 +46,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
       isDisabled,
       size,
       width,
+      variant,
       isMulti,
       ...rest
     },
@@ -64,7 +68,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
       value,
       menuIsOpen,
       onChange: handleChange,
-      styles: selectStyles({ error, theme, isDisabled, size, width }),
+      styles: selectStyles({ error, theme, isDisabled, size, width, variant }),
       components: {
         DropdownIndicator: (
           indicatorProps: DropdownIndicatorProps<Option, boolean, GroupBase<Option>>
@@ -79,7 +83,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
     };
 
     return (
-      <StyledSelectContainer>
+      <StyledSelectContainer className={styleType}>
         <Label>{label}</Label>
         <ReactSelect className="react-select" {...finalProps} />
       </StyledSelectContainer>

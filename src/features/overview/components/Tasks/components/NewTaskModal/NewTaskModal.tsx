@@ -1,10 +1,14 @@
-import Modal from "@/common/components/Modal/Modal";
-import { StyledNewTaskModalContainer } from "./NewTaskModal.styled";
-import { FC, useCallback } from "react";
-import useInitNewTaskForm from "../../hooks/useInitNewTaskForm";
-import { Controller, FieldValues } from "react-hook-form";
-import Input from "@/common/components/Input";
+import { Badge } from "@/.config/theme";
 import Button from "@/common/components/Button";
+import Input from "@/common/components/Input";
+import Modal from "@/common/components/Modal/Modal";
+import Select from "@/common/components/Select";
+import { priorityOptions, statusOptions } from "@/features/overview/constant";
+import { FC, useCallback } from "react";
+import { Controller, FieldValues } from "react-hook-form";
+import useInitNewTaskForm from "../../hooks/useInitNewTaskForm";
+import { StyledNewTaskModalContainer } from "./NewTaskModal.styled";
+import Textarea from "@/common/components/Textarea";
 
 interface NewTaskModalProps {
   isOpen: boolean;
@@ -43,10 +47,9 @@ const NewTaskModal: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
           control={control}
           name="description"
           render={({ field: { value, onChange } }) => (
-            <Input
+            <Textarea
               label="Description"
               error={errors.description?.message}
-              type="text"
               value={value}
               onChange={onChange}
               variant="gray"
@@ -54,31 +57,43 @@ const NewTaskModal: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
           )}
         />
         <Controller
-          control={control}
           name="status"
-          render={({ field: { value, onChange } }) => (
-            <Input
-              label="Status"
-              error={errors.status?.message}
-              type="text"
-              value={value}
-              onChange={onChange}
-              variant="gray"
-            />
+          control={control}
+          render={({ field: { onChange, value, ref } }) => (
+            <div className="selection">
+              <Select
+                label="Status"
+                styleType="column"
+                variant="gray"
+                options={statusOptions}
+                value={value}
+                onChange={(selectedValue) => onChange(selectedValue)}
+                ref={ref}
+              />
+              <Badge className="info-text">
+                * Select the current status of the task (e.g., To Do, In Progress, Done).
+              </Badge>
+            </div>
           )}
         />
         <Controller
-          control={control}
           name="priority"
-          render={({ field: { value, onChange } }) => (
-            <Input
-              label="Priority"
-              error={errors.priority?.message}
-              type="text"
-              value={value}
-              onChange={onChange}
-              variant="gray"
-            />
+          control={control}
+          render={({ field: { onChange, value, ref } }) => (
+            <div className="selection">
+              <Select
+                label="Priority"
+                styleType="column"
+                variant="gray"
+                options={priorityOptions}
+                value={value}
+                onChange={(selectedValue) => onChange(selectedValue)}
+                ref={ref}
+              />
+              <Badge className="info-text">
+                * Choose the task's priority level (e.g., Low, Medium, High).
+              </Badge>
+            </div>
           )}
         />
         <Controller

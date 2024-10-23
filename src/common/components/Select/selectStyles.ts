@@ -5,6 +5,7 @@ import { Option } from "./Select";
 interface SelectStylesProps {
   error?: string;
   theme: DefaultTheme;
+  variant?: "dark" | "gray";
   isDisabled?: boolean;
   size?: "small";
   width?: string;
@@ -13,7 +14,10 @@ interface SelectStylesProps {
 type IsMulti = boolean;
 type SelectStylesType = (props: SelectStylesProps) => StylesConfig<Option, IsMulti>;
 
-const selectStyles: SelectStylesType = ({ error, theme, isDisabled, size, width }) => ({
+const black900 = ({ theme }: { theme: DefaultTheme }) => theme.palette.black[900];
+const black800 = ({ theme }: { theme: DefaultTheme }) => theme.palette.black[800];
+
+const selectStyles: SelectStylesType = ({ error, theme, isDisabled, size, variant, width }) => ({
   container: (provided) => ({
     ...provided,
     border: "none",
@@ -30,7 +34,7 @@ const selectStyles: SelectStylesType = ({ error, theme, isDisabled, size, width 
     alignItems: "center",
     position: "relative",
     margin: "1px",
-    backgroundColor: `${theme.palette.black[900]}`,
+    backgroundColor: variant === "gray" ? black800({ theme }) : black900({ theme }),
     borderRadius: "8px",
     "&:has(input:focus)": {
       boxShadow: `rgba(255, 255, 255, 0) 0px 0px 0px 0.5px inset,
@@ -94,7 +98,7 @@ const selectStyles: SelectStylesType = ({ error, theme, isDisabled, size, width 
       backgroundColor: "#737eff",
     },
     "&:hover .multiValueRemove": {
-      backgroundColor: theme.palette.black[900],
+      backgroundColor: variant === "gray" ? black800({ theme }) : black900({ theme }),
     },
   }),
 
@@ -112,7 +116,7 @@ const selectStyles: SelectStylesType = ({ error, theme, isDisabled, size, width 
     width: "100%",
     margin: "8px auto",
     borderRadius: "8px",
-    backgroundColor: theme.palette.black[900],
+    backgroundColor: variant === "gray" ? black800({ theme }) : black900({ theme }),
     boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25);",
     padding: "0px",
   }),
@@ -159,7 +163,7 @@ const selectStyles: SelectStylesType = ({ error, theme, isDisabled, size, width 
 
     "&:hover, &:has(.focused)": {
       outline: "none",
-      background: theme.palette.black[800],
+      background: black800,
       color: theme.palette.gray[500],
       cursor: "pointer",
     },

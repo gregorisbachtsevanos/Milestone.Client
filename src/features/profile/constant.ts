@@ -1,13 +1,15 @@
+import { LanguageOptions, ThemeOptions } from "./types";
+
 export const themeOptions = [
-  { value: "system", label: "System" },
-  { value: "dark", label: "Dark" },
-  { value: "light", label: "Light" },
+  { value: "system", label: ThemeOptions.System },
+  { value: "dark", label: ThemeOptions.Dark },
+  { value: "light", label: ThemeOptions.Light },
 ];
 
 export const langOptions = [
-  { value: "system", label: "System" },
-  { value: "english", label: "English" },
-  { value: "greek", label: "Greek" },
+  { value: "system", label: LanguageOptions.System },
+  { value: "english", label: LanguageOptions.English },
+  { value: "greek", label: LanguageOptions.Greek },
 ];
 
 export const MAX_FILE_SIZE: number = 102400;
