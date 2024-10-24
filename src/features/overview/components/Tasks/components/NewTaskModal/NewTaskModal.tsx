@@ -6,7 +6,7 @@ import Select from "@/common/components/Select";
 import { priorityOptions, statusOptions } from "@/features/overview/constant";
 import { FC, useCallback } from "react";
 import { Controller, FieldValues } from "react-hook-form";
-import useInitNewTaskForm from "../../hooks/useInitNewTaskForm";
+import useInitNewTaskForm from "../../../../hooks/useInitNewTaskForm";
 import { StyledNewTaskModalContainer } from "./NewTaskModal.styled";
 import Textarea from "@/common/components/Textarea";
 import TagsInput from "@/common/components/TagsInput";
@@ -27,6 +27,7 @@ const NewTaskModal: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   const submitNewTask = useCallback((data: FieldValues) => {
     console.log(data);
   }, []);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <StyledNewTaskModalContainer onSubmit={handleSubmit(submitNewTask)}>

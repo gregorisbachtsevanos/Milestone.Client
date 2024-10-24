@@ -14,28 +14,25 @@ const Overview = () => {
   const [newGoalModal, setNewGoalModal] = useState(false);
   const [newEventModal, setNewEventModal] = useState(false);
 
-  const openNewGoalModal = useCallback(() => {
-    setNewGoalModal(true);
-  }, []);
-
-  const openNewEventModal = useCallback(() => {
-    setNewGoalModal(true);
-  }, []);
-
   return (
     <StyledMainLayout>
       <StyledOverviewContainer>
         <Summary />
         <div className="sections">
           <Tasks />
-          <Notes data={notesData} title="Goals" btnTitle="New Goal" onBtnClick={openNewGoalModal} />
+          <Notes
+            data={notesData}
+            title="Goals"
+            btnTitle="New Goal"
+            onBtnClick={() => setNewGoalModal(true)}
+          />
           <div className="row">
             <Notes
               data={calendarData}
               title="Calendar"
               size="small"
               btnTitle="New Event"
-              onBtnClick={openNewEventModal}
+              onBtnClick={() => setNewEventModal(true)}
             />
             <Chat />
           </div>
