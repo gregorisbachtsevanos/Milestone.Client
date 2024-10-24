@@ -1,7 +1,7 @@
 import { Caption, Text } from "@/.config/theme";
 import { forwardRef, ForwardRefRenderFunction, InputHTMLAttributes } from "react";
 import { StyledInputContainer } from "./Input.styled";
-import Icons from "../Icon/Icons";
+import Icons, { IconName } from "../Icon/Icons";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -20,7 +20,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     <StyledInputContainer>
       {label && <Text>{label}</Text>}
       <div className={`input ${variant}`} {...rest}>
-        {icon && <Icons name={icon} size="20px" color="white" />}
+        {icon && <Icons name={icon as IconName} size="20px" color="white" />}
         <input {...rest} ref={ref} />
         {hasBtn && (
           <Caption className="button" onClick={openModal}>

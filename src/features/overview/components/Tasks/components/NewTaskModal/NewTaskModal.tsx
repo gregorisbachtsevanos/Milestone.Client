@@ -9,6 +9,7 @@ import { Controller, FieldValues } from "react-hook-form";
 import useInitNewTaskForm from "../../hooks/useInitNewTaskForm";
 import { StyledNewTaskModalContainer } from "./NewTaskModal.styled";
 import Textarea from "@/common/components/Textarea";
+import TagsInput from "@/common/components/TagsInput";
 
 interface NewTaskModalProps {
   isOpen: boolean;
@@ -100,14 +101,7 @@ const NewTaskModal: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
           control={control}
           name="tags"
           render={({ field: { value, onChange } }) => (
-            <Input
-              label="Tags"
-              error={errors.tags?.message}
-              type="text"
-              value={value}
-              onChange={onChange}
-              variant="gray"
-            />
+            <TagsInput value={value || []} onChange={(newTags) => onChange(newTags)} />
           )}
         />
         <div className="submit-btn">

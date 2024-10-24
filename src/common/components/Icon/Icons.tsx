@@ -14,7 +14,7 @@ import * as LuIcons from "react-icons/lu";
 import * as MdIcons from "react-icons/md";
 import Milestone from "assets/svg/milestoneYellowLines.svg";
 
-type IconName = keyof typeof IconsMap;
+export type IconName = keyof typeof IconsMap;
 export interface IconProps {
   name: IconName;
   color?: "yellow" | "white" | "black" | "darkGray" | "gray" | "red";
