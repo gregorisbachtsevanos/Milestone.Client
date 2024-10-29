@@ -1,7 +1,7 @@
-import { useState, KeyboardEvent, ChangeEvent, FC } from "react";
-import { StyledTagsInputContainer } from "./TagsInput.styled";
 import { Caption } from "@/.config/theme";
+import { ChangeEvent, FC, KeyboardEvent, useState } from "react";
 import Input from "../Input";
+import { StyledTagsInputContainer } from "./TagsInput.styled";
 
 interface TagsInputProps {
   value: string[];
