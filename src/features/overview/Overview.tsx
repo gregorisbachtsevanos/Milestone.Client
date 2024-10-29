@@ -1,14 +1,14 @@
 import { calendarData } from "@/data/calenderData";
 import { notesData } from "@/data/notesData";
 import { StyledMainLayout } from "@/layouts/DashboardLayout/DashboardLayout.styled";
+import { useState } from "react";
 import Chat from "./components/Chat";
 import Notes from "./components/Notes";
+import NewEventModal from "./components/Notes/NewEventModal";
+import NewGoalModal from "./components/Notes/NewGoalModal";
 import Summary from "./components/Summary";
 import Tasks from "./components/Tasks";
 import { StyledOverviewContainer } from "./Overview.styled";
-import NewEventModal from "./components/Notes/components/NewEventModal";
-import NewGoalModal from "./components/Notes/components/NewGoalModal";
-import { useCallback, useState } from "react";
 
 const Overview = () => {
   const [newGoalModal, setNewGoalModal] = useState(false);
