@@ -1,6 +1,8 @@
 import Button from "@/common/components/Button";
 import Input from "@/common/components/Input";
+import Label from "@/common/components/Label";
 import Modal from "@/common/components/Modal/Modal";
+import Switch from "@/common/components/Switch";
 import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
 import useInitNewGoalForm from "@/features/overview/hooks/useInitNewTaskForm copy 2";
@@ -55,11 +57,14 @@ const NewEventModal: FC<NewEventModalProps> = ({ isOpen, onClose }) => {
             />
           )}
         />
-
         <Controller
-          name="reminder"
+          name="emailNotification"
           control={control}
-          render={({ field: { onChange, value, ref } }) => <input type="radio" />}
+          render={({ field: { onChange } }) => (
+            <Label infoText="Email Notification: ">
+              <Switch onChange={onChange} />
+            </Label>
+          )}
         />
         <Controller
           control={control}

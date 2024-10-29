@@ -7,7 +7,7 @@ const useInitNewGoalForm = () => {
     defaultValues: {
       title: "",
       description: "",
-      reminder: true,
+      emailNotification: false,
       tags: [],
     },
     mode: "onBlur",
