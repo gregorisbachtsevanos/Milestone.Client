@@ -38,9 +38,9 @@ const Modal: FC<ModalProps> = ({
   //   OverlayStyle,
 }) => {
   const handleConfirm = useCallback(() => {
-    if (onConfirm) onConfirm();
-    // onClose && onClose();
-  }, [onConfirm]);
+    onConfirm?.();
+    onClose?.();
+  }, [onConfirm, onClose]);
 
   return (
     <ReactModal
@@ -63,7 +63,7 @@ const Modal: FC<ModalProps> = ({
       {!withoutClose && (
         <button
           onClick={() => {
-            if (onClose) onClose();
+            onClose?.();
           }}
           className="close-button"
         >
