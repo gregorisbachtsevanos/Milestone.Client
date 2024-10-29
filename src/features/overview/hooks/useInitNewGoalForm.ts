@@ -1,28 +1,19 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { newTaskValidationSchema } from "../validation/newTaskValidationSchema";
-import { PriorityOptions, StatusOptions } from "@/features/overview/types";
+import { newGoalValidationSchema } from "../validation/newGoalValidationSchema";
 
-const useInitNewTaskForm = () => {
+const useInitNewGoalForm = () => {
   const methods = useForm({
     defaultValues: {
       title: "",
       description: "",
-      status: {
-        value: "backlog",
-        label: StatusOptions.Backlog,
-      },
-      priority: {
-        value: "low",
-        label: PriorityOptions.Low,
-      },
       tags: [],
     },
     mode: "onBlur",
-    resolver: yupResolver(newTaskValidationSchema),
+    resolver: yupResolver(newGoalValidationSchema),
   });
 
   return { methods };
 };
 
-export default useInitNewTaskForm;
+export default useInitNewGoalForm;
