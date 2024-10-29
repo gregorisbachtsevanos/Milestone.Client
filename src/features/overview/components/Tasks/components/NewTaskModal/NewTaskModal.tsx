@@ -29,7 +29,7 @@ const NewTaskModal: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   }, []);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} closeOnClickOutside={() => onClose()}>
       <StyledNewTaskModalContainer onSubmit={handleSubmit(submitNewTask)}>
         <Controller
           control={control}
