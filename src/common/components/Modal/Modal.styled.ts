@@ -1,8 +1,16 @@
 import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
-0% {transform:translateY(50%);opacity:0}
-100% {transform:translateY(0);opacity:1}`;
+  0% {
+    transform: translateY(50%);
+    opacity: 0
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1
+  }
+`;
 
 export const StyledModal = styled.div<{ width?: string }>`
   position: relative;
@@ -20,9 +28,10 @@ export const StyledModal = styled.div<{ width?: string }>`
   flex-direction: column;
   overflow: visible;
   text-align: center;
-  animation: ${slideUp} 0.5s cubic-bezier(0.4, 0, 0.2, 1 backwards);
+  animation: ${slideUp} 0.5s cubic-bezier(0.4, 0, 0.2, 1), backwards;
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(0px);
+  box-shadow: 0 5px 20px #00000042;
 
   .buttons {
     width: 100%;
