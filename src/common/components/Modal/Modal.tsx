@@ -50,7 +50,7 @@ const Modal: FC<ModalProps> = ({
       appElement={document.getElementById("root") as HTMLElement}
       overlayClassName="_"
       contentElement={({ style, ...rest }, children) => (
-        <StyledModal {...rest} width={width}>
+        <StyledModal {...rest} width={width} style={style}>
           {children}
         </StyledModal>
       )}

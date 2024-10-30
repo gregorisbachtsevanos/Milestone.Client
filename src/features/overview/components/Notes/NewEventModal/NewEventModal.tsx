@@ -74,7 +74,7 @@ const NewEventModal: FC<NewEventModalProps> = ({ isOpen, onClose }) => {
               <Datepicker
                 dateFormat="yyyy/MM/dd"
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => setStartDate(date as Date)}
                 minDate={new Date()}
                 // showTimeSelect
                 // todayButton={"Today"}
