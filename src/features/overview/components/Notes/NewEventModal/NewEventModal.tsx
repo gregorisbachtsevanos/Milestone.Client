@@ -6,15 +6,18 @@ import Switch from "@/common/components/Switch";
 import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
 import useInitNewEventForm from "@/features/overview/hooks/useInitNewEventForm";
-import { FC, useCallback, useEffect } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 import { StyledNewEventModalContainer } from "./NewEventModal.styled";
+import Datepicker from "@/common/components/Datepicker";
+import { Text } from "@/.config/theme";
 
 interface NewEventModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 const NewEventModal: FC<NewEventModalProps> = ({ isOpen, onClose }) => {
+  const [startDate, setStartDate] = useState(new Date());
   const { methods } = useInitNewEventForm();
 
   const {
@@ -60,6 +63,23 @@ const NewEventModal: FC<NewEventModalProps> = ({ isOpen, onClose }) => {
               onChange={onChange}
               variant="gray"
             />
+          )}
+        />
+        <Controller
+          control={control}
+          name="date"
+          render={() => (
+            <div className="datepicker">
+              <Text>Date: </Text>
+              <Datepicker
+                dateFormat="yyyy/MM/dd"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                minDate={new Date()}
+                // showTimeSelect
+                // todayButton={"Today"}
+              />
+            </div>
           )}
         />
         <Controller

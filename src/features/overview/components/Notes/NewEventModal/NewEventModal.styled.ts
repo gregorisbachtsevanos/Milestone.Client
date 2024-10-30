@@ -13,6 +13,13 @@ export const StyledNewEventModalContainer = styled.div`
     gap: 15px;
   }
 
+  .datepicker {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 5px;
+  }
+
   .submit-btn {
     width: 100%;
     padding: 5px;

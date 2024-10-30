@@ -7,6 +7,7 @@ const useInitNewEventForm = () => {
     defaultValues: {
       title: "",
       description: "",
+      date: "",
       emailNotification: false,
       tags: [],
     },
