@@ -43,8 +43,8 @@ export enum Priority {
 }
 
 export type User = {
-  name: String;
-  email: String;
+  name: string;
+  email: string;
 };
 
 type PriorityType = Priority;
