@@ -15,6 +15,7 @@ interface NewTaskModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 const NewTaskModal: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   const { methods } = useInitNewTaskForm();
 
