@@ -8,7 +8,7 @@ export const StyledAuthFormContainer = css`
   height: 70vh;
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 1.5rem 4rem;
   gap: 0.5rem;
 `;
 
