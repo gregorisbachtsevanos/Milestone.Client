@@ -1,6 +1,6 @@
 import { Text, Title } from "@/.config/theme";
+import { timePassSince } from "@/common/utils/dates";
 import { Priority, VariantType } from "@/types";
-import { remainingDays } from "@/common/utils/dates";
 import { FC } from "react";
 import Tags from "../Tags";
 import { StyledSingleCardContainer } from "./SingleCard.styled";
@@ -9,7 +9,7 @@ interface SingleCardProps {
   title: string;
   description: string;
   priority: Priority;
-  deadline: string;
+  createdDate: string;
   tags?: string[];
 }
 
@@ -26,11 +26,11 @@ const getPriorityVariant = (priority: Priority): VariantType => {
   }
 };
 
-const SingleCard: FC<SingleCardProps> = ({ title, description, deadline, priority, tags }) => {
+const SingleCard: FC<SingleCardProps> = ({ title, description, createdDate, priority, tags }) => {
   return (
     <StyledSingleCardContainer>
       <div className="header">
-        <Tags>{remainingDays(deadline)}</Tags>
+        <Tags>{timePassSince(new Date(createdDate))}</Tags>
         <Tags variant={getPriorityVariant(priority)}>{priority}</Tags>
       </div>
       <div className="content">
