@@ -45,12 +45,13 @@ const Modal: FC<ModalProps> = ({
   return (
     <ReactModal
       onRequestClose={() => {
-        if (closeOnClickOutside) closeOnClickOutside();
+        closeOnClickOutside?.();
       }}
       appElement={document.getElementById("root") as HTMLElement}
       overlayClassName="_"
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       contentElement={({ style, ...rest }, children) => (
-        <StyledModal {...rest} width={width} style={style}>
+        <StyledModal {...rest} width={width}>
           {children}
         </StyledModal>
       )}
