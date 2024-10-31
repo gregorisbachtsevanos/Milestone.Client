@@ -1,31 +1,21 @@
-import { backlogTasks, completedTasks, inProgressTasks, onHoldTasks } from "@/data/tasksData";
+import { useGetAllTasksQuery } from "@/app/services/projectManegerApi";
+import { Status } from "@/types";
+import { useSearchParams } from "react-router-dom";
 import Cards from "../Cards";
 import { StyledTasksContainer } from "./Tasks.styled";
-import { useSearchParams } from "react-router-dom";
-import { useMemo } from "react";
 
 const Tasks = () => {
   const [searchParams] = useSearchParams();
-  const status = searchParams.get("status");
 
-  const tasksToRender = useMemo(() => {
-    switch (status) {
-      case "backlog":
-        return backlogTasks;
-      case "on hold":
-        return onHoldTasks;
-      case "in progress":
-        return inProgressTasks;
-      case "completed":
-        return completedTasks;
-      default:
-        return backlogTasks;
-    }
-  }, [status]);
+  const selectedTaskStatus = searchParams.get("status") ?? Status.Backlog;
+
+  const { data: tasks, isLoading } = useGetAllTasksQuery({ status: selectedTaskStatus as Status });
+
+  if (isLoading) return "loading";
 
   return (
     <StyledTasksContainer>
-      <Cards data={tasksToRender} />
+      <Cards data={tasks ?? []} />
     </StyledTasksContainer>
   );
 };

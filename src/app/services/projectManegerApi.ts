@@ -1,6 +1,10 @@
-import { ProjectType } from "@/types";
+import { ProjectType, Status, TaskType } from "@/types";
 import { api } from "./api";
 import config from "@/.config/config";
+
+type getTasksRequest = {
+  status?: Status;
+};
 
 const { projectManagerAPI: PROJECT_MANAGER_API } = config;
 
@@ -36,7 +40,13 @@ export const projectManagerAPI = api.injectEndpoints({
         method: "DELETE",
       }),
     }),
+    getAllTasks: build.query<TaskType[], getTasksRequest>({
+      query: ({ status }) => ({
+        url: `${PROJECT_MANAGER_API}/v1/tasks`,
+        params: { status },
+      }),
+    }),
   }),
 });
 
-export const { useGetAllProjectsQuery } = projectManagerAPI;
+export const { useGetAllTasksQuery } = projectManagerAPI;
