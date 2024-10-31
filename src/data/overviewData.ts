@@ -23,7 +23,7 @@ export const overviewData = [
     value: calendarData.length,
   },
   {
-    title: "Last login",
+    title: "Last Activity",
     value: timePassSince(new Date("2024-09-22T12:00:00")),
   },
 ];
