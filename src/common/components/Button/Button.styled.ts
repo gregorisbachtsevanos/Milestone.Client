@@ -11,7 +11,7 @@ export const StyledButton = styled.button<ButtonHTMLAttributes<HTMLButtonElement
   border-radius: 5px;
   text-align: center;
 
-  &.big {
+  &.large {
     width: 100%;
   }
 

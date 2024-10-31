@@ -47,8 +47,8 @@ const InvitationModal: FC<InvitationModalProps> = ({ isOpen, onClose }) => {
             />
           )}
         />
-        <Button variant="primary" isLoading={false} disabled={false} type="submit">
-          Save
+        <Button variant="primary" type="submit">
+          Send
         </Button>
       </StyledInvitationModalForm>
     </Modal>
