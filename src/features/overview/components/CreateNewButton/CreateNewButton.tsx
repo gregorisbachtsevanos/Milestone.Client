@@ -9,8 +9,6 @@ interface CreateNewButtonProps {
 }
 
 const CreateNewButton: FC<CreateNewButtonProps> = ({ title, onOpen }) => {
-  console.log(title);
-
   return (
     <Button variant="primary" size="small" rounded>
       <Tags variant="primary" icon={<Icons name="add" color="darkGray" />} onClick={onOpen}>
