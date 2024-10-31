@@ -59,7 +59,9 @@ const Register = () => {
         <ThirdPartyAuth />
         <RowInputFields control={control} errors={errors} openModal={openInvitationModal} />
         <ColumnInputFields control={control} errors={errors} openModal={openInvitationModal} />
-        <Button type="submit">Register</Button>
+        <Button type="submit" variant="primary">
+          Register
+        </Button>
       </StyledRegisterForm>
       <InvitationModal isOpen={invitationModal} onClose={() => setInvitationModal(false)} />
     </>

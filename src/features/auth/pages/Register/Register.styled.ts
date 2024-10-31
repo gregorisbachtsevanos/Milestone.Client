@@ -6,9 +6,14 @@ export const StyledRegisterForm = styled.form`
   ${GlassEffect}
   position: relative;
   z-index: 9;
+  gap: 0px;
 
   .row {
     display: flex;
     gap: 30px;
+  }
+
+  button {
+    margin: 15px 7px;
   }
 `;
