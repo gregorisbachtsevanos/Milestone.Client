@@ -9,17 +9,17 @@ import * as yup from "yup";
 export const registerValidationSchema = yup.object().shape({
   firstname: yup
     .string()
-    .matches(ONLY_LETTER_REGEXP, "Firstname can only contain letters")
-    .required("Please enter your firstname"),
+    .required("Firstname can not be empty.")
+    .matches(ONLY_LETTER_REGEXP, "First name must contain only letters."),
   lastname: yup
     .string()
-    .matches(ONLY_LETTER_REGEXP, "Lastname can only contain letters")
-    .required("Please enter your lastname"),
+    .required("Lastname can not be empty")
+    .matches(ONLY_LETTER_REGEXP, "Lastname must contain only letters."),
   username: yup
     .string()
     .matches(
       USERNAME_REGEXP,
-      "Username must be at least 4 characters long, contain only letters, numbers, and underscores"
+      "Username must be 4+ characters, letters, numbers, or underscores only."
     )
     .required("Please define username"),
   email: yup
