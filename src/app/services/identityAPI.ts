@@ -13,14 +13,12 @@ import {
   RegisterProps,
 } from "./types/identityTypes";
 import config from "@/.config/config";
+import { userAPI } from "./userApi";
+import { projectManagerAPI } from "./projectManegerApi";
 
 const { identityAPI: IDENTITY_API } = config;
-const clientId = config.auth.clientId;
-const clientSecret = config.auth.clientSecret;
-// const machineId = config.auth.machineId;
-// const machineSecret = config.auth.machineSecret;
-
-// http://127.0.0.1:3030/api/uat/identity.API/identity/machine-token
+const { clientId, clientSecret } = config.auth;
+// const {machineId,machineSecret} = config.auth;
 
 export const identityAPI = api.injectEndpoints({
   endpoints: (build) => ({
@@ -83,13 +81,18 @@ export const identityAPI = api.injectEndpoints({
           return { error: registerResponse.error as FetchBaseQueryError };
         }
 
-        const accessToken = (registerResponse.data as AuthResponse).accessToken;
-        const refreshToken = (registerResponse.data as AuthResponse).refreshToken;
+        const { accessToken } = registerResponse.data as AuthResponse;
+        const { refreshToken } = registerResponse.data as AuthResponse;
 
         _queryApi.dispatch(setAccessToken(accessToken));
         _queryApi.dispatch(setRefreshToken(refreshToken));
 
         setLocalStorageItem("refreshToken", refreshToken);
+
+        const { user_id } = registerResponse.data as AuthResponse;
+
+        if (user_id)
+          await _queryApi.dispatch(userAPI.endpoints.getCurrentUser.initiate({ user_id }));
 
         return { data: registerResponse.data as AuthResponse };
       },
@@ -123,15 +126,21 @@ export const identityAPI = api.injectEndpoints({
           return { error: loginResponse.error as FetchBaseQueryError };
         }
 
-        const accessToken = (loginResponse.data as AuthResponse).accessToken;
-        const refreshToken = (loginResponse.data as AuthResponse).refreshToken;
+        const { accessToken } = loginResponse.data as AuthResponse;
+        const { refreshToken } = loginResponse.data as AuthResponse;
 
         _queryApi.dispatch(setAccessToken(accessToken));
         _queryApi.dispatch(setRefreshToken(refreshToken));
 
         setLocalStorageItem("refreshToken", refreshToken);
+        const { user_id } = loginResponse.data as AuthResponse;
+        console.log(user_id);
+        if (user_id)
+          await _queryApi.dispatch(userAPI.endpoints.getCurrentUser.initiate({ user_id }));
 
-        return { data: loginResponse.data as AuthResponse };
+        const overview = await _queryApi.dispatch(projectManagerAPI.endpoints.overview.initiate());
+
+        return { data: loginResponse.data as AuthResponse, overview };
       },
     }),
     refresh: build.mutation<AuthResponse, RefreshProps>({

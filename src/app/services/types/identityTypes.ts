@@ -9,6 +9,7 @@ export interface AuthResponse {
   expiresIn: number;
   refreshToken: string;
   tokenType: string;
+  user_id: string;
 }
 
 export interface RegisterProps {

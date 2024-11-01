@@ -10,6 +10,11 @@ const { projectManagerAPI: PROJECT_MANAGER_API } = config;
 
 export const projectManagerAPI = api.injectEndpoints({
   endpoints: (build) => ({
+    overview: build.query<ProjectType[], void>({
+      query: () => ({
+        url: `${PROJECT_MANAGER_API}/v1/manager/overview`,
+      }),
+    }),
     getAllProjects: build.query<ProjectType[], void>({
       query: () => ({
         url: `${PROJECT_MANAGER_API}/v1/projects`,
