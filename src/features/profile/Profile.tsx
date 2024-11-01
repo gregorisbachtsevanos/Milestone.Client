@@ -6,6 +6,7 @@ import Settings from "./components/Settings";
 import Theme from "./components/Theme";
 import UserInfo from "./components/UserInfo";
 import { ModalType } from "./types";
+import useAuth from "../auth/hooks/useAuth";
 
 const Profile = forwardRef<HTMLDivElement>((_, ref) => {
   const [modal, setModal] = useState<ModalType>(null);
@@ -17,6 +18,11 @@ const Profile = forwardRef<HTMLDivElement>((_, ref) => {
 
   const handleClose = useCallback(() => setModal(null), []);
 
+  const { logout } = useAuth();
+  const handleLogout = useCallback(() => {
+    logout.request();
+  }, [logout]);
+
   return (
     <StyledProfileController ref={ref}>
       <div className="mask">
@@ -24,7 +30,9 @@ const Profile = forwardRef<HTMLDivElement>((_, ref) => {
         <Theme />
         <Language />
         <Settings modal={modal} handleClose={handleClose} handleOpenModal={handleOpenModal} />
-        <Button variant="danger-outline">Logout</Button>
+        <Button variant="danger-outline" onClick={handleLogout}>
+          Logout
+        </Button>
         <Button variant="danger">Delete Account</Button>
       </div>
     </StyledProfileController>

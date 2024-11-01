@@ -14,11 +14,13 @@ import {
 } from "./types/identityTypes";
 import config from "@/.config/config";
 
-const IDENTITY_API = config.identityAPI;
+const { identityAPI: IDENTITY_API } = config;
 const clientId = config.auth.clientId;
 const clientSecret = config.auth.clientSecret;
 // const machineId = config.auth.machineId;
 // const machineSecret = config.auth.machineSecret;
+
+// http://127.0.0.1:3030/api/uat/identity.API/identity/machine-token
 
 export const identityAPI = api.injectEndpoints({
   endpoints: (build) => ({
@@ -161,13 +163,14 @@ export const identityAPI = api.injectEndpoints({
     logout: build.mutation<void, LogoutProps>({
       async queryFn({ refreshToken }, _queryApi, _extraOptions, baseQuery) {
         const logoutResponse = await baseQuery({
-          url: `${IDENTITY_API}/web/logout`,
+          url: `${IDENTITY_API}/identity/logout`,
+          headers: { Authorization: `Bearer ${refreshToken}` },
           method: "POST",
-          body: {
-            clientId,
-            clientSecret,
-            refreshToken,
-          },
+          // body: {
+          //   clientId,
+          //   clientSecret,
+          //   refreshToken,
+          // },
         });
 
         if (logoutResponse.error) return { error: logoutResponse.error as FetchBaseQueryError };
