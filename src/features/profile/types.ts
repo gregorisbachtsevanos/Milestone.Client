@@ -11,3 +11,27 @@ export enum LanguageOptions {
   English = "English",
   Greek = "Greek",
 }
+
+export type UserType = {
+  id: string;
+  user_id: string;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  created_at: string;
+  updated_at: string;
+};
+
+type TotalByStatus = {
+  backlog?: number;
+  completed?: number;
+  "on hold"?: number;
+  "in progress"?: number;
+};
+
+export type Overview = {
+  totalProjects?: number;
+  totalTasks?: TotalByStatus;
+  totalSubtasks?: TotalByStatus;
+};
