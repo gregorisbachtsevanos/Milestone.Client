@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "app/store";
 import { Overview, UserType } from "./types";
 
-interface CachedDataState {
+interface ProfileDataState {
   isOpen: boolean;
   currentUser: UserType | null;
   overview: Overview | null;
 }
 
-const initialState: CachedDataState = {
+const initialState: ProfileDataState = {
   isOpen: false,
   currentUser: null,
   overview: null,
