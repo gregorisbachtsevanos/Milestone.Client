@@ -134,9 +134,11 @@ export const identityAPI = api.injectEndpoints({
 
         setLocalStorageItem("refreshToken", refreshToken);
         const { user_id } = loginResponse.data as AuthResponse;
-        console.log(user_id);
-        if (user_id)
+
+        if (user_id) {
+          setLocalStorageItem("user_id", user_id);
           await _queryApi.dispatch(userAPI.endpoints.getCurrentUser.initiate({ user_id }));
+        }
 
         const overview = await _queryApi.dispatch(projectManagerAPI.endpoints.overview.initiate());
 
@@ -177,8 +179,9 @@ export const identityAPI = api.injectEndpoints({
         _queryApi.dispatch(setAccessToken(accessToken));
         _queryApi.dispatch(setRefreshToken(refreshToken));
         setLocalStorageItem("refreshToken", refreshToken);
+        const overview = await _queryApi.dispatch(projectManagerAPI.endpoints.overview.initiate());
 
-        return { data: refreshTokenResponse.data as AuthResponse };
+        return { data: refreshTokenResponse.data as AuthResponse, overview };
       },
     }),
     logout: build.mutation<void, LogoutProps>({
