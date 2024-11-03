@@ -1,6 +1,7 @@
 import { ProjectType, Status, TaskType } from "@/types";
 import { api } from "./api";
 import config from "@/.config/config";
+import { Overview } from "@/features/profile/types";
 
 type getTasksRequest = {
   status?: Status;
@@ -10,7 +11,7 @@ const { projectManagerAPI: PROJECT_MANAGER_API } = config;
 
 export const projectManagerAPI = api.injectEndpoints({
   endpoints: (build) => ({
-    overview: build.query<ProjectType[], void>({
+    overview: build.query<Overview, void>({
       query: () => ({
         url: `${PROJECT_MANAGER_API}/v1/manager/overview`,
       }),
