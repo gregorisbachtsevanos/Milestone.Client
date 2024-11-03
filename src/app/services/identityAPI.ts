@@ -15,6 +15,7 @@ import {
 import config from "@/.config/config";
 import { userAPI } from "./userApi";
 import { projectManagerAPI } from "./projectManegerApi";
+import { setCurrentUser, setOverview } from "@/features/profile/profileSlice";
 
 const { identityAPI: IDENTITY_API } = config;
 const { clientId, clientSecret } = config.auth;
@@ -135,14 +136,20 @@ export const identityAPI = api.injectEndpoints({
         setLocalStorageItem("refreshToken", refreshToken);
         const { user_id } = loginResponse.data as AuthResponse;
 
-        if (user_id) {
-          setLocalStorageItem("user_id", user_id);
-          await _queryApi.dispatch(userAPI.endpoints.getCurrentUser.initiate({ user_id }));
+        const userResponse = await _queryApi.dispatch(
+          userAPI.endpoints.getCurrentUser.initiate({ user_id })
+        );
+        const overviewResponse = await _queryApi.dispatch(
+          projectManagerAPI.endpoints.overview.initiate()
+        );
+
+        if (userResponse.data) {
+          _queryApi.dispatch(setCurrentUser(userResponse.data));
         }
-
-        const overview = await _queryApi.dispatch(projectManagerAPI.endpoints.overview.initiate());
-
-        return { data: loginResponse.data as AuthResponse, overview };
+        if (overviewResponse.data) {
+          _queryApi.dispatch(setOverview(overviewResponse.data));
+        }
+        return { data: loginResponse.data as AuthResponse };
       },
     }),
     refresh: build.mutation<AuthResponse, RefreshProps>({
