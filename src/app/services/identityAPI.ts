@@ -1,7 +1,13 @@
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { setAccessToken, setRefreshToken, setMachineToken } from "features/auth/authSlice";
+import config from "@/.config/config";
 import { getFetchQueryErrorMessage } from "@/common/utils/errors";
-import { removeLocalStorageItem, setLocalStorageItem } from "@/common/utils/localStorage";
+import { localStorageHandler } from "@/common/utils/localStorage";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import {
+  setAccessToken,
+  setMachineToken,
+  setRefreshToken,
+  setUserId,
+} from "features/auth/authSlice";
 import { RootState } from "../store";
 import { api } from "./api";
 import {
@@ -12,10 +18,7 @@ import {
   RefreshProps,
   RegisterProps,
 } from "./types/identityTypes";
-import config from "@/.config/config";
 import { userAPI } from "./userApi";
-import { projectManagerAPI } from "./projectManegerApi";
-import { setCurrentUser, setOverview } from "@/features/profile/profileSlice";
 
 const { identityAPI: IDENTITY_API } = config;
 const { clientId, clientSecret } = config.auth;
@@ -88,7 +91,7 @@ export const identityAPI = api.injectEndpoints({
         _queryApi.dispatch(setAccessToken(accessToken));
         _queryApi.dispatch(setRefreshToken(refreshToken));
 
-        setLocalStorageItem("refreshToken", refreshToken);
+        localStorageHandler.setItem("refreshToken", refreshToken);
 
         const { user_id } = registerResponse.data as AuthResponse;
 
@@ -133,22 +136,14 @@ export const identityAPI = api.injectEndpoints({
         _queryApi.dispatch(setAccessToken(accessToken));
         _queryApi.dispatch(setRefreshToken(refreshToken));
 
-        setLocalStorageItem("refreshToken", refreshToken);
+        localStorageHandler.setItem("refreshToken", refreshToken);
         const { user_id } = loginResponse.data as AuthResponse;
 
-        const userResponse = await _queryApi.dispatch(
-          userAPI.endpoints.getCurrentUser.initiate({ user_id })
-        );
-        const overviewResponse = await _queryApi.dispatch(
-          projectManagerAPI.endpoints.overview.initiate()
-        );
+        if (user_id) {
+          _queryApi.dispatch(setUserId(user_id));
+          localStorageHandler.setItem("user_id", user_id);
+        }
 
-        if (userResponse.data) {
-          _queryApi.dispatch(setCurrentUser(userResponse.data));
-        }
-        if (overviewResponse.data) {
-          _queryApi.dispatch(setOverview(overviewResponse.data));
-        }
         return { data: loginResponse.data as AuthResponse };
       },
     }),
@@ -176,7 +171,7 @@ export const identityAPI = api.injectEndpoints({
         if (refreshTokenResponse.error) {
           _queryApi.dispatch(setAccessToken(null));
           _queryApi.dispatch(setRefreshToken(null));
-          removeLocalStorageItem("refreshToken");
+          localStorageHandler.removeItem("refreshToken");
           return { error: refreshTokenResponse.error as FetchBaseQueryError };
         }
 
@@ -185,10 +180,9 @@ export const identityAPI = api.injectEndpoints({
 
         _queryApi.dispatch(setAccessToken(accessToken));
         _queryApi.dispatch(setRefreshToken(refreshToken));
-        setLocalStorageItem("refreshToken", refreshToken);
-        const overview = await _queryApi.dispatch(projectManagerAPI.endpoints.overview.initiate());
+        localStorageHandler.setItem("refreshToken", refreshToken);
 
-        return { data: refreshTokenResponse.data as AuthResponse, overview };
+        return { data: refreshTokenResponse.data as AuthResponse };
       },
     }),
     logout: build.mutation<void, LogoutProps>({
@@ -210,7 +204,7 @@ export const identityAPI = api.injectEndpoints({
         _queryApi.dispatch(setRefreshToken(null));
         _queryApi.dispatch(api.util.resetApiState());
 
-        removeLocalStorageItem("refreshToken");
+        localStorageHandler.removeItem("refreshToken");
 
         return { data: logoutResponse.data as void };
       },
@@ -233,7 +227,7 @@ export const identityAPI = api.injectEndpoints({
         _queryApi.dispatch(setRefreshToken(null));
         _queryApi.dispatch(api.util.resetApiState());
 
-        removeLocalStorageItem("refreshToken");
+        localStorageHandler.removeItem("refreshToken");
 
         return { data: logoutResponse.data as void };
       },
