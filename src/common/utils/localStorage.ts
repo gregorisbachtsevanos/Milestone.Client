@@ -11,3 +11,18 @@ export const getLocalStorageItem = (name: string) => {
 export const removeLocalStorageItem = (name: string) => {
   window.localStorage.removeItem(name);
 };
+
+export const localStorageHandler = {
+  setItem: (name: string, item: Record<string, unknown> | string) => {
+    const modifiedItem = typeof item === "object" ? JSON.stringify(item) : item;
+    window.localStorage.setItem(name, modifiedItem);
+  },
+
+  getItem: (name: string) => {
+    return window.localStorage.getItem(name) ?? "";
+  },
+
+  removeItem: (name: string) => {
+    window.localStorage.removeItem(name);
+  },
+};
