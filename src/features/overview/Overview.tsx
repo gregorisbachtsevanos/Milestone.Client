@@ -12,7 +12,7 @@ import NewGoalModal from "./components/Notes/NewGoalModal";
 import Summary from "./components/Summary";
 import Tasks from "./components/Tasks";
 import { StyledOverviewContainer } from "./Overview.styled";
-import { useOverviewQuery } from "@/app/services/projectManegerApi";
+import { useOverviewQuery } from "@/app/services/projectManagerApi";
 
 const Overview = () => {
   const [newGoalModal, setNewGoalModal] = useState(false);

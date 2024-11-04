@@ -11,6 +11,7 @@ import { Overview } from "@/features/profile/types";
 const Navbar = ({ overviewTotalData }: { overviewTotalData: Overview }) => {
   const [newTaskModal, setNewTaskModal] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+
   const navbarData = useTaskCounts(overviewTotalData);
 
   const handleParams = useCallback(

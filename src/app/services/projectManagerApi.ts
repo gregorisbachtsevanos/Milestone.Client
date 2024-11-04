@@ -46,13 +46,13 @@ export const projectManagerAPI = api.injectEndpoints({
         method: "DELETE",
       }),
     }),
-    getAllTasks: build.query<TaskType[], getTasksRequest>({
+    getAllSubtasks: build.query<TaskType[], getTasksRequest>({
       query: ({ status }) => ({
-        url: `${PROJECT_MANAGER_API}/v1/tasks`,
+        url: `${PROJECT_MANAGER_API}/v1/subtasks`,
         params: { status },
       }),
     }),
   }),
 });
 
-export const { useGetAllTasksQuery, useOverviewQuery } = projectManagerAPI;
+export const { useGetAllSubtasksQuery, useOverviewQuery } = projectManagerAPI;

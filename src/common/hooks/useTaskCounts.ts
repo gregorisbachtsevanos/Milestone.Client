@@ -2,28 +2,17 @@ import { Overview } from "@/features/profile/types";
 import { Status } from "@/types";
 import { useMemo } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-enum CalculateStatus {
-  backlog = "backlog",
-  onHold = "onHold",
-  inProgress = "inProgress",
-  completed = "completed",
-}
-
 const useTaskCounts = (overviewTotalData?: Overview) => {
   const counts = useMemo(() => {
-    const totalTasks = overviewTotalData?.totalTasks || {};
     const totalSubtasks = overviewTotalData?.totalSubtasks || {};
-    const calculateCount = (status: keyof typeof CalculateStatus): number =>
-      (totalTasks[status] || 0) + (totalSubtasks[status] || 0);
 
     return {
-      backlog: calculateCount("backlog"),
-      onHold: calculateCount("onHold"),
-      inProgress: calculateCount("inProgress"),
-      completed: calculateCount("completed"),
+      backlog: totalSubtasks.backlog ?? 0,
+      onHold: totalSubtasks.onHold ?? 0,
+      inProgress: totalSubtasks.inProgress ?? 0,
+      completed: totalSubtasks.completed ?? 0,
     };
-  }, [overviewTotalData?.totalSubtasks, overviewTotalData?.totalTasks]);
+  }, [overviewTotalData?.totalSubtasks]);
 
   return [
     { label: Status.Backlog, count: counts.backlog },

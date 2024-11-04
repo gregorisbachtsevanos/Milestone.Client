@@ -1,4 +1,4 @@
-import { useGetAllTasksQuery } from "@/app/services/projectManegerApi";
+import { useGetAllSubtasksQuery } from "@/app/services/projectManagerApi";
 import { Status } from "@/types";
 import { useSearchParams } from "react-router-dom";
 import { StyledTasksContainer } from "./Tasks.styled";
@@ -11,7 +11,9 @@ const Tasks = ({ overviewTotalData }: { overviewTotalData: Overview }) => {
 
   const selectedTaskStatus = searchParams.get("status") ?? Status.Backlog;
 
-  const { data: tasks, isLoading } = useGetAllTasksQuery({ status: selectedTaskStatus as Status });
+  const { data: tasks, isLoading } = useGetAllSubtasksQuery({
+    status: selectedTaskStatus as Status,
+  });
 
   return (
     <StyledTasksContainer>
