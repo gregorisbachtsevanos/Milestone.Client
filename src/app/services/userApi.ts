@@ -15,4 +15,4 @@ export const userAPI = api.injectEndpoints({
   }),
 });
 
-// export const {  } = userAPI;
+export const { useGetCurrentUserQuery } = userAPI;
