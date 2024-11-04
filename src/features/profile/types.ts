@@ -26,8 +26,8 @@ export type UserType = {
 type TotalByStatus = {
   backlog?: number;
   completed?: number;
-  "on hold"?: number;
-  "in progress"?: number;
+  onHold?: number;
+  inProgress?: number;
 };
 
 export type Overview = {

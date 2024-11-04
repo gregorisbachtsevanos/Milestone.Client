@@ -11,6 +11,7 @@ import {
 import { Mutex } from "async-mutex";
 import { setAccessToken, setRefreshToken } from "features/auth/authSlice";
 import { RootState } from "../store";
+import { AuthResponse } from "./types/identityTypes";
 
 type FetchArgsWithoutAuth = { withoutAuth: boolean } & FetchArgs;
 
@@ -73,8 +74,8 @@ const baseQueryWithInterceptor: BaseQueryFn<
             );
 
             if (refreshResult.data) {
-              const newAccessToken = (refreshResult.data as any).accessToken;
-              const newRefreshToken = (refreshResult.data as any).refreshToken;
+              const newAccessToken = (refreshResult.data as AuthResponse).accessToken;
+              const newRefreshToken = (refreshResult.data as AuthResponse).refreshToken;
               api.dispatch(setRefreshToken(newRefreshToken));
               api.dispatch(setAccessToken(newAccessToken));
               localStorageHandler.setItem("refreshToken", newRefreshToken);

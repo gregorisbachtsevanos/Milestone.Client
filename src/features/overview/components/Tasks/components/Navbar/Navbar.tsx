@@ -6,11 +6,12 @@ import { useSearchParams } from "react-router-dom";
 import CreateNewButton from "../../../CreateNewButton";
 import NewTaskModal from "../NewTaskModal";
 import { StyledNavbarContainer } from "./Navbar.styled";
+import { Overview } from "@/features/profile/types";
 
-const Navbar = () => {
+const Navbar = ({ overviewTotalData }: { overviewTotalData: Overview }) => {
   const [newTaskModal, setNewTaskModal] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const navbarData = useTaskCounts();
+  const navbarData = useTaskCounts(overviewTotalData);
 
   const handleParams = useCallback(
     (type: Status) => {

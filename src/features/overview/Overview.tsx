@@ -12,6 +12,7 @@ import NewGoalModal from "./components/Notes/NewGoalModal";
 import Summary from "./components/Summary";
 import Tasks from "./components/Tasks";
 import { StyledOverviewContainer } from "./Overview.styled";
+import { useOverviewQuery } from "@/app/services/projectManegerApi";
 
 const Overview = () => {
   const [newGoalModal, setNewGoalModal] = useState(false);
@@ -19,13 +20,15 @@ const Overview = () => {
   const getUserId = useSelector(selectUserId);
 
   const { data: user } = useGetCurrentUserQuery({ user_id: getUserId ?? "" }, { skip: !getUserId });
-  console.log(user);
+  const { data: overviewData } = useOverviewQuery();
+  console.log(user, overviewData);
+
   return (
     <StyledMainLayout>
       <StyledOverviewContainer>
         <Summary />
         <div className="sections">
-          <Tasks />
+          <Tasks overviewTotalData={overviewData} />
           <Notes
             data={notesData}
             title="Goals"

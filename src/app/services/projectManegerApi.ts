@@ -55,4 +55,4 @@ export const projectManagerAPI = api.injectEndpoints({
   }),
 });
 
-export const { useGetAllTasksQuery } = projectManagerAPI;
+export const { useGetAllTasksQuery, useOverviewQuery } = projectManagerAPI;
