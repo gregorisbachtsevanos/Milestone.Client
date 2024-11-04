@@ -1,7 +1,10 @@
+import { useGetCurrentUserQuery } from "@/app/services/userApi";
 import { calendarData } from "@/data/calenderData";
 import { notesData } from "@/data/notesData";
 import { StyledMainLayout } from "@/layouts/DashboardLayout/DashboardLayout.styled";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUserId } from "../auth/authSlice";
 import Chat from "./components/Chat";
 import Notes from "./components/Notes";
 import NewEventModal from "./components/Notes/NewEventModal";
@@ -13,7 +16,10 @@ import { StyledOverviewContainer } from "./Overview.styled";
 const Overview = () => {
   const [newGoalModal, setNewGoalModal] = useState(false);
   const [newEventModal, setNewEventModal] = useState(false);
+  const getUserId = useSelector(selectUserId);
 
+  const { data: user } = useGetCurrentUserQuery({ user_id: getUserId ?? "" }, { skip: !getUserId });
+  console.log(user);
   return (
     <StyledMainLayout>
       <StyledOverviewContainer>
