@@ -1,4 +1,5 @@
-import { setLocalStorageItem } from "@/common/utils/localStorage";
+import config from "@/.config/config";
+import { localStorageHandler } from "@/common/utils/localStorage";
 import { isExpired } from "@/common/utils/token";
 import {
   BaseQueryFn,
@@ -10,7 +11,6 @@ import {
 import { Mutex } from "async-mutex";
 import { setAccessToken, setRefreshToken } from "features/auth/authSlice";
 import { RootState } from "../store";
-import config from "@/.config/config";
 
 type FetchArgsWithoutAuth = { withoutAuth: boolean } & FetchArgs;
 
@@ -77,14 +77,14 @@ const baseQueryWithInterceptor: BaseQueryFn<
               const newRefreshToken = (refreshResult.data as any).refreshToken;
               api.dispatch(setRefreshToken(newRefreshToken));
               api.dispatch(setAccessToken(newAccessToken));
-              setLocalStorageItem("refreshToken", newRefreshToken);
+              localStorageHandler.setItem("refreshToken", newRefreshToken);
 
               // retry the initial query
               result = await baseQuery(args, api, extraOptions);
             } else {
               api.dispatch(setAccessToken(null));
               api.dispatch(setRefreshToken(null));
-              // removeLocalStorageItem("refreshToken");
+              // localStorageHandler.removeItem("refreshToken");
               result = await baseQuery(args, api, extraOptions);
             }
           } finally {

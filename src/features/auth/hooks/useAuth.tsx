@@ -7,11 +7,11 @@ import {
   useRegisterMutation,
 } from "../../../app/services/identityAPI";
 // import { LoginProps, useAuthenticateMutation } from '../../../app/services/authApi';
-import { getLocalStorageItem } from "../../../common/utils/localStorage";
+import { localStorageHandler } from "../../../common/utils/localStorage";
 import { selectIsUserLoggedIn } from "../authSlice";
 
 const useAuth = () => {
-  const refreshToken = getLocalStorageItem("refreshToken") ?? "";
+  const refreshToken = localStorageHandler.getItem("refreshToken") ?? "";
   const isUserLoggedIn = useSelector(selectIsUserLoggedIn);
   const [initialLoading, setInitialLoading] = useState(true);
 
