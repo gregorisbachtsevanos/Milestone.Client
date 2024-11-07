@@ -29,7 +29,7 @@ const Overview = () => {
       <StyledOverviewContainer>
         <Summary />
         <div className="sections">
-          <Tasks overviewTotalData={overviewData} />
+          <Tasks overviewTotalData={overviewData ?? {}} />
           <Notes
             data={notesData}
             title="Goals"
