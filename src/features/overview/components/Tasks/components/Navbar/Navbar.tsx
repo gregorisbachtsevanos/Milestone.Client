@@ -22,9 +22,7 @@ const Navbar = ({ overviewTotalData }: { overviewTotalData: Overview }) => {
     [searchParams, setSearchParams]
   );
 
-  const openNewTaskModal = useCallback(() => {
-    setNewTaskModal(true);
-  }, []);
+  const openNewTaskModal = useCallback(() => setNewTaskModal(true), []);
 
   return (
     <StyledNavbarContainer>
