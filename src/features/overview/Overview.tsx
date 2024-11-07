@@ -20,6 +20,7 @@ const Overview = () => {
   const getUserId = useSelector(selectUserId);
 
   const { data: user } = useGetCurrentUserQuery({ user_id: getUserId ?? "" }, { skip: !getUserId });
+
   const { data: overviewData } = useOverviewQuery();
   console.log(user, overviewData);
 
