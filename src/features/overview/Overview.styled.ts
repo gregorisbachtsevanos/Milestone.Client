@@ -11,6 +11,7 @@ export const StyledOverviewContainer = styled.div`
   z-index: 5;
 
   .sections {
+    gap: 5px;
     width: 100%;
     display: flex;
     justify-content: space-between;
