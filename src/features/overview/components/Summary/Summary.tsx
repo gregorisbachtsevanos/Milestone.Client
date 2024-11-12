@@ -1,8 +1,16 @@
 import { Text, TitleXl } from "@/.config/theme";
 import { StyledSummaryContainer } from "./Summary.styled";
-import { overviewData } from "@/data/overviewData";
+import { constructOverviewData } from "../../utils/helpers";
+import { FC } from "react";
 
-const Summary = ({ projects, taksk }) => {
+interface SummaryProps {
+  totalProjects: number;
+  totalTasks: number;
+}
+
+const Summary: FC<SummaryProps> = ({ totalProjects, totalTasks }) => {
+  const overviewData = constructOverviewData({ totalProjects, totalTasks });
+
   return (
     <StyledSummaryContainer>
       {overviewData.map(({ title, value }, index) => (

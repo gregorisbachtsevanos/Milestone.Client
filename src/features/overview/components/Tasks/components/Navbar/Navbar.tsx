@@ -8,7 +8,7 @@ import NewTaskModal from "../NewTaskModal";
 import { StyledNavbarContainer } from "./Navbar.styled";
 import { Overview } from "@/features/profile/types";
 
-const Navbar = ({ overviewTotalData }: { overviewTotalData: Overview }) => {
+const Navbar = ({ overviewTotalData }: { overviewTotalData?: Overview }) => {
   const [newTaskModal, setNewTaskModal] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 

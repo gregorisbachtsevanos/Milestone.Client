@@ -4,13 +4,13 @@ import { useMemo } from "react";
 
 const useTaskCounts = (overviewTotalData?: Overview) => {
   const counts = useMemo(() => {
-    const totalSubtasks = overviewTotalData?.totalSubtasks || {};
+    const totalSubtasks = overviewTotalData?.totalSubtasks;
 
     return {
-      backlog: totalSubtasks.backlog ?? 0,
-      onHold: totalSubtasks.onHold ?? 0,
-      inProgress: totalSubtasks.inProgress ?? 0,
-      completed: totalSubtasks.completed ?? 0,
+      backlog: totalSubtasks?.backlog ?? 0,
+      onHold: totalSubtasks?.onHold ?? 0,
+      inProgress: totalSubtasks?.inProgress ?? 0,
+      completed: totalSubtasks?.completed ?? 0,
     };
   }, [overviewTotalData?.totalSubtasks]);
 

@@ -23,16 +23,16 @@ export type UserType = {
   updated_at: string;
 };
 
-type TotalByStatus = {
+export type TotalByStatus = {
   backlog?: number;
   completed?: number;
   onHold?: number;
   inProgress?: number;
-  total?: number;
+  total: number;
 };
 
 export type Overview = {
-  totalProjects?: number;
-  totalTasks?: TotalByStatus;
-  totalSubtasks?: TotalByStatus;
+  totalProjects: number;
+  totalTasks: TotalByStatus;
+  totalSubtasks: TotalByStatus;
 };

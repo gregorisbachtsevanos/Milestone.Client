@@ -6,7 +6,7 @@ import Card from "./components/Card";
 import Navbar from "./components/Navbar";
 import { Overview } from "@/features/profile/types";
 
-const Tasks = ({ overviewTotalData }: { overviewTotalData: Overview }) => {
+const Tasks = ({ overviewTotalData }: { overviewTotalData?: Overview }) => {
   const [searchParams] = useSearchParams();
 
   const selectedTaskStatus = searchParams.get("status") ?? Status.Backlog;

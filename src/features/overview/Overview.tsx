@@ -27,9 +27,12 @@ const Overview = () => {
   return (
     <StyledMainLayout>
       <StyledOverviewContainer>
-        <Summary projects={overviewData?.totalProjects} tasks={overviewData?.totalTasks?.total} />
+        <Summary
+          totalProjects={overviewData?.totalProjects ?? 0}
+          totalTasks={overviewData?.totalTasks.total ?? 0}
+        />
         <div className="sections">
-          <Tasks overviewTotalData={overviewData ?? {}} />
+          <Tasks overviewTotalData={overviewData} />
           <Notes
             data={notesData}
             title="Goals"
