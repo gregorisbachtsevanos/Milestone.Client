@@ -28,6 +28,7 @@ type TotalByStatus = {
   completed?: number;
   onHold?: number;
   inProgress?: number;
+  total?: number;
 };
 
 export type Overview = {

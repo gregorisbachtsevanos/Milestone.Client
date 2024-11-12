@@ -39,7 +39,7 @@ const Navbar = ({ overviewTotalData }: { overviewTotalData: Overview }) => {
           </Tags>
         ))}
       </div>
-      <CreateNewButton title="New Task" onOpen={openNewTaskModal} />
+      <CreateNewButton title="Add New" onOpen={openNewTaskModal} />
       <NewTaskModal isOpen={newTaskModal} onClose={() => setNewTaskModal(false)} />
     </StyledNavbarContainer>
   );

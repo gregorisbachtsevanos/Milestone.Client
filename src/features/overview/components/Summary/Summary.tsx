@@ -2,7 +2,7 @@ import { Text, TitleXl } from "@/.config/theme";
 import { StyledSummaryContainer } from "./Summary.styled";
 import { overviewData } from "@/data/overviewData";
 
-const Summary = () => {
+const Summary = ({ projects, taksk }) => {
   return (
     <StyledSummaryContainer>
       {overviewData.map(({ title, value }, index) => (

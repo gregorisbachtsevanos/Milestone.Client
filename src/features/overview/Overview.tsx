@@ -23,11 +23,11 @@ const Overview = () => {
 
   const { data: overviewData } = useOverviewQuery();
   console.log(user, overviewData);
-
+  console.log(overviewData);
   return (
     <StyledMainLayout>
       <StyledOverviewContainer>
-        <Summary />
+        <Summary projects={overviewData?.totalProjects} tasks={overviewData?.totalTasks?.total} />
         <div className="sections">
           <Tasks overviewTotalData={overviewData ?? {}} />
           <Notes
