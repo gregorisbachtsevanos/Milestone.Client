@@ -4,6 +4,7 @@ import { api } from "./services/api";
 import authReducer from "features/auth/authSlice";
 import notificationReducer from "@/features/notification/notificationSlice";
 import profileReducer from "@/features/profile/profileSlice";
+import appReducer from "./slice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     auth: authReducer,
     notification: notificationReducer,
     profile: profileReducer,
+    app: appReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
