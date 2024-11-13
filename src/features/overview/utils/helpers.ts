@@ -1,21 +1,29 @@
-import { timePassSince } from "@/common/utils/dates";
 import { calendarData } from "@/data/calenderData";
 import { notesData } from "@/data/notesData";
 
 type OverviewData = {
   totalProjects: number;
   totalTasks: number;
+  totalSubtasks: number;
 };
 
-export const constructOverviewData = ({ totalProjects, totalTasks }: OverviewData) => {
+export const constructOverviewData = ({
+  totalProjects,
+  totalTasks,
+  totalSubtasks,
+}: OverviewData) => {
   return [
+    {
+      title: "Projects",
+      value: totalProjects,
+    },
     {
       title: "Tasks",
       value: totalTasks,
     },
     {
-      title: "Projects",
-      value: totalProjects,
+      title: "Subtasks",
+      value: totalSubtasks,
     },
     {
       title: "Goals",
@@ -24,10 +32,6 @@ export const constructOverviewData = ({ totalProjects, totalTasks }: OverviewDat
     {
       title: "Events",
       value: calendarData.length,
-    },
-    {
-      title: "Last Activity",
-      value: timePassSince(new Date("2024-09-22T12:00:00")),
     },
   ];
 };
