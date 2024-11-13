@@ -32,5 +32,11 @@ export const StyledProfileController = styled.div`
     background-color: ${black800};
     box-shadow: 0 5px 20px ${({ theme }) => theme.palette.black[900]};
     z-index: 999;
+
+    .last-activity {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
   }
 `;
