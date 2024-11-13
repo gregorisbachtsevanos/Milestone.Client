@@ -1,5 +1,6 @@
-import { Caption, Text } from "@/.config/theme";
+import { Caption } from "@/.config/theme";
 import { forwardRef, ForwardRefRenderFunction, TextareaHTMLAttributes } from "react";
+import Label from "../Label";
 import { StyledTextareaContainer } from "./Textarea.styled";
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -14,7 +15,7 @@ const Textarea: ForwardRefRenderFunction<HTMLTextAreaElement, TextareaProps> = (
 ) => {
   return (
     <StyledTextareaContainer>
-      {label && <Text>{label}</Text>}
+      {label && <Label>{label}</Label>}
       <div className={`textarea ${variant}`}>
         <textarea {...rest} ref={ref} rows={10} />
       </div>

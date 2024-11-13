@@ -1,7 +1,8 @@
-import { Caption, Text } from "@/.config/theme";
+import { Caption } from "@/.config/theme";
 import { forwardRef, ForwardRefRenderFunction, InputHTMLAttributes } from "react";
-import { StyledInputContainer } from "./Input.styled";
 import Icons, { IconName } from "../Icon/Icons";
+import Label from "../Label";
+import { StyledInputContainer } from "./Input.styled";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -18,7 +19,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 ) => {
   return (
     <StyledInputContainer>
-      {label && <Text>{label}</Text>}
+      {label && <Label>{label}</Label>}
       <div className={`input ${variant}`} {...rest}>
         {icon && <Icons name={icon as IconName} size="20px" color="white" />}
         <input {...rest} ref={ref} />
