@@ -3,9 +3,23 @@ import { api } from "./api";
 import config from "@/.config/config";
 import { Overview } from "@/features/profile/types";
 
-type getTasksRequest = {
+interface getTasksRequest {
   status?: Status;
-};
+}
+
+interface ProjectResponse {
+  id: string;
+  project_id: string;
+  name: string;
+  description?: string;
+  tasks: number;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  deadline: string;
+  // roadmaps: RoadmapType[];
+  tags?: string[];
+}
 
 const { projectManagerAPI: PROJECT_MANAGER_API } = config;
 
@@ -16,19 +30,19 @@ export const projectManagerAPI = api.injectEndpoints({
         url: `${PROJECT_MANAGER_API}/v1/manager/overview`,
       }),
     }),
-    getAllProjects: build.query<ProjectType[], void>({
+    getAllProjects: build.query<ProjectResponse[], void>({
       query: () => ({
         url: `${PROJECT_MANAGER_API}/v1/projects`,
       }),
     }),
-    getProjectById: build.query<ProjectType[], { project_id: string }>({
+    getProjectById: build.query<ProjectResponse, { project_id: string }>({
       query: ({ project_id }) => ({
         url: `${PROJECT_MANAGER_API}/v1/projects/${project_id} `,
       }),
     }),
     createNewProject: build.mutation<{ project_id: string }, ProjectType>({
       query: (project) => ({
-        url: `${PROJECT_MANAGER_API}/v1/projects/add-new`,
+        url: `${PROJECT_MANAGER_API}/v1/projects/new`,
         method: "POST",
         body: project,
       }),
@@ -55,4 +69,12 @@ export const projectManagerAPI = api.injectEndpoints({
   }),
 });
 
-export const { useGetAllSubtasksQuery, useOverviewQuery } = projectManagerAPI;
+export const {
+  useOverviewQuery,
+  useGetAllProjectsQuery,
+  useGetProjectByIdQuery,
+  useCreateNewProjectMutation,
+  useUpdateProjectMutation,
+  useDeleteProjectMutation,
+  useGetAllSubtasksQuery,
+} = projectManagerAPI;
