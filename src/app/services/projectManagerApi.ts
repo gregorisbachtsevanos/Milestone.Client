@@ -47,14 +47,14 @@ export const projectManagerAPI = api.injectEndpoints({
         body: project,
       }),
     }),
-    updateProject: build.mutation<void, ProjectType>({
+    updateProject: build.mutation<void, ProjectType & { project_id: string }>({
       query: (project) => ({
         url: `${PROJECT_MANAGER_API}/v1/edit/${project.project_id}`,
         method: "PATCH",
         body: project,
       }),
     }),
-    deleteProject: build.mutation<void, ProjectType>({
+    deleteProject: build.mutation<void, { project_id: string }>({
       query: ({ project_id }) => ({
         url: `${PROJECT_MANAGER_API}/v1/delete/${project_id}`,
         method: "DELETE",
