@@ -4,7 +4,7 @@ import { Status } from "@/types";
 import { useCallback, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CreateNewButton from "../../../CreateNewButton";
-import NewTaskModal from "../NewTaskModal";
+import NewProjectModal from "../NewProjectModal";
 import { StyledNavbarContainer } from "./Navbar.styled";
 import { Overview } from "@/features/profile/types";
 
@@ -40,7 +40,7 @@ const Navbar = ({ overviewTotalData }: { overviewTotalData?: Overview }) => {
         ))}
       </div>
       <CreateNewButton title="Add New" onOpen={openNewTaskModal} />
-      <NewTaskModal isOpen={newTaskModal} onClose={() => setNewTaskModal(false)} />
+      <NewProjectModal isOpen={newTaskModal} onClose={() => setNewTaskModal(false)} />
     </StyledNavbarContainer>
   );
 };
