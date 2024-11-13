@@ -6,10 +6,11 @@ import { FC } from "react";
 interface SummaryProps {
   totalProjects: number;
   totalTasks: number;
+  totalSubtasks: number;
 }
 
-const Summary: FC<SummaryProps> = ({ totalProjects, totalTasks }) => {
-  const overviewData = constructOverviewData({ totalProjects, totalTasks });
+const Summary: FC<SummaryProps> = ({ totalProjects, totalTasks, totalSubtasks }) => {
+  const overviewData = constructOverviewData({ totalProjects, totalTasks, totalSubtasks });
 
   return (
     <StyledSummaryContainer>

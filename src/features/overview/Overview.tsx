@@ -30,6 +30,7 @@ const Overview = () => {
         <Summary
           totalProjects={overviewData?.totalProjects ?? 0}
           totalTasks={overviewData?.totalTasks.total ?? 0}
+          totalSubtasks={overviewData?.totalSubtasks.total ?? 0}
         />
         <div className="sections">
           <Tasks overviewTotalData={overviewData} />
