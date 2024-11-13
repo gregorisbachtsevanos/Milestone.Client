@@ -10,6 +10,10 @@ export const StyledCardContainer = styled.div`
   justify-content: center;
   flex-direction: column;
 
+  &.small {
+    height: 50px;
+  }
+
   &.no-margin {
     margin: unset;
   }
