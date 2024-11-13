@@ -10,12 +10,12 @@ export const StyledTooltip = styled.div`
     display: block;
     position: absolute;
     width: auto;
-    padding: 16px;
+    padding: 12px;
     z-index: 9999;
     background-color: ${({ theme }) => theme.palette.black[500]};
     box-shadow: 0px 0px 16px 0px #00000026;
     color: ${({ theme }) => theme.palette.white};
-    border-radius: 16px;
+    border-radius: 5px;
     transition: all 0.2s;
     width: max-content;
     user-select: none;
