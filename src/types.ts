@@ -43,8 +43,10 @@ export enum Priority {
 }
 
 export type User = {
-  name: string;
   email: string;
+  name: string;
+  user_id: string;
+  username: string;
 };
 
 type PriorityType = Priority;
@@ -52,16 +54,9 @@ type PriorityType = Priority;
 type StatusType = Status;
 
 export type ProjectType = {
-  id: string;
-  project_id: string;
   name: string;
   description?: string;
-  tasks: number;
-  comments: number;
-  created_at: string;
-  updated_at: string;
   deadline: string;
-  // roadmaps: RoadmapType[];
   tags?: string[];
 };
 
