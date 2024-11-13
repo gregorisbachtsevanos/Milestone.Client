@@ -1,14 +1,17 @@
+import { FC } from "react";
 import { StyledCardContainer } from "./Card.styled";
 
-const Card = ({
-  children,
-  withoutMargin,
-}: {
+interface CardProps {
   children: React.ReactNode;
   withoutMargin?: boolean;
-}) => {
+  size?: "small";
+}
+
+const Card: FC<CardProps> = ({ children, withoutMargin, size, ...rest }) => {
+  const allClasses = [withoutMargin ? "no-margin" : "", size || ""].filter(Boolean).join(" ");
+
   return (
-    <StyledCardContainer className={withoutMargin ? "no-margin" : ""}>
+    <StyledCardContainer className={allClasses} {...rest}>
       {children}
     </StyledCardContainer>
   );
