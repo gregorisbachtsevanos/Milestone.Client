@@ -2,8 +2,10 @@ import Icon from "@/common/components/Icon";
 import Card from "../Card";
 import { StyledUserInfoContainer } from "./UserInfo.styled";
 import { Caption, Text } from "@/.config/theme";
+import Tooltip from "@/common/components/Tooltip";
+import { User } from "@/types";
 
-const UserInfo = () => {
+const UserInfo = ({ user }: { user?: User }) => {
   const isEmailVerified = true;
 
   return (
@@ -14,11 +16,19 @@ const UserInfo = () => {
             <Icon name="user" color="black" />
           </div>
           <div className="info">
-            <Text>Gregoris Bachtsevanos</Text>
-            <Caption className="username">gregorisbachtsevanos@gmail.com</Caption>
+            <Text>{user?.name}</Text>
+            <Caption className="username">{user?.email}</Caption>
           </div>
         </div>
-        {isEmailVerified ? <Icon name="verified" /> : <Icon name="danger" color="red" />}
+        {isEmailVerified ? (
+          <Tooltip position="left" tooltipText="Email Verified">
+            <Icon name="verified" />
+          </Tooltip>
+        ) : (
+          <Tooltip position="left" tooltipText="Email Verified Needed">
+            <Icon name="danger" color="red" />
+          </Tooltip>
+        )}
       </StyledUserInfoContainer>
     </Card>
   );
