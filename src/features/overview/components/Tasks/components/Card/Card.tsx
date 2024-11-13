@@ -3,16 +3,16 @@ import { TaskType } from "@/types";
 import { FC } from "react";
 
 interface CardProps {
-  tasks?: TaskType[];
+  subtasks?: TaskType[];
   isLoading: boolean;
 }
 
-const Card: FC<CardProps> = ({ tasks, isLoading }) => {
+const Card: FC<CardProps> = ({ subtasks, isLoading }) => {
   if (isLoading) return "loading";
 
   return (
     <>
-      {tasks?.map(({ title, description, priority, created_at, tags }, index) => (
+      {subtasks?.map(({ title, description, priority, created_at, tags }, index) => (
         <SingleCard
           key={index}
           title={title}
