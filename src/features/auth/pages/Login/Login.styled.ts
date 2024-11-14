@@ -4,6 +4,8 @@ import styled from "styled-components";
 export const StyledLoginForm = styled.form`
   ${StyledAuthFormContainer}
   ${GlassEffect}
+  position: relative;
+  z-index: 9;
 
   .title-container {
     padding: 24px 0;
