@@ -8,6 +8,21 @@ export const StyledSingleNoteContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
+
+  &.highlighted {
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      background-color: ${({ theme }) => theme.palette.green[700]};
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+  }
 
   .header {
     display: flex;

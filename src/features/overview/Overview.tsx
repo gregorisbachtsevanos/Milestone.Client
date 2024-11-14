@@ -42,6 +42,7 @@ const Overview = () => {
           />
           <div className="row">
             <Notes
+              variant="highlighted"
               data={calendarData}
               title="Calendar"
               size="small"

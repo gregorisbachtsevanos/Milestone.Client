@@ -11,9 +11,10 @@ interface NotesProps {
   size?: "small";
   btnTitle: string;
   onBtnClick: () => void;
+  variant?: "highlighted";
 }
 
-const Notes: FC<NotesProps> = ({ data, title, size, btnTitle, onBtnClick }) => {
+const Notes: FC<NotesProps> = ({ data, title, size, btnTitle, onBtnClick, variant }) => {
   return (
     <StyledNotesContainer className={size}>
       <div className="header">
@@ -22,6 +23,7 @@ const Notes: FC<NotesProps> = ({ data, title, size, btnTitle, onBtnClick }) => {
       </div>
       {data.map(({ title, content, created_at, datetime, tags }) => (
         <SingleNote
+          variant={variant}
           key={title}
           title={title}
           content={content}

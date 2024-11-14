@@ -9,11 +9,12 @@ interface SingleNoteProps {
   content: string;
   date: string;
   tags?: string[];
+  variant?: "highlighted";
 }
 
-const SingleNote: FC<SingleNoteProps> = ({ title, content, date, tags }) => {
+const SingleNote: FC<SingleNoteProps> = ({ title, content, date, tags, variant }) => {
   return (
-    <StyledSingleNoteContainer>
+    <StyledSingleNoteContainer className={variant}>
       <div className="header">
         <Title>{title}</Title>
         <Caption>{formatDate(date)}</Caption>
