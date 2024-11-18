@@ -1,15 +1,19 @@
 import Tags from "@/common/components/Tags";
 import useTaskCounts from "@/common/hooks/useTaskCounts";
+import { Overview } from "@/features/profile/types";
 import { Status } from "@/types";
 import { useCallback, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import CreateNewButton from "../../../CreateNewButton";
-import NewProjectModal from "../NewProjectModal";
+import AddNewOptions from "../AddNewOptions";
+import Modal from "../Modal";
 import { StyledNavbarContainer } from "./Navbar.styled";
-import { Overview } from "@/features/profile/types";
+import { ModalType } from "@/features/overview/types";
 
 const Navbar = ({ overviewTotalData }: { overviewTotalData?: Overview }) => {
-  const [newTaskModal, setNewTaskModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectionModal, setSelectionModal] = useState<ModalType>(null);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const navbarData = useTaskCounts(overviewTotalData);
@@ -22,7 +26,10 @@ const Navbar = ({ overviewTotalData }: { overviewTotalData?: Overview }) => {
     [searchParams, setSearchParams]
   );
 
-  const openNewTaskModal = useCallback(() => setNewTaskModal(true), []);
+  const selectModal = useCallback((type: ModalType) => {
+    setSelectionModal(type);
+    setOpenModal(false);
+  }, []);
 
   return (
     <StyledNavbarContainer>
@@ -39,8 +46,13 @@ const Navbar = ({ overviewTotalData }: { overviewTotalData?: Overview }) => {
           </Tags>
         ))}
       </div>
-      <CreateNewButton title="Add New" onOpen={openNewTaskModal} />
-      <NewProjectModal isOpen={newTaskModal} onClose={() => setNewTaskModal(false)} />
+      <CreateNewButton title="Add New" onOpen={() => setOpenModal(true)} />
+      <AddNewOptions
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        onSelect={selectModal}
+      />
+      <Modal isOpen={selectionModal} onClose={() => setSelectionModal(null)} />
     </StyledNavbarContainer>
   );
 };
