@@ -1,5 +1,5 @@
 import config from "@/.config/config";
-import { getFetchQueryErrorMessage } from "@/common/utils/errors";
+import { getFetchQueryErrorMessage, showToastWithCatchError } from "@/common/utils/errors";
 import { localStorageHandler } from "@/common/utils/localStorage";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import {
@@ -126,7 +126,7 @@ export const identityAPI = api.injectEndpoints({
 
         if (loginResponse.error) {
           const errorMessage = getFetchQueryErrorMessage(loginResponse.error);
-          console.log(errorMessage);
+          showToastWithCatchError(errorMessage);
           return { error: loginResponse.error as FetchBaseQueryError };
         }
 
