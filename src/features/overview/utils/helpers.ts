@@ -35,3 +35,10 @@ export const constructOverviewData = ({
     },
   ];
 };
+
+export const constructProjectOptions = (projects) => {
+  return projects?.map((project) => ({
+    label: project.name,
+    value: project.project_id,
+  }));
+};
