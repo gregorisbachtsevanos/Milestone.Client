@@ -31,7 +31,7 @@ export const StyledModal = styled.div<{ width?: string }>`
   animation: ${slideUp} 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(0px);
-  box-shadow: 0 5px 20px #00000042;
+  box-shadow: 0 5px 25px ${({ theme }) => theme.palette.black[800]};
 
   .buttons {
     width: 100%;
