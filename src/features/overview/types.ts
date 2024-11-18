@@ -10,3 +10,5 @@ export enum StatusOptions {
   OnHold = "on hold",
   Completed = "completed",
 }
+
+export type ModalType = "project" | "task" | "subtask" | null;
