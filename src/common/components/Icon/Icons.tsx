@@ -45,6 +45,7 @@ const IconsMap = {
   username: FaIcons.FaRegUserCircle,
   project: FaIcons.FaProjectDiagram,
   task: FaIcons.FaTasks,
+  success: FaIcons.FaRegCheckCircle,
   close: Io5Icons.IoClose,
   settings: Io5Icons.IoSettingsOutline,
   notifications: Io5Icons.IoNotificationsOutline,
@@ -54,9 +55,10 @@ const IconsMap = {
   arrow_down: MdIcons.MdOutlineKeyboardArrowDown,
   arrow_right: MdIcons.MdKeyboardArrowRight,
   verified: MdIcons.MdVerified,
+  error: MdIcons.MdErrorOutline,
 } as const;
 
-const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
+const Icons: FC<IconProps> = ({ name, color = "yellow", size = "30px" }) => {
   const {
     palette: { yellow, white, black, gray, red },
   } = useTheme();
@@ -76,7 +78,7 @@ const Icons: FC<IconProps> = ({ name, color, size = "30px" }) => {
       case "red":
         return red[500];
       default:
-        return yellow[500];
+        return color;
     }
   };
 
