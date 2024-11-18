@@ -1,14 +1,11 @@
-import { Badge } from "@/.config/theme";
 import { useCreateNewProjectMutation } from "@/app/services/projectManagerApi";
 import Button from "@/common/components/Button";
 import Datepicker from "@/common/components/Datepicker";
 import Input from "@/common/components/Input";
 import Label from "@/common/components/Label";
 import Modal from "@/common/components/Modal/Modal";
-import Select from "@/common/components/Select";
 import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
-import { priorityOptions, statusOptions } from "@/features/overview/constant";
 import { ProjectType } from "@/types";
 import { FC, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
@@ -34,6 +31,7 @@ const NewProject: FC<NewProjectModalProps> = ({ isOpen, onClose }) => {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = methods;
 
@@ -41,6 +39,7 @@ const NewProject: FC<NewProjectModalProps> = ({ isOpen, onClose }) => {
     (data: ProjectType) => {
       console.log(data);
       createNewProject(data);
+      reset();
       // dispatch(setLoaderIsOpen(true));
     },
     [createNewProject, dispatch]
@@ -95,47 +94,7 @@ const NewProject: FC<NewProjectModalProps> = ({ isOpen, onClose }) => {
             </div>
           )}
         />
-        <Controller
-          name="status"
-          control={control}
-          render={({ field: { onChange, value, ref } }) => (
-            <div className="selection">
-              <Select
-                label="Status"
-                styleType="column"
-                variant="gray"
-                options={statusOptions}
-                value={value}
-                onChange={(selectedValue) => onChange(selectedValue)}
-                ref={ref}
-              />
-              <Badge className="info-text">
-                * Select the current status of the task (e.g., To Do, In Progress, Done).
-              </Badge>
-            </div>
-          )}
-        />
 
-        <Controller
-          name="priority"
-          control={control}
-          render={({ field: { onChange, value, ref } }) => (
-            <div className="selection">
-              <Select
-                label="Priority"
-                styleType="column"
-                variant="gray"
-                options={priorityOptions}
-                value={value}
-                onChange={(selectedValue) => onChange(selectedValue)}
-                ref={ref}
-              />
-              <Badge className="info-text">
-                * Choose the task's priority level (e.g., Low, Medium, High).
-              </Badge>
-            </div>
-          )}
-        />
         <Controller
           control={control}
           name="tags"
