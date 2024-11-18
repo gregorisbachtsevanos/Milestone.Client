@@ -9,12 +9,12 @@ import Select from "@/common/components/Select";
 import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
 import { priorityOptions, statusOptions } from "@/features/overview/constant";
+import useInitNewSubtaskForm from "@/features/overview/hooks/useInitNewSubtaskForm";
 import { ProjectType } from "@/types";
 import { FC, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { StyledNewSubtaskContainer } from "./NewSubtask.styled";
-import useInitNewProjectForm from "../../../../hooks/useInitNewProjectForm";
 
 interface NewSubtaskModalProps {
   isOpen: boolean;
@@ -22,7 +22,7 @@ interface NewSubtaskModalProps {
 }
 
 const NewSubtask: FC<NewSubtaskModalProps> = ({ isOpen, onClose }) => {
-  const { methods } = useInitNewProjectForm();
+  const { methods } = useInitNewSubtaskForm();
   const dispatch = useDispatch();
   const [deadline, setDeadline] = useState(new Date());
 
