@@ -1,5 +1,8 @@
 import { Badge } from "@/.config/theme";
-import { useCreateNewProjectMutation } from "@/app/services/projectManagerApi";
+import {
+  useCreateNewProjectMutation,
+  useGetAllProjectsQuery,
+} from "@/app/services/projectManagerApi";
 import Button from "@/common/components/Button";
 import Datepicker from "@/common/components/Datepicker";
 import Input from "@/common/components/Input";
@@ -9,12 +12,12 @@ import Select from "@/common/components/Select";
 import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
 import { priorityOptions, statusOptions } from "@/features/overview/constant";
-import { ProjectType } from "@/types";
-import { FC, useCallback, useState } from "react";
+import useInitNewTaskForm from "@/features/overview/hooks/useInitNewTaskForm";
+import { constructProjectOptions } from "@/features/overview/utils/helpers";
+import { FC, memo, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { StyledNewTaskContainer } from "./NewTask.styled";
-import useInitNewProjectForm from "../../../../hooks/useInitNewProjectForm";
 
 interface NewTaskModalProps {
   isOpen: boolean;
@@ -22,24 +25,28 @@ interface NewTaskModalProps {
 }
 
 const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
-  const { methods } = useInitNewProjectForm();
+  const { methods } = useInitNewTaskForm();
   const dispatch = useDispatch();
   const [deadline, setDeadline] = useState(new Date());
 
+  const { data: projects } = useGetAllProjectsQuery(undefined, {
+    skip: !isOpen,
+  });
+  console.log(projects);
   const [
     createNewProject,
     // { reset: resetNewProjectState, isLoading: isNewProjectLoading, isSuccess: isNewProjectSuccess },
   ] = useCreateNewProjectMutation();
-
+  const projectOptions = constructProjectOptions(projects);
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = methods;
-
-  const submitNewProject = useCallback(
-    (data: ProjectType) => {
-      console.log(data);
+  console.log(projectOptions);
+  const submitNewTask = useCallback(
+    (data: any) => {
+      return console.log(data);
       createNewProject(data);
       // dispatch(setLoaderIsOpen(true));
     },
@@ -48,7 +55,27 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   console.log(errors);
   return (
     <Modal isOpen={isOpen} onClose={onClose} closeOnClickOutside={() => onClose()}>
-      <StyledNewTaskContainer onSubmit={handleSubmit(submitNewProject)}>
+      <StyledNewTaskContainer onSubmit={handleSubmit(submitNewTask)}>
+        <Controller
+          name="projectName"
+          control={control}
+          render={({ field: { onChange, value, ref } }) => (
+            <div className="selection">
+              <Select
+                label="Project Name"
+                styleType="column"
+                variant="gray"
+                options={projectOptions}
+                value={value}
+                onChange={(selectedValue) => onChange(selectedValue)}
+                ref={ref}
+              />
+              <Badge className="info-text">
+                * Select the current status of the task (e.g., To Do, In Progress, Done).
+              </Badge>
+            </div>
+          )}
+        />
         <Controller
           control={control}
           name="name"
@@ -115,7 +142,6 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
             </div>
           )}
         />
-
         <Controller
           name="priority"
           control={control}
@@ -153,4 +179,4 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default NewTask;
+export default memo(NewTask);
