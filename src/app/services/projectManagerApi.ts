@@ -2,6 +2,7 @@ import { ProjectType, Status, TaskType } from "@/types";
 import { api } from "./api";
 import config from "@/.config/config";
 import { Overview } from "@/features/profile/types";
+import { toast } from "@/common/components/Toast/Toast";
 
 interface getTasksRequest {
   status?: Status;
@@ -46,6 +47,14 @@ export const projectManagerAPI = api.injectEndpoints({
         method: "POST",
         body: project,
       }),
+      async onQueryStarted(args, { queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          toast.success("Project created successfully!");
+        } catch (error) {
+          console.error("Failed to create the project:", error);
+        }
+      },
     }),
     updateProject: build.mutation<void, ProjectType & { project_id: string }>({
       query: (project) => ({
@@ -58,6 +67,20 @@ export const projectManagerAPI = api.injectEndpoints({
       query: ({ project_id }) => ({
         url: `${PROJECT_MANAGER_API}/v1/delete/${project_id}`,
         method: "DELETE",
+      }),
+    }),
+    createNewTask: build.mutation<{ project_id: string }, ProjectType>({
+      query: (project) => ({
+        url: `${PROJECT_MANAGER_API}/v1/task/new`,
+        method: "POST",
+        body: project,
+      }),
+    }),
+    createNewSubtask: build.mutation<{ project_id: string }, ProjectType>({
+      query: (project) => ({
+        url: `${PROJECT_MANAGER_API}/v1/subtask/new`,
+        method: "POST",
+        body: project,
       }),
     }),
     getAllSubtasks: build.query<TaskType[], getTasksRequest>({
