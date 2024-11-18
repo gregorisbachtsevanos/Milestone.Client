@@ -1,5 +1,6 @@
 import { useLayoutEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import Toast from "../common/components/Toast";
 import RoundedLines from "./DashboardLayout/components/RoundedLines";
 
 const AppLayout = () => {
@@ -11,6 +12,7 @@ const AppLayout = () => {
     <>
       <RoundedLines />
       <Outlet />
+      <Toast />
     </>
   );
 };
