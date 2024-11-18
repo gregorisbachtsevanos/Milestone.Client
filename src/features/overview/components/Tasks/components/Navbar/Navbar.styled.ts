@@ -4,17 +4,14 @@ export const StyledNavbarContainer = styled.nav`
   display: flex;
   position: fixed;
   background-color: ${({ theme }) => theme.palette.black[700]};
-  padding: 15px;
+  padding: 20px 7px;
   width: 43vw;
   margin: auto;
-  position: relative;
-  display: flex;
   justify-content: space-between;
-  position: fixed;
 
   .categories {
-    display: flex;
     flex: 1;
+    display: flex;
     gap: 20px;
   }
 `;
