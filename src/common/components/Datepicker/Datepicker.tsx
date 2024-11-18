@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 import DatePicker, { DatePickerProps } from "react-datepicker";
 import Input from "../Input";
 import { StyledDateContainer } from "./Datepicker.styled";
+import { Caption } from "@/.config/theme";
 
 type DateProps = {
   label?: string;
+  error?: string;
 } & DatePickerProps;
 
 const Datepicker: React.ForwardRefRenderFunction<HTMLInputElement, DateProps> = (
-  { label, ...rest },
+  { label, error, ...rest },
   ref
 ) => {
   useEffect(() => {
@@ -26,6 +28,7 @@ const Datepicker: React.ForwardRefRenderFunction<HTMLInputElement, DateProps> = 
         customInput={<Input name="search" label={label} ref={ref} />}
         todayButton="Today"
       />
+      {error && <Caption className="error">{error}</Caption>}
     </StyledDateContainer>
   );
 };

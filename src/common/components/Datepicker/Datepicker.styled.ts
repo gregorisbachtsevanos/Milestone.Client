@@ -122,4 +122,9 @@ export const StyledDateContainer = styled.div`
       color: ${black500};
     }
   }
+
+  .error {
+    color: ${({ theme }) => theme.palette.red[500]};
+    margin-top: 4px;
+  }
 `;
