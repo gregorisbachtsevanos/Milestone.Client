@@ -38,7 +38,7 @@ export const StyledTextareaContainer = styled(StyledInputContainer)`
   }
 
   .error {
-    color: red;
+    color: ${({ theme }) => theme.palette.red[500]};
     margin-top: 4px;
   }
 `;
