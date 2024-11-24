@@ -58,6 +58,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
     const handleChange = (selected: Option, actionMeta: ActionMeta<Option>) => {
       if (selectOnChange) {
         selectOnChange(selected, actionMeta);
+        setMenuIsOpen((prevState) => !prevState);
       }
     };
 
@@ -68,6 +69,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
       value,
       menuIsOpen,
       onChange: handleChange,
+      onInputChange: () => setMenuIsOpen(false),
       styles: selectStyles({ error, theme, isDisabled, size, width, variant }),
       components: {
         DropdownIndicator: (
@@ -83,7 +85,10 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
     };
 
     return (
-      <StyledSelectContainer className={styleType}>
+      <StyledSelectContainer
+        className={styleType}
+        onClick={() => setMenuIsOpen((prevState) => !prevState)}
+      >
         <Label>{label}</Label>
         <ReactSelect className="react-select" {...finalProps} />
       </StyledSelectContainer>
@@ -96,12 +101,11 @@ const CustomDropdownIndicator = (
 ) => {
   const {
     selectProps: { menuIsOpen },
-    toggleMenu,
   } = props;
 
   return (
     <components.DropdownIndicator {...props}>
-      <button onClick={toggleMenu}>
+      <button>
         {menuIsOpen ? (
           <Icons name="arrow_up" color="gray" size="20px" />
         ) : (
