@@ -1,11 +1,16 @@
 import { calendarData } from "@/data/calenderData";
 import { notesData } from "@/data/notesData";
 
-type OverviewData = {
+interface OverviewData {
   totalProjects: number;
   totalTasks: number;
   totalSubtasks: number;
-};
+}
+
+interface projectOptions {
+  name: string;
+  project_id: string;
+}
 
 export const constructOverviewData = ({
   totalProjects,
@@ -36,7 +41,7 @@ export const constructOverviewData = ({
   ];
 };
 
-export const constructProjectOptions = (projects) => {
+export const constructProjectOptions = (projects?: projectOptions[]) => {
   return projects?.map((project) => ({
     label: project.name,
     value: project.project_id,
