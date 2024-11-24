@@ -32,7 +32,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   const { data: projects } = useGetAllProjectsQuery(undefined, {
     skip: !isOpen,
   });
-  console.log(projects);
+
   const [
     createNewProject,
     // { reset: resetNewProjectState, isLoading: isNewProjectLoading, isSuccess: isNewProjectSuccess },
@@ -43,7 +43,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
     control,
     formState: { errors },
   } = methods;
-  console.log(projectOptions);
+
   const submitNewTask = useCallback(
     (data: any) => {
       return console.log(data);
@@ -52,7 +52,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
     },
     [createNewProject, dispatch]
   );
-  console.log(errors);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} closeOnClickOutside={() => onClose()}>
       <StyledNewTaskContainer onSubmit={handleSubmit(submitNewTask)}>
@@ -65,14 +65,12 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
                 label="Project Name"
                 styleType="column"
                 variant="gray"
+                placeholder="Select Project"
                 options={projectOptions}
                 value={value}
                 onChange={(selectedValue) => onChange(selectedValue)}
                 ref={ref}
               />
-              <Badge className="info-text">
-                * Select the current status of the task (e.g., To Do, In Progress, Done).
-              </Badge>
             </div>
           )}
         />
