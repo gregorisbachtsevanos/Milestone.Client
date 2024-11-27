@@ -27,7 +27,7 @@ This repository contains the frontend codebase for Milestone, a powerful project
 - **Framework**: React.js
 - **Language**: TypeScript
 - **State Management**: RTK
-- **Styling**: styled-components
+- **Styling**: styled-components, SCSS
 - **HTTP Client**: RTK Query
 - **Form Handling**: React Hook Form
 - **Routing**: React Router
