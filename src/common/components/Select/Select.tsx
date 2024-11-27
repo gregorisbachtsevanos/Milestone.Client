@@ -12,6 +12,7 @@ import Icons from "../Icon/Icons";
 import Label from "../Label";
 import { StyledSelectContainer } from "./Select.styled";
 import selectStyles from "./selectStyles";
+import { Caption } from "@/.config/theme";
 
 export interface Option {
   label: string;
@@ -91,6 +92,7 @@ const Select = forwardRef<SelectInstance<Option, boolean, GroupBase<Option>>, Se
       >
         <Label>{label}</Label>
         <ReactSelect className="react-select" {...finalProps} />
+        {error && <Caption className="error">{error}</Caption>}
       </StyledSelectContainer>
     );
   }

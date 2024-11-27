@@ -52,7 +52,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
     },
     [createNewProject, dispatch]
   );
-
+  console.log(errors);
   return (
     <Modal isOpen={isOpen} onClose={onClose} closeOnClickOutside={() => onClose()}>
       <StyledNewTaskContainer onSubmit={handleSubmit(submitNewTask)}>
@@ -70,6 +70,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
                 value={value}
                 onChange={(selectedValue) => onChange(selectedValue)}
                 ref={ref}
+                error={errors.projectName?.value?.message}
               />
             </div>
           )}

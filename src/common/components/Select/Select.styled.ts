@@ -9,14 +9,12 @@ export const StyledSelectContainer = styled.div`
   padding-left: 5px;
   gap: 8px;
 
-  .column {
-    flex-direction: column;
-  }
-
   .react-select {
     width: 150px;
   }
-
+  .error {
+    margin-top: -4px !important;
+  }
   &.column {
     flex-direction: column;
     align-items: flex-start;
