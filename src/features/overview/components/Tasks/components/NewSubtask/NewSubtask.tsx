@@ -10,7 +10,7 @@ import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
 import { priorityOptions, statusOptions } from "@/features/overview/constant";
 import useInitNewSubtaskForm from "@/features/overview/hooks/useInitNewSubtaskForm";
-import { ProjectType } from "@/types";
+import { ProjectProps } from "@/types";
 import { FC, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -38,7 +38,7 @@ const NewSubtask: FC<NewSubtaskModalProps> = ({ isOpen, onClose }) => {
   } = methods;
 
   const submitNewProject = useCallback(
-    (data: ProjectType) => {
+    (data: ProjectProps) => {
       console.log(data);
       createNewProject(data);
       // dispatch(setLoaderIsOpen(true));

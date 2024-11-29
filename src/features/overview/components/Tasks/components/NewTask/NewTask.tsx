@@ -1,8 +1,5 @@
 import { Badge } from "@/.config/theme";
-import {
-  useCreateNewProjectMutation,
-  useGetAllProjectsQuery,
-} from "@/app/services/projectManagerApi";
+import { useCreateNewTaskMutation, useGetAllProjectsQuery } from "@/app/services/projectManagerApi";
 import Button from "@/common/components/Button";
 import Datepicker from "@/common/components/Datepicker";
 import Input from "@/common/components/Input";
@@ -27,7 +24,7 @@ interface NewTaskModalProps {
 const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   const { methods } = useInitNewTaskForm();
   const dispatch = useDispatch();
-  const [deadline, setDeadline] = useState(new Date());
+  const [estimation, setEstimation] = useState(new Date());
 
   const { data: projects } = useGetAllProjectsQuery(undefined, {
     skip: !isOpen,
@@ -36,7 +33,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   const [
     createNewProject,
     // { reset: resetNewProjectState, isLoading: isNewProjectLoading, isSuccess: isNewProjectSuccess },
-  ] = useCreateNewProjectMutation();
+  ] = useCreateNewTaskMutation();
   const projectOptions = constructProjectOptions(projects);
   const {
     handleSubmit,
@@ -46,8 +43,16 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
 
   const submitNewTask = useCallback(
     (data: any) => {
-      return console.log(data);
-      createNewProject(data);
+      // return console.log(JSON.stringify(data));
+      createNewProject({
+        project_id: data.project.value,
+        title: data.title,
+        description: data.description,
+        estimation: data.deadline,
+        status: data.status.value,
+        priority: data.priority.value,
+        tags: data.tags.map((tag) => tag.label || tag),
+      });
       // dispatch(setLoaderIsOpen(true));
     },
     [createNewProject, dispatch]
@@ -57,7 +62,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose} closeOnClickOutside={() => onClose()}>
       <StyledNewTaskContainer onSubmit={handleSubmit(submitNewTask)}>
         <Controller
-          name="projectName"
+          name="project"
           control={control}
           render={({ field: { onChange, value, ref } }) => (
             <div className="selection">
@@ -70,18 +75,18 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
                 value={value}
                 onChange={(selectedValue) => onChange(selectedValue)}
                 ref={ref}
-                error={errors.projectName?.value?.message}
+                error={errors.project?.value?.message}
               />
             </div>
           )}
         />
         <Controller
           control={control}
-          name="name"
+          name="title"
           render={({ field: { value, onChange } }) => (
             <Input
-              label="Name"
-              error={errors.name?.message}
+              label="Title"
+              error={errors.title?.message}
               type="text"
               value={value}
               onChange={onChange}
@@ -104,19 +109,19 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
         />
         <Controller
           control={control}
-          name="deadline"
+          name="estimation"
           render={({ field: { value, onChange } }) => (
             <div className="datepicker">
-              <Label>Deadline</Label>
+              <Label>Effort estimation</Label>
               <Datepicker
                 dateFormat="yyyy/MM/dd"
                 selected={new Date(value)}
                 onChange={(date) => {
-                  setDeadline(date as Date);
+                  setEstimation(date as Date);
                   onChange(date?.toISOString());
                 }}
                 minDate={new Date()}
-                error={errors.deadline?.message}
+                error={errors.estimation?.message}
               />
             </div>
           )}

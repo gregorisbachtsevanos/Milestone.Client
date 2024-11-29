@@ -6,13 +6,13 @@ import { PriorityOptions, StatusOptions } from "../types";
 const useInitNewTaskForm = () => {
   const methods = useForm({
     defaultValues: {
-      projectName: {
+      project: {
         value: "",
         label: "",
       },
-      name: "",
+      title: "",
       description: "",
-      deadline: new Date().toISOString(),
+      estimation: new Date().toISOString(),
       status: {
         value: "backlog",
         label: StatusOptions.Backlog,

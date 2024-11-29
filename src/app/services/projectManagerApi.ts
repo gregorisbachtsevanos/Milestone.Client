@@ -1,4 +1,4 @@
-import { ProjectType, Status, TaskType } from "@/types";
+import { ProjectType, ProjectProps, Status, TaskType, TaskProps } from "@/types";
 import { api } from "./api";
 import config from "@/.config/config";
 import { Overview } from "@/features/profile/types";
@@ -6,20 +6,6 @@ import { toast } from "@/common/components/Toast/Toast";
 
 interface getTasksRequest {
   status?: Status;
-}
-
-interface ProjectResponse {
-  id: string;
-  project_id: string;
-  name: string;
-  description?: string;
-  tasks: number;
-  comments: number;
-  created_at: string;
-  updated_at: string;
-  deadline: string;
-  // roadmaps: RoadmapType[];
-  tags?: string[];
 }
 
 const { projectManagerAPI: PROJECT_MANAGER_API } = config;
@@ -31,17 +17,17 @@ export const projectManagerAPI = api.injectEndpoints({
         url: `${PROJECT_MANAGER_API}/v1/manager/overview`,
       }),
     }),
-    getAllProjects: build.query<ProjectResponse[], void>({
+    getAllProjects: build.query<ProjectType[], void>({
       query: () => ({
         url: `${PROJECT_MANAGER_API}/v1/projects`,
       }),
     }),
-    getProjectById: build.query<ProjectResponse, { project_id: string }>({
+    getProjectById: build.query<ProjectType, { project_id: string }>({
       query: ({ project_id }) => ({
         url: `${PROJECT_MANAGER_API}/v1/projects/${project_id} `,
       }),
     }),
-    createNewProject: build.mutation<{ project_id: string }, ProjectType>({
+    createNewProject: build.mutation<{ project_id: string }, ProjectProps>({
       query: (project) => ({
         url: `${PROJECT_MANAGER_API}/v1/projects/new`,
         method: "POST",
@@ -56,7 +42,7 @@ export const projectManagerAPI = api.injectEndpoints({
         }
       },
     }),
-    updateProject: build.mutation<void, ProjectType & { project_id: string }>({
+    updateProject: build.mutation<void, ProjectProps & { project_id: string }>({
       query: (project) => ({
         url: `${PROJECT_MANAGER_API}/v1/edit/${project.project_id}`,
         method: "PATCH",
@@ -69,14 +55,14 @@ export const projectManagerAPI = api.injectEndpoints({
         method: "DELETE",
       }),
     }),
-    createNewTask: build.mutation<{ project_id: string }, ProjectType>({
+    createNewTask: build.mutation<{ project_id: string }, TaskProps>({
       query: (project) => ({
-        url: `${PROJECT_MANAGER_API}/v1/task/new`,
+        url: `${PROJECT_MANAGER_API}/v1/tasks/new`,
         method: "POST",
         body: project,
       }),
     }),
-    createNewSubtask: build.mutation<{ project_id: string }, ProjectType>({
+    createNewSubtask: build.mutation<{ project_id: string }, ProjectProps>({
       query: (project) => ({
         url: `${PROJECT_MANAGER_API}/v1/subtask/new`,
         method: "POST",
@@ -97,6 +83,7 @@ export const {
   useGetAllProjectsQuery,
   useGetProjectByIdQuery,
   useCreateNewProjectMutation,
+  useCreateNewTaskMutation,
   useUpdateProjectMutation,
   useDeleteProjectMutation,
   useGetAllSubtasksQuery,

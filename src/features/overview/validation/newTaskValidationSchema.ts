@@ -1,16 +1,16 @@
 import * as yup from "yup";
 
 export const newTaskValidationSchema = yup.object().shape({
-  projectName: yup
+  project: yup
     .object()
     .shape({
       value: yup.string().required("Please select a project to associate"),
       label: yup.string().required("Please select a project to associate"),
     })
     .required("Please associate the task to a project"),
-  name: yup.string().required("Task title is required"),
+  title: yup.string().required("Task title is required"),
   description: yup.string().optional(),
-  deadline: yup.string().required("Provide deadline"),
+  estimation: yup.string().required("Provide effort estimation"),
   status: yup
     .object()
     .shape({

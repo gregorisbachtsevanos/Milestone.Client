@@ -6,7 +6,7 @@ import Label from "@/common/components/Label";
 import Modal from "@/common/components/Modal/Modal";
 import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
-import { ProjectType } from "@/types";
+import { ProjectProps } from "@/types";
 import { FC, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -36,7 +36,7 @@ const NewProject: FC<NewProjectModalProps> = ({ isOpen, onClose }) => {
   } = methods;
 
   const submitNewProject = useCallback(
-    (data: ProjectType) => {
+    (data: ProjectProps) => {
       console.log(data);
       createNewProject(data);
       reset();
