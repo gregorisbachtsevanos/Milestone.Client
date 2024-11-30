@@ -66,7 +66,7 @@ export type RoadmapType = {
 
 export type TaskProps = {
   project_id: string;
-  name: string;
+  title: string;
   description: string;
   estimation: string;
   status: StatusType;

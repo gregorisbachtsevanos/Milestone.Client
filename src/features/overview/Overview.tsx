@@ -10,7 +10,7 @@ import Notes from "./components/Notes";
 import NewEventModal from "./components/Notes/NewEventModal";
 import NewGoalModal from "./components/Notes/NewGoalModal";
 import Summary from "./components/Summary";
-import Tasks from "./components/Tasks";
+import Subtasks from "./components/Tasks";
 import { StyledOverviewContainer } from "./Overview.styled";
 import { useOverviewQuery } from "@/app/services/projectManagerApi";
 
@@ -33,7 +33,7 @@ const Overview = () => {
           totalSubtasks={overviewData?.totalSubtasks.total ?? 0}
         />
         <div className="sections">
-          <Tasks overviewTotalData={overviewData} />
+          <Subtasks overviewTotalData={overviewData} />
           <Notes
             data={notesData}
             title="Goals"

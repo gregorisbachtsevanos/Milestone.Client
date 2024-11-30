@@ -13,7 +13,6 @@ import useInitNewTaskForm from "@/features/overview/hooks/useInitNewTaskForm";
 import { constructProjectOptions } from "@/features/overview/utils/helpers";
 import { FC, memo, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { StyledNewTaskContainer } from "./NewTask.styled";
 
 interface NewTaskModalProps {
@@ -23,7 +22,6 @@ interface NewTaskModalProps {
 
 const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   const { methods } = useInitNewTaskForm();
-  const dispatch = useDispatch();
   const [estimation, setEstimation] = useState(new Date());
 
   const { data: projects } = useGetAllProjectsQuery(undefined, {
@@ -34,30 +32,38 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
     createNewProject,
     // { reset: resetNewProjectState, isLoading: isNewProjectLoading, isSuccess: isNewProjectSuccess },
   ] = useCreateNewTaskMutation();
+
   const projectOptions = constructProjectOptions(projects);
+
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = methods;
 
   const submitNewTask = useCallback(
     (data: any) => {
-      // return console.log(JSON.stringify(data));
-      createNewProject({
+      const x = {
         project_id: data.project.value,
         title: data.title,
         description: data.description,
-        estimation: data.deadline,
+        estimation: data.deadline ?? estimation,
         status: data.status.value,
         priority: data.priority.value,
-        tags: data.tags.map((tag) => tag.label || tag),
-      });
-      // dispatch(setLoaderIsOpen(true));
+        tags: data.tags.map((tag: { label: string }) => tag.label || tag),
+      };
+
+      createNewProject(x);
+
+      setTimeout(() => {
+        onClose();
+        reset();
+      }, 4500);
     },
-    [createNewProject, dispatch]
+    [createNewProject, estimation, onClose, reset]
   );
-  console.log(errors);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} closeOnClickOutside={() => onClose()}>
       <StyledNewTaskContainer onSubmit={handleSubmit(submitNewTask)}>

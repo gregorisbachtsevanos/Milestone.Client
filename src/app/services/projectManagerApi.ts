@@ -38,6 +38,7 @@ export const projectManagerAPI = api.injectEndpoints({
           await queryFulfilled;
           toast.success("Project created successfully!");
         } catch (error) {
+          toast.error("Project not created!");
           console.error("Failed to create the project:", error);
         }
       },
@@ -61,6 +62,15 @@ export const projectManagerAPI = api.injectEndpoints({
         method: "POST",
         body: project,
       }),
+      async onQueryStarted(args, { queryFulfilled }) {
+        try {
+          await queryFulfilled;
+          toast.success("Task created successfully!");
+        } catch (error) {
+          toast.error("Task not created!");
+          console.error("Failed to create the project:", error);
+        }
+      },
     }),
     createNewSubtask: build.mutation<{ project_id: string }, ProjectProps>({
       query: (project) => ({

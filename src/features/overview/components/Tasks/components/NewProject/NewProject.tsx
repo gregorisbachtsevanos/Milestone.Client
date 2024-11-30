@@ -9,7 +9,6 @@ import Textarea from "@/common/components/Textarea";
 import { ProjectProps } from "@/types";
 import { FC, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import useInitNewProjectForm from "../../../../hooks/useInitNewProjectForm";
 import { StyledNewProjectContainer } from "./NewProject.styled";
 
@@ -20,7 +19,6 @@ interface NewProjectModalProps {
 
 const NewProject: FC<NewProjectModalProps> = ({ isOpen, onClose }) => {
   const { methods } = useInitNewProjectForm();
-  const dispatch = useDispatch();
   const [deadline, setDeadline] = useState(new Date());
 
   const [
@@ -39,10 +37,12 @@ const NewProject: FC<NewProjectModalProps> = ({ isOpen, onClose }) => {
     (data: ProjectProps) => {
       console.log(data);
       createNewProject(data);
-      reset();
-      // dispatch(setLoaderIsOpen(true));
+      setTimeout(() => {
+        onClose();
+        reset();
+      }, 4500);
     },
-    [createNewProject, dispatch]
+    [createNewProject, onClose, reset]
   );
   console.log(errors);
   return (
