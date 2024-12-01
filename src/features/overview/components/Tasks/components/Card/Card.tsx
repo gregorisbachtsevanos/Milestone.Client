@@ -1,9 +1,9 @@
 import SingleCard from "@/common/components/SingleCard";
-import { TaskType } from "@/types";
+import { SubtaskType, TaskType } from "@/types";
 import { FC } from "react";
 
 interface CardProps {
-  subtasks?: TaskType[];
+  subtasks?: TaskType[] | SubtaskType[];
   isLoading: boolean;
 }
 
@@ -16,7 +16,7 @@ const Card: FC<CardProps> = ({ subtasks, isLoading }) => {
         <SingleCard
           key={index}
           title={title}
-          description={description}
+          description={description ?? ""}
           createdDate={created_at}
           priority={priority}
           tags={tags}
