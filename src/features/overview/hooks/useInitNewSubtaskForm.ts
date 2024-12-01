@@ -6,9 +6,13 @@ import { PriorityOptions, StatusOptions } from "../types";
 const useInitNewSubtaskForm = () => {
   const methods = useForm({
     defaultValues: {
-      name: "",
+      task: {
+        value: "",
+        label: "",
+      },
+      title: "",
       description: "",
-      deadline: new Date().toISOString(),
+      estimation: new Date().toISOString(),
       status: {
         value: "backlog",
         label: StatusOptions.Backlog,
