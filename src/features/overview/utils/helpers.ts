@@ -40,10 +40,3 @@ export const constructOverviewData = ({
     },
   ];
 };
-
-export const constructProjectOptions = (projects?: projectOptions[]) => {
-  return projects?.map((project) => ({
-    label: project.name,
-    value: project.project_id,
-  }));
-};
