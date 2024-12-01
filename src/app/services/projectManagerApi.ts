@@ -1,12 +1,16 @@
-import { ProjectType, ProjectProps, Status, TaskType, TaskProps } from "@/types";
+import {
+  ProjectType,
+  ProjectProps,
+  Status,
+  TaskType,
+  TaskProps,
+  SubtaskType,
+  OptionsType,
+} from "@/types";
 import { api } from "./api";
 import config from "@/.config/config";
 import { Overview } from "@/features/profile/types";
 import { toast } from "@/common/components/Toast/Toast";
-
-interface getTasksRequest {
-  status?: Status;
-}
 
 const { projectManagerAPI: PROJECT_MANAGER_API } = config;
 
@@ -17,10 +21,17 @@ export const projectManagerAPI = api.injectEndpoints({
         url: `${PROJECT_MANAGER_API}/v1/manager/overview`,
       }),
     }),
-    getAllProjects: build.query<ProjectType[], void>({
+    getAllProjectsOverview: build.query<OptionsType[], void>({
       query: () => ({
         url: `${PROJECT_MANAGER_API}/v1/projects`,
       }),
+      transformResponse: (response: ProjectType[]): OptionsType[] =>
+        response?.map((project) => ({
+          label: project.name,
+          value: project.project_id,
+        })),
+
+      // providesTags: (result) => [{ type: "Projects", id: result?.id }],
     }),
     getProjectById: build.query<ProjectType, { project_id: string }>({
       query: ({ project_id }) => ({
@@ -72,6 +83,16 @@ export const projectManagerAPI = api.injectEndpoints({
         }
       },
     }),
+    getAllTasksOverview: build.query<OptionsType[], void>({
+      query: () => ({
+        url: `${PROJECT_MANAGER_API}/v1/tasks`,
+      }),
+      transformResponse: (response: TaskType[]): OptionsType[] =>
+        response?.map((task) => ({
+          label: task.title,
+          value: task.project_id,
+        })),
+    }),
     createNewSubtask: build.mutation<{ project_id: string }, ProjectProps>({
       query: (project) => ({
         url: `${PROJECT_MANAGER_API}/v1/subtask/new`,
@@ -79,7 +100,7 @@ export const projectManagerAPI = api.injectEndpoints({
         body: project,
       }),
     }),
-    getAllSubtasks: build.query<TaskType[], getTasksRequest>({
+    getAllSubtasks: build.query<SubtaskType[], { status?: Status }>({
       query: ({ status }) => ({
         url: `${PROJECT_MANAGER_API}/v1/subtasks`,
         params: { status },
@@ -90,11 +111,12 @@ export const projectManagerAPI = api.injectEndpoints({
 
 export const {
   useOverviewQuery,
-  useGetAllProjectsQuery,
+  useGetAllProjectsOverviewQuery,
   useGetProjectByIdQuery,
-  useCreateNewProjectMutation,
-  useCreateNewTaskMutation,
   useUpdateProjectMutation,
   useDeleteProjectMutation,
+  useCreateNewProjectMutation,
+  useGetAllTasksOverviewQuery,
+  useCreateNewTaskMutation,
   useGetAllSubtasksQuery,
 } = projectManagerAPI;

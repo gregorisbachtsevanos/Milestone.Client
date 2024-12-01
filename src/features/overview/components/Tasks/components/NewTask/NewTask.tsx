@@ -1,5 +1,8 @@
 import { Badge } from "@/.config/theme";
-import { useCreateNewTaskMutation, useGetAllProjectsQuery } from "@/app/services/projectManagerApi";
+import {
+  useCreateNewTaskMutation,
+  useGetAllProjectsOverviewQuery,
+} from "@/app/services/projectManagerApi";
 import Button from "@/common/components/Button";
 import Datepicker from "@/common/components/Datepicker";
 import Input from "@/common/components/Input";
@@ -10,7 +13,6 @@ import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
 import { priorityOptions, statusOptions } from "@/features/overview/constant";
 import useInitNewTaskForm from "@/features/overview/hooks/useInitNewTaskForm";
-import { constructProjectOptions } from "@/features/overview/utils/helpers";
 import { FC, memo, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
 import { StyledNewTaskContainer } from "./NewTask.styled";
@@ -24,7 +26,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
   const { methods } = useInitNewTaskForm();
   const [estimation, setEstimation] = useState(new Date());
 
-  const { data: projects } = useGetAllProjectsQuery(undefined, {
+  const { data: projects } = useGetAllProjectsOverviewQuery(undefined, {
     skip: !isOpen,
   });
 
@@ -32,8 +34,6 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
     createNewProject,
     // { reset: resetNewProjectState, isLoading: isNewProjectLoading, isSuccess: isNewProjectSuccess },
   ] = useCreateNewTaskMutation();
-
-  const projectOptions = constructProjectOptions(projects);
 
   const {
     handleSubmit,
@@ -77,7 +77,7 @@ const NewTask: FC<NewTaskModalProps> = ({ isOpen, onClose }) => {
                 styleType="column"
                 variant="gray"
                 placeholder="Select Project"
-                options={projectOptions}
+                options={projects}
                 value={value}
                 onChange={(selectedValue) => onChange(selectedValue)}
                 ref={ref}

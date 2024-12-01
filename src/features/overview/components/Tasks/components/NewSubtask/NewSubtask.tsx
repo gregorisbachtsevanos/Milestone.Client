@@ -1,5 +1,8 @@
 import { Badge } from "@/.config/theme";
-import { useCreateNewProjectMutation } from "@/app/services/projectManagerApi";
+import {
+  useCreateNewTaskMutation,
+  useGetAllTasksOverviewQuery,
+} from "@/app/services/projectManagerApi";
 import Button from "@/common/components/Button";
 import Datepicker from "@/common/components/Datepicker";
 import Input from "@/common/components/Input";
@@ -10,10 +13,8 @@ import TagsInput from "@/common/components/TagsInput";
 import Textarea from "@/common/components/Textarea";
 import { priorityOptions, statusOptions } from "@/features/overview/constant";
 import useInitNewSubtaskForm from "@/features/overview/hooks/useInitNewSubtaskForm";
-import { ProjectProps } from "@/types";
-import { FC, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { StyledNewSubtaskContainer } from "./NewSubtask.styled";
 
 interface NewSubtaskModalProps {
@@ -23,39 +24,75 @@ interface NewSubtaskModalProps {
 
 const NewSubtask: FC<NewSubtaskModalProps> = ({ isOpen, onClose }) => {
   const { methods } = useInitNewSubtaskForm();
-  const dispatch = useDispatch();
-  const [deadline, setDeadline] = useState(new Date());
+  const [estimation, setEstimation] = useState(new Date());
+
+  const { data: tasks } = useGetAllTasksOverviewQuery(undefined, {
+    skip: !isOpen,
+  });
 
   const [
-    createNewProject,
+    createNewSubtask,
     // { reset: resetNewProjectState, isLoading: isNewProjectLoading, isSuccess: isNewProjectSuccess },
-  ] = useCreateNewProjectMutation();
+  ] = useCreateNewTaskMutation();
 
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = methods;
 
-  const submitNewProject = useCallback(
-    (data: ProjectProps) => {
-      console.log(data);
-      createNewProject(data);
-      // dispatch(setLoaderIsOpen(true));
+  const submitNewTask = useCallback(
+    (data: any) => {
+      const x = {
+        project_id: data.project.value,
+        title: data.title,
+        description: data.description,
+        estimation: data.deadline ?? estimation,
+        status: data.status.value,
+        priority: data.priority.value,
+        tags: data.tags.map((tag: { label: string }) => tag.label || tag),
+      };
+
+      createNewSubtask(x);
+
+      setTimeout(() => {
+        onClose();
+        reset();
+      }, 4500);
     },
-    [createNewProject, dispatch]
+    [createNewSubtask, estimation, onClose, reset]
   );
-  console.log(errors);
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} closeOnClickOutside={() => onClose()}>
-      <StyledNewSubtaskContainer onSubmit={handleSubmit(submitNewProject)}>
+      <StyledNewSubtaskContainer onSubmit={handleSubmit(submitNewTask)}>
+        <Controller
+          name="task"
+          control={control}
+          render={({ field: { onChange, value, ref } }) => (
+            <div className="selection">
+              <Select
+                label="Project Name"
+                styleType="column"
+                variant="gray"
+                placeholder="Select Project"
+                options={tasks}
+                value={value}
+                onChange={(selectedValue) => onChange(selectedValue)}
+                ref={ref}
+                error={errors.task?.value?.message}
+              />
+            </div>
+          )}
+        />
         <Controller
           control={control}
-          name="name"
+          name="title"
           render={({ field: { value, onChange } }) => (
             <Input
-              label="Name"
-              error={errors.name?.message}
+              label="Title"
+              error={errors.title?.message}
               type="text"
               value={value}
               onChange={onChange}
@@ -78,19 +115,19 @@ const NewSubtask: FC<NewSubtaskModalProps> = ({ isOpen, onClose }) => {
         />
         <Controller
           control={control}
-          name="deadline"
+          name="estimation"
           render={({ field: { value, onChange } }) => (
             <div className="datepicker">
-              <Label>Deadline</Label>
+              <Label>Effort estimation</Label>
               <Datepicker
                 dateFormat="yyyy/MM/dd"
                 selected={new Date(value)}
                 onChange={(date) => {
-                  setDeadline(date as Date);
+                  setEstimation(date as Date);
                   onChange(date?.toISOString());
                 }}
                 minDate={new Date()}
-                error={errors.deadline?.message}
+                error={errors.estimation?.message}
               />
             </div>
           )}
@@ -115,7 +152,6 @@ const NewSubtask: FC<NewSubtaskModalProps> = ({ isOpen, onClose }) => {
             </div>
           )}
         />
-
         <Controller
           name="priority"
           control={control}
@@ -153,4 +189,4 @@ const NewSubtask: FC<NewSubtaskModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default NewSubtask;
+export default memo(NewSubtask);
