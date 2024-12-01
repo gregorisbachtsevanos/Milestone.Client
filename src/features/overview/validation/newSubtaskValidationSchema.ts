@@ -1,9 +1,16 @@
 import * as yup from "yup";
 
 export const newSubtaskValidationSchema = yup.object().shape({
-  name: yup.string().required("Project name is required"),
+  task: yup
+    .object()
+    .shape({
+      value: yup.string().required("Please select a task to associate"),
+      label: yup.string().required("Please select a task to associate"),
+    })
+    .required("Please associate the subtask to a task"),
+  title: yup.string().required("Subtask title is required"),
   description: yup.string().optional(),
-  deadline: yup.string().required("Provide deadline"),
+  estimation: yup.string().required("Estimation is required"),
   status: yup
     .object()
     .shape({

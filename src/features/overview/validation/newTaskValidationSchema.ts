@@ -10,7 +10,7 @@ export const newTaskValidationSchema = yup.object().shape({
     .required("Please associate the task to a project"),
   title: yup.string().required("Task title is required"),
   description: yup.string().optional(),
-  estimation: yup.string().required("Provide effort estimation"),
+  estimation: yup.string().required("Estimation is required"),
   status: yup
     .object()
     .shape({
