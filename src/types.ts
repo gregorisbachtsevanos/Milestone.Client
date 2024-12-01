@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
 
-export type Nullable<T> = { [K in keyof T]?: T[K] | null };
-
 export type ErrorResponse = {
   title: string;
   code: number;
@@ -13,15 +11,7 @@ export type HookFormError = {
   message: string;
 };
 
-export type PaginatedResponse<T> = {
-  data: T[];
-  pages: number;
-};
-
-export type PaginatedRequest = {
-  offset: number;
-  limit: number;
-};
+export type OptionsType = { label: string; value: string };
 
 export type Link = {
   title: string;
