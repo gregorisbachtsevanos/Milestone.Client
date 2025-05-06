@@ -24,6 +24,15 @@ const { identityAPI: IDENTITY_API } = config;
 const { clientId, clientSecret } = config.auth;
 // const {machineId,machineSecret} = config.auth;
 
+const ensureMachineToken = async (_queryApi: any): Promise<string | null> => {
+  let token = (_queryApi.getState() as RootState).auth.machineToken;
+  if (!token) {
+    await _queryApi.dispatch(identityAPI.endpoints.fetchMachineToken.initiate());
+    token = (_queryApi.getState() as RootState).auth.machineToken;
+  }
+  return token;
+};
+
 export const identityAPI = api.injectEndpoints({
   endpoints: (build) => ({
     fetchMachineToken: build.mutation<MachineTokenResponse, void>({
@@ -149,7 +158,7 @@ export const identityAPI = api.injectEndpoints({
     }),
     refresh: build.mutation<AuthResponse, RefreshProps>({
       async queryFn({ refreshToken: prevRefreshToken }, _queryApi, _extraOptions, baseQuery) {
-        let machineToken = (_queryApi.getState() as RootState).auth.accessToken;
+        let machineToken = (_queryApi.getState() as RootState).auth.machineToken;
 
         if (!machineToken) {
           await _queryApi.dispatch(identityAPI.endpoints.fetchMachineToken.initiate());
