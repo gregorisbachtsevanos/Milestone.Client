@@ -65,12 +65,7 @@ export const identityAPI = api.injectEndpoints({
         _extraOptions,
         baseQuery
       ) {
-        let machineToken = (_queryApi.getState() as RootState).auth.machineToken;
-
-        if (!machineToken) {
-          await _queryApi.dispatch(identityAPI.endpoints.fetchMachineToken.initiate());
-          machineToken = (_queryApi.getState() as RootState).auth.machineToken;
-        }
+       const machineToken = await ensureMachineToken(_queryApi);
 
         const registerResponse = await baseQuery({
           url: `${IDENTITY_API}/identity/register`,
@@ -112,12 +107,7 @@ export const identityAPI = api.injectEndpoints({
     }),
     login: build.mutation<AuthResponse, LoginProps>({
       async queryFn({ username, password }, _queryApi, _extraOptions, baseQuery) {
-        let machineToken = (_queryApi.getState() as RootState).auth.machineToken;
-
-        if (!machineToken) {
-          await _queryApi.dispatch(identityAPI.endpoints.fetchMachineToken.initiate());
-          machineToken = (_queryApi.getState() as RootState).auth.machineToken;
-        }
+       const machineToken = await ensureMachineToken(_queryApi);
 
         const loginResponse = await baseQuery({
           url: `${IDENTITY_API}/identity/login`,
@@ -158,12 +148,7 @@ export const identityAPI = api.injectEndpoints({
     }),
     refresh: build.mutation<AuthResponse, RefreshProps>({
       async queryFn({ refreshToken: prevRefreshToken }, _queryApi, _extraOptions, baseQuery) {
-        let machineToken = (_queryApi.getState() as RootState).auth.machineToken;
-
-        if (!machineToken) {
-          await _queryApi.dispatch(identityAPI.endpoints.fetchMachineToken.initiate());
-          machineToken = (_queryApi.getState() as RootState).auth.machineToken;
-        }
+        const machineToken = await ensureMachineToken(_queryApi);
 
         const refreshTokenResponse = await baseQuery({
           url: `${IDENTITY_API}/identity/refresh-token`,
